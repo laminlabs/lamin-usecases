@@ -23,7 +23,7 @@ def build(session):
     login_testuser2(session)
     setup_test_instances_from_main_branch(session)
     session.install(".[dev,test]")
-    run_pytest(session)
+    run_pytest(session, coverage=False)
     build_docs(session)
     upload_docs_artifact()
     move_built_docs_to_docs_slash_project_slug()
