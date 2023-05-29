@@ -1,0 +1,5 @@
+project_name: lamin-examples
+description: Examples built using Lamin
+project_slug: lamin-examples
+repository_name: lamin-examples
+package_name: lamin_examples
