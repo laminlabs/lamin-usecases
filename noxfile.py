@@ -16,5 +16,5 @@ def build(session):
     session.install(".[dev,test]")
     run_pytest(session, coverage=False)
     build_docs(session)
-    upload_docs_artifact(aws=True)
+    upload_docs_artifact()
     move_built_docs_to_docs_slash_project_slug()
