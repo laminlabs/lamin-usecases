@@ -106,6 +106,7 @@ docs/lamin_examples.*
 lamin_sphinx
 docs/conf.py
 _docs_tmp*
-celltypist/
 *.h5ad
 data/
+celltypist/
+enrichr/

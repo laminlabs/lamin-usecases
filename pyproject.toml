@@ -8,9 +8,10 @@ authors = [{name = "Lamin Labs", email = "laminlabs@gmail.com"}]
 readme = "README.md"
 dynamic = ["version", "description"]
 dependencies = [
-    "lamindb[bionty,lamin1]>=0.41a5",
+    "lamindb[bionty,lamin1]>=0.42a1",
     "celltypist",
     "gseapy",
+    "scanpy",
 ]
 
 [project.urls]
