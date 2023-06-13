@@ -1,5 +1,5 @@
 import nox
-from laminci import move_built_docs_to_docs_slash_project_slug, upload_docs_artifact
+from laminci import upload_docs_artifact
 from laminci.nox import build_docs, login_testuser1, run_pre_commit, run_pytest
 
 nox.options.default_venv_backend = "none"
@@ -12,8 +12,11 @@ def lint(session: nox.Session) -> None:
 
 @nox.session
 def install(session: nox.Session):
-    session.run(*"pip install .[dev,test]".split())
-    session.run(*"pip install lamindb[aws]".split())
+    session.run(*"pip install .[dev]".split())
+    session.run(
+        *"pip install git+https://github.com/laminlabs/lamindb[bionty,aws,nbproject]"
+        .split()
+    )
 
 
 @nox.session()
@@ -22,4 +25,3 @@ def build(session):
     run_pytest(session, coverage=False)
     build_docs(session)
     upload_docs_artifact()
-    move_built_docs_to_docs_slash_project_slug()
