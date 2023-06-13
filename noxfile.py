@@ -14,7 +14,9 @@ def lint(session: nox.Session) -> None:
 def install(session: nox.Session):
     session.run(*"pip install .[dev]".split())
     session.run(
-        "pip", "install", "lamindb[bionty] @ git+https://github.com/laminlabs/lamindb"
+        "pip",
+        "install",
+        "lamindb[bionty,nbproject] @ git+https://github.com/laminlabs/lamindb",
     )
 
 
