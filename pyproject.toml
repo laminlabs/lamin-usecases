@@ -12,6 +12,7 @@ dependencies = [
     "celltypist",
     "gseapy",
     "scanpy",
+    "cite2c"
 ]
 
 [project.urls]
