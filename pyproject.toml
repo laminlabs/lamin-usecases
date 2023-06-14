@@ -8,7 +8,6 @@ authors = [{name = "Lamin Labs", email = "laminlabs@gmail.com"}]
 readme = "README.md"
 dynamic = ["version", "description"]
 dependencies = [
-    "lamindb[bionty,nbproject]==0.42a4",
     "celltypist",
     "gseapy",
     "scanpy"
@@ -19,10 +18,8 @@ Home = "https://github.com/laminlabs/lamin-examples"
 
 [project.optional-dependencies]
 dev = [
+    "laminci",
     "pre-commit",
-    "nox",
-]
-test = [
     "pytest>=6.0",
     "pytest-cov",
     "nbproject_test",
