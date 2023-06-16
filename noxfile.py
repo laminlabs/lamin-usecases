@@ -25,4 +25,4 @@ def build(session):
     login_testuser1(session)
     run_pytest(session, coverage=False)
     build_docs(session)
-    upload_docs_artifact()
+    upload_docs_artifact(aws=True)
