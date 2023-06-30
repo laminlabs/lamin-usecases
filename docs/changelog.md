@@ -3,6 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
+👷 Send Slack notif | [11](https://github.com/laminlabs/lamin-examples/pull/11) | [falexwolf](https://github.com/falexwolf) | 2023-06-30 |
 📝 Try to fix build | [9](https://github.com/laminlabs/lamin-examples/pull/9) | [falexwolf](https://github.com/falexwolf) | 2023-06-20 |
 Overhaul pathways and lineage | [8](https://github.com/laminlabs/lamin-examples/pull/8) | [Zethson](https://github.com/Zethson) | 2023-06-14 |
 ✨ Added a lineage tracking example | [6](https://github.com/laminlabs/lamin-examples/pull/6) | [sunnyosun](https://github.com/sunnyosun) | 2023-06-05 |
