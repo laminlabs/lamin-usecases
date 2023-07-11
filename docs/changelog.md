@@ -3,6 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
+⬆️ Remove sklearn pinning | [13](https://github.com/laminlabs/lamin-examples/pull/13) | [sunnyosun](https://github.com/sunnyosun) | 2023-07-11 |
 📝 Improve celltypist | [12](https://github.com/laminlabs/lamin-examples/pull/12) | [falexwolf](https://github.com/falexwolf) | 2023-07-04 |
 📝 Updated Celltypist example with parents tracking | [10](https://github.com/laminlabs/lamin-examples/pull/10) | [sunnyosun](https://github.com/sunnyosun) | 2023-07-03 |
 👷 Send Slack notif | [11](https://github.com/laminlabs/lamin-examples/pull/11) | [falexwolf](https://github.com/falexwolf) | 2023-06-30 |
