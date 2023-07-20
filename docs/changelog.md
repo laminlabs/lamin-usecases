@@ -3,6 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
+🚚 Rename repository to `lamin-usecases` | [15](https://github.com/laminlabs/lamin-usecases/pull/15) | [falexwolf](https://github.com/falexwolf) | 2023-07-20 |
 ⬆️ Removed top_hit param | [14](https://github.com/laminlabs/lamin-examples/pull/14) | [sunnyosun](https://github.com/sunnyosun) | 2023-07-20 |
 ⬆️ Remove sklearn pinning | [13](https://github.com/laminlabs/lamin-examples/pull/13) | [sunnyosun](https://github.com/sunnyosun) | 2023-07-11 |
 📝 Improve celltypist | [12](https://github.com/laminlabs/lamin-examples/pull/12) | [falexwolf](https://github.com/falexwolf) | 2023-07-04 |
