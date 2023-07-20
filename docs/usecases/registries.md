@@ -1,4 +1,4 @@
-# Registries
+# Manage biological registries
 
 ```{toctree}
 :maxdepth: 1
