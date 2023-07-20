@@ -1,5 +1,5 @@
-project_name: lamin-examples
+project_name: lamin-usecases
 description: Examples built using Lamin
-project_slug: lamin-examples
-repository_name: lamin-examples
-package_name: lamin_examples
+project_slug: lamin-usecases
+repository_name: lamin-usecases
+package_name: lamin_usecases
