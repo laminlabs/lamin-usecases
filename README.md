@@ -1,3 +1,3 @@
-# lamin-examples: Examples built on Lamin
+# Lamin use cases
 
-Read the [docs](https://lamin-examples-ddcd.netlify.app/docs/lamin-examples/).
+Read the [docs](https://lamin-examples-ddcd.netlify.app).

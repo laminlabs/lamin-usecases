@@ -2,7 +2,7 @@
 
 Import the package::
 
-   import lamin_examples
+   import lamin_usecases
 
 """
 
