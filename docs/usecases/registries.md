@@ -1,8 +1,8 @@
-# Use cases
+# Registries
 
 ```{toctree}
 :maxdepth: 1
 
-registries
-analyses
+celltypist
+enrichr
 ```
