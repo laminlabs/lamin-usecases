@@ -7,6 +7,6 @@
 :maxdepth: 1
 :hidden:
 
-biology/index
+usecases/index
 changelog
 ```
