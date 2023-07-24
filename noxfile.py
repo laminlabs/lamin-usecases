@@ -16,7 +16,7 @@ def install(session: nox.Session):
     session.run(
         "pip",
         "install",
-        "lamindb[bionty,nbproject,zarr] @ git+https://github.com/laminlabs/lamindb",
+        "lamindb[bionty,jupyter,zarr] @ git+https://github.com/laminlabs/lamindb",
     )
 
 
