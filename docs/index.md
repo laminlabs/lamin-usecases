@@ -7,6 +7,5 @@
 :maxdepth: 1
 :hidden:
 
-usecases/index
 changelog
 ```
