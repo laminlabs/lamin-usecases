@@ -7,12 +7,7 @@ name = "lamin_usecases"
 authors = [{name = "Lamin Labs", email = "laminlabs@gmail.com"}]
 readme = "README.md"
 dynamic = ["version", "description"]
-dependencies = [
-    "celltypist",
-    "gseapy",
-    "scanpy",
-    "graphviz",
-]
+dependencies = []
 
 [project.urls]
 Home = "https://github.com/laminlabs/lamin-usecases"
