@@ -12,8 +12,8 @@ datatype/multimodal
 
 ```{toctree}
 :maxdepth: 2
-:caption: "By bio registry"
+:caption: "By bio-registry"
 
-bioregistry/registries
-bioregistry/analyses
+bioregistry/celltypist
+bioregistry/enrichr
 ```
