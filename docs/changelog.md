@@ -3,6 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
+♻️ Also refactor cellmarker guide to pre-storage curation | [20](https://github.com/laminlabs/lamin-usecases/pull/20) | [falexwolf](https://github.com/falexwolf) | 2023-08-05 |
 🎨 Store validated data in scrna example | [19](https://github.com/laminlabs/lamin-usecases/pull/19) | [falexwolf](https://github.com/falexwolf) | 2023-08-05 |
 🚚 Move biology notebooks from lamindb here | [18](https://github.com/laminlabs/lamin-usecases/pull/18) | [sunnyosun](https://github.com/sunnyosun) | 2023-08-05 |
 📝 Updated index | [17](https://github.com/laminlabs/lamin-usecases/pull/17) | [sunnyosun](https://github.com/sunnyosun) | 2023-08-04 |
