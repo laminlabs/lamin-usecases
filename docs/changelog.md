@@ -3,6 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
+🚚 Move biology notebooks from lamindb here | [18](https://github.com/laminlabs/lamin-usecases/pull/18) | [sunnyosun](https://github.com/sunnyosun) | 2023-08-05 |
 📝 Updated index | [17](https://github.com/laminlabs/lamin-usecases/pull/17) | [sunnyosun](https://github.com/sunnyosun) | 2023-08-04 |
 📝 Updated all use cases with new API | [16](https://github.com/laminlabs/lamin-usecases/pull/16) | [sunnyosun](https://github.com/sunnyosun) | 2023-08-03 |
 🚚 Rename repository to `lamin-usecases` | [15](https://github.com/laminlabs/lamin-usecases/pull/15) | [falexwolf](https://github.com/falexwolf) | 2023-07-20 |
