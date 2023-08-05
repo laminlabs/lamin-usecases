@@ -1,12 +1,6 @@
 import nox
 from laminci import upload_docs_artifact
-from laminci.nox import (
-    build_docs,
-    login_testuser1,
-    login_testuser2,
-    run_pre_commit,
-    run_pytest,
-)
+from laminci.nox import build_docs, login_testuser1, login_testuser2, run_pre_commit
 
 nox.options.default_venv_backend = "none"
 
@@ -47,7 +41,12 @@ def install(session, group):
 def build(session, group):
     login_testuser2(session)
     login_testuser1(session)
-    run_pytest(session, coverage=False)
+    session.run(*f"pytest -s ./docs/{group}".split())
+
+
+@nox.session
+def docs(session):
+    login_testuser1(session)
     session.run(*"lamin init --storage ./docsbuild --schema bionty".split())
     build_docs(session, strip_prefix=True, strict=True)
     upload_docs_artifact(aws=True)
