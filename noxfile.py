@@ -13,7 +13,7 @@ def lint(session: nox.Session) -> None:
 @nox.session
 @nox.parametrize(
     "group",
-    ["datatype", "bioregistry"],
+    ["datatype", "bioregistry", "docs"],
 )
 def install(session, group):
     extras = ""
@@ -25,6 +25,8 @@ def install(session, group):
         extras += ",zarr,jupyter"
         session.run(*"pip install celltypist".split())
         session.run(*"pip install gseapy".split())
+    elif group == "docs":
+        extras += ""
     session.run(*"pip install .".split())
     session.run(
         "pip",
@@ -41,7 +43,10 @@ def install(session, group):
 def build(session, group):
     login_testuser2(session)
     login_testuser1(session)
-    session.run(*f"pytest -s ./docs/{group}".split())
+    coverage_args = (
+        "--cov=lamin_usescases --cov-append --cov-report=term-missing"  # noqa
+    )
+    session.run(*f"pytest -s {coverage_args} ./docs/{group}".split())
 
 
 @nox.session
