@@ -1,6 +1,12 @@
 import nox
 from laminci import upload_docs_artifact
-from laminci.nox import build_docs, login_testuser1, run_pre_commit, run_pytest
+from laminci.nox import (
+    build_docs,
+    login_testuser1,
+    login_testuser2,
+    run_pre_commit,
+    run_pytest,
+)
 
 nox.options.default_venv_backend = "none"
 
@@ -11,18 +17,37 @@ def lint(session: nox.Session) -> None:
 
 
 @nox.session
-def install(session: nox.Session):
-    session.run(*"pip install .[dev]".split())
+@nox.parametrize(
+    "group",
+    ["datatype", "bioregistry"],
+)
+def install(session, group):
+    extras = ""
+    if group == "datatype":
+        extras += ",fcs,jupyter"
+        session.run(*"pip install scanpy".split())
+        session.run(*"pip install mudata".split())
+    elif group == "bioregistry":
+        extras += ",zarr,jupyter"
+        session.run(*"pip install celltypist".split())
+        session.run(*"pip install gseapy".split())
+    session.run(*"pip install .".split())
     session.run(
         "pip",
         "install",
-        "lamindb[bionty,jupyter,zarr] @ git+https://github.com/laminlabs/lamindb",
+        f"lamindb[dev,bionty{extras}] @ git+https://github.com/laminlabs/lamindb",
     )
 
 
-@nox.session()
-def build(session):
+@nox.session
+@nox.parametrize(
+    "group",
+    ["datatype", "bioregistry"],
+)
+def build(session, group):
+    login_testuser2(session)
     login_testuser1(session)
     run_pytest(session, coverage=False)
-    build_docs(session)
+    session.run(*"lamin init --storage ./docsbuild --schema bionty".split())
+    build_docs(session, strip_prefix=True, strict=True)
     upload_docs_artifact(aws=True)
