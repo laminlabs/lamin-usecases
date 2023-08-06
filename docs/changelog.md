@@ -3,6 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
+🚚 Move `add_labels` from `FeatureManager` to `Data` | [22](https://github.com/laminlabs/lamin-usecases/pull/22) | [falexwolf](https://github.com/falexwolf) | 2023-08-06 |
 ♻️ Refactor multimodal and spatial | [21](https://github.com/laminlabs/lamin-usecases/pull/21) | [falexwolf](https://github.com/falexwolf) | 2023-08-05 |
 ♻️ Also refactor cellmarker guide to pre-storage curation | [20](https://github.com/laminlabs/lamin-usecases/pull/20) | [falexwolf](https://github.com/falexwolf) | 2023-08-05 |
 🎨 Store validated data in scrna example | [19](https://github.com/laminlabs/lamin-usecases/pull/19) | [falexwolf](https://github.com/falexwolf) | 2023-08-05 |
