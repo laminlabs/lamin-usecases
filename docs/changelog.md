@@ -3,6 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
+📝 Save to validate | [24](https://github.com/laminlabs/lamin-usecases/pull/24) | [falexwolf](https://github.com/falexwolf) | 2023-08-06 |
 🍱 Add bulk RNA notebook | [23](https://github.com/laminlabs/lamin-usecases/pull/23) | [falexwolf](https://github.com/falexwolf) | 2023-08-06 |
 🚚 Move `add_labels` from `FeatureManager` to `Data` | [22](https://github.com/laminlabs/lamin-usecases/pull/22) | [falexwolf](https://github.com/falexwolf) | 2023-08-06 |
 ♻️ Refactor multimodal and spatial | [21](https://github.com/laminlabs/lamin-usecases/pull/21) | [falexwolf](https://github.com/falexwolf) | 2023-08-05 |
