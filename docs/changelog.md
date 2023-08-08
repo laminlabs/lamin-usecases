@@ -3,6 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
+Update | [26](https://github.com/laminlabs/lamin-usecases/pull/26) | [sunnyosun](https://github.com/sunnyosun) | 2023-08-08 |
 ♻️ Polish data type guides | [25](https://github.com/laminlabs/lamin-usecases/pull/25) | [sunnyosun](https://github.com/sunnyosun) | 2023-08-07 |
 📝 Save to validate | [24](https://github.com/laminlabs/lamin-usecases/pull/24) | [falexwolf](https://github.com/falexwolf) | 2023-08-06 |
 🍱 Add bulk RNA notebook | [23](https://github.com/laminlabs/lamin-usecases/pull/23) | [falexwolf](https://github.com/falexwolf) | 2023-08-06 |
