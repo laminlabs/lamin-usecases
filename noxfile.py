@@ -16,15 +16,15 @@ def lint(session: nox.Session) -> None:
 @nox.session
 @nox.parametrize(
     "group",
-    ["by-datatype", "by-registry", "docs"],
+    ["by_datatype", "by_registry", "docs"],
 )
 def install(session, group):
     extras = ""
-    if group == "by-datatype":
+    if group == "by_datatype":
         extras += ",fcs,jupyter"
         session.run(*"pip install scanpy".split())
         session.run(*"pip install mudata".split())
-    elif group == "by-registry":
+    elif group == "by_registry":
         extras += ",zarr,jupyter"
         session.run(*"pip install celltypist".split())
         session.run(*"pip install gseapy".split())
@@ -41,25 +41,29 @@ def install(session, group):
 @nox.session
 @nox.parametrize(
     "group",
-    ["by-datatype", "by-registry"],
+    ["by_datatype", "by_registry"],
 )
 def build(session, group):
     login_testuser2(session)
     login_testuser1(session)
-    coverage_args = (
-        "--cov=lamin_usescases --cov-append --cov-report=term-missing"  # noqa
-    )
-    session.run(*f"pytest -s {coverage_args} ./docs/{group}".split())
+    session.run(*f"pytest -s ./tests/test_notebooks.py::test_{group}".split())
+    # move artifacts into right place
+    target_dir = Path(f"./docs_{group}")
+    target_dir.mkdir(exist_ok=True)
+    # only installed now
+    from lamin_usecases import GROUPS
+
+    for filename in GROUPS[group]:
+        shutil.copy(Path("docs") / filename, target_dir / filename)
 
 
 @nox.session
 def docs(session):
     # move artifacts into right place
-    for group in ["by-datatype", "by-registry"]:
-        if Path(f"./docs-{group}").exists():
-            shutil.rmtree(f"./docs/{group}")
-            Path(f"./docs-{group}").rename(f"./docs/{group}")
+    for group in ["by_datatype", "by_registry"]:
+        for path in Path(f"./docs_{group}").glob("*"):
+            path.rename(f"./docs/{path.name}")
     login_testuser1(session)
     session.run(*"lamin init --storage ./docsbuild --schema bionty".split())
-    build_docs(session, strip_prefix=True, strict=True)
+    build_docs(session, strict=True)
     upload_docs_artifact(aws=True)

@@ -3,6 +3,6 @@
 ```{toctree}
 :maxdepth: 1
 
-by-registry/celltypist
-by-registry/enrichr
+celltypist
+enrichr
 ```
