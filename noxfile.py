@@ -61,8 +61,8 @@ def build(session, group):
 def docs(session):
     # move artifacts into right place
     for group in ["by_datatype", "by_registry"]:
-        if Path(f"./docs_{group}").exists():
-            Path(f"./docs_{group}").rename("./docs/")
+        for path in Path(f"./docs_{group}").glob("*"):
+            path.rename(f"./docs/{path.name}")
     login_testuser1(session)
     session.run(*"lamin init --storage ./docsbuild --schema bionty".split())
     build_docs(session, strict=True)
