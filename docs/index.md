@@ -3,6 +3,8 @@
 :end-line: 1
 ```
 
+<meta http-equiv="Refresh" content="0; url=./usecases.html" />
+
 ```{toctree}
 :maxdepth: 1
 :hidden:

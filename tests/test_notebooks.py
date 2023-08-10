@@ -1,16 +1,20 @@
 from pathlib import Path
 
 import nbproject_test as test
-from lamin_logger import logger
+
+DOCS = Path(__file__).parents[1] / "docs/"
 
 
-def test_notebooks():
-    # assuming this is in the tests folder
-    docs_folder = Path(__file__).parents[1] / "docs/"
+def test_by_datatype():
+    test.execute_notebooks(DOCS / "scrna.ipynb", write=True)
+    test.execute_notebooks(DOCS / "scrna-1.ipynb", write=True)
+    test.execute_notebooks(DOCS / "bulkrna.ipynb", write=True)
+    test.execute_notebooks(DOCS / "flow.ipynb", write=True)
+    test.execute_notebooks(DOCS / "spatial.ipynb", write=True)
+    test.execute_notebooks(DOCS / "multimodal.ipynb", write=True)
 
-    for check_folder in docs_folder.glob("./**"):
-        # these are the notebook testpaths
-        if not str(check_folder).endswith("usecases"):
-            continue
-        logger.debug(f"\n{check_folder}")
-        test.execute_notebooks(check_folder, write=True)
+
+def test_by_registry():
+    DOCS = Path(__file__).parents[1] / "docs/"
+    test.execute_notebooks(DOCS / "celtypist.ipynb", write=True)
+    test.execute_notebooks(DOCS / "enrichr.ipynb", write=True)
