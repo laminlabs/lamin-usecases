@@ -1,6 +1,7 @@
 docs/datatype/bulkrna/
 docs/datatype/test-bulkrna/
-
+docs_by_datatype
+docs_by_registry
 
 # macOS
 .DS_Store

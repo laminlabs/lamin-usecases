@@ -18,8 +18,8 @@ jobs:
       matrix:
         python-version: ["3.9"]
         group:
-          - "by-datatype"
-          - "by-registry"
+          - "by_datatype"
+          - "by_registry"
     timeout-minutes: 15
 
     steps:
@@ -61,11 +61,11 @@ jobs:
       - run: nox -s "install(group='${{ matrix.group }}')"
       - run: nox -s "build(group='${{ matrix.group }}')"
       - name: upload docs
-        if: ${{ matrix.group == 'by-datatype' || matrix.group == 'by-registry' }}
+        if: ${{ matrix.group == 'by_datatype' || matrix.group == 'by_registry' }}
         uses: actions/upload-artifact@v2
         with:
-          name: docs-${{ matrix.group }}
-          path: ./docs/${{ matrix.group }}
+          name: docs_${{ matrix.group }}
+          path: docs_${{ matrix.group }}
       - uses: voxmedia/github-action-slack-notify-build@v1
         if: success()
         env:

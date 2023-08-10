@@ -2,19 +2,18 @@ from pathlib import Path
 
 import nbproject_test as test
 
+from lamin_usecases import GROUPS
+
 DOCS = Path(__file__).parents[1] / "docs/"
 
 
 def test_by_datatype():
-    test.execute_notebooks(DOCS / "scrna.ipynb", write=True)
-    test.execute_notebooks(DOCS / "scrna-1.ipynb", write=True)
-    test.execute_notebooks(DOCS / "bulkrna.ipynb", write=True)
-    test.execute_notebooks(DOCS / "flow.ipynb", write=True)
-    test.execute_notebooks(DOCS / "spatial.ipynb", write=True)
-    test.execute_notebooks(DOCS / "multimodal.ipynb", write=True)
+    for filename in GROUPS["by_datatype"]:
+        print(filename)
+        test.execute_notebooks(DOCS / filename, write=True)
 
 
 def test_by_registry():
-    DOCS = Path(__file__).parents[1] / "docs/"
-    test.execute_notebooks(DOCS / "celtypist.ipynb", write=True)
-    test.execute_notebooks(DOCS / "enrichr.ipynb", write=True)
+    for filename in GROUPS["by_registry"]:
+        print(filename)
+        test.execute_notebooks(DOCS / filename, write=True)
