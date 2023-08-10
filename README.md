@@ -1,3 +1,4 @@
 # Lamin use cases
 
-Read the [docs](https://lamin-examples-ddcd.netlify.app).
+- User [docs](https://lamin.ai/docs/guide)
+- Developer [docs](https://lamin-usecases-ddcd.netlify.app/)
