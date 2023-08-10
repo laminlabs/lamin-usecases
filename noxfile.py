@@ -5,6 +5,8 @@ import nox
 from laminci import upload_docs_artifact
 from laminci.nox import build_docs, login_testuser1, login_testuser2, run_pre_commit
 
+from lamin_usecases import GROUPS
+
 nox.options.default_venv_backend = "none"
 
 
@@ -20,11 +22,11 @@ def lint(session: nox.Session) -> None:
 )
 def install(session, group):
     extras = ""
-    if group == "by-datatype":
+    if group == "by_datatype":
         extras += ",fcs,jupyter"
         session.run(*"pip install scanpy".split())
         session.run(*"pip install mudata".split())
-    elif group == "by-registry":
+    elif group == "by_registry":
         extras += ",zarr,jupyter"
         session.run(*"pip install celltypist".split())
         session.run(*"pip install gseapy".split())
@@ -47,8 +49,7 @@ def build(session, group):
     login_testuser2(session)
     login_testuser1(session)
     session.run(*f"pytest -s ./tests/test_notebooks.py::test_{group}".split())
-    from lamin_usecases import GROUPS
-
+    # move artifacts into right place
     target_dir = Path(f"./docs_{group}")
     target_dir.mkdir(exist_ok=True)
     for filename in GROUPS[group]:
@@ -63,5 +64,5 @@ def docs(session):
             Path(f"./docs_{group}").rename("./docs/")
     login_testuser1(session)
     session.run(*"lamin init --storage ./docsbuild --schema bionty".split())
-    build_docs(session, strip_prefix=True, strict=True)
+    build_docs(session, strict=True)
     upload_docs_artifact(aws=True)
