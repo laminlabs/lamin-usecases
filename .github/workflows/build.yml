@@ -18,8 +18,8 @@ jobs:
       matrix:
         python-version: ["3.9"]
         group:
-          - "datatype"
-          - "bioregistry"
+          - "by-datatype"
+          - "by-registry"
     timeout-minutes: 15
 
     steps:
@@ -61,7 +61,7 @@ jobs:
       - run: nox -s "install(group='${{ matrix.group }}')"
       - run: nox -s "build(group='${{ matrix.group }}')"
       - name: upload docs
-        if: ${{ matrix.group == 'datatype' || matrix.group == 'bioregistry' }}
+        if: ${{ matrix.group == 'by-datatype' || matrix.group == 'by-registry' }}
         uses: actions/upload-artifact@v2
         with:
           name: docs-${{ matrix.group }}

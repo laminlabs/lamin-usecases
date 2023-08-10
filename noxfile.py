@@ -16,15 +16,15 @@ def lint(session: nox.Session) -> None:
 @nox.session
 @nox.parametrize(
     "group",
-    ["datatype", "bioregistry", "docs"],
+    ["by-datatype", "by-registry", "docs"],
 )
 def install(session, group):
     extras = ""
-    if group == "datatype":
+    if group == "by-datatype":
         extras += ",fcs,jupyter"
         session.run(*"pip install scanpy".split())
         session.run(*"pip install mudata".split())
-    elif group == "bioregistry":
+    elif group == "by-registry":
         extras += ",zarr,jupyter"
         session.run(*"pip install celltypist".split())
         session.run(*"pip install gseapy".split())
@@ -41,7 +41,7 @@ def install(session, group):
 @nox.session
 @nox.parametrize(
     "group",
-    ["datatype", "bioregistry"],
+    ["by-datatype", "by-registry"],
 )
 def build(session, group):
     login_testuser2(session)
@@ -55,7 +55,7 @@ def build(session, group):
 @nox.session
 def docs(session):
     # move artifacts into right place
-    for group in ["datatype", "bioregistry"]:
+    for group in ["by-datatype", "by-registry"]:
         if Path(f"./docs-{group}").exists():
             shutil.rmtree(f"./docs/{group}")
             Path(f"./docs-{group}").rename(f"./docs/{group}")
