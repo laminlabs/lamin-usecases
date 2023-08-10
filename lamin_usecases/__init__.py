@@ -13,13 +13,13 @@ from . import _datasets as datasets
 GROUPS = {}
 GROUPS["by_datatype"] = [
     "scrna.ipynb",
-    # "scrna-1.ipynb",
-    # "bulkrna.ipynb",
-    # "flow.ipynb",
-    # "spatial.ipynb",
-    # "multimodal.ipynb",
+    "scrna2.ipynb",
+    "bulkrna.ipynb",
+    "flow.ipynb",
+    "spatial.ipynb",
+    "multimodal.ipynb",
 ]
 GROUPS["by_registry"] = [
     "celltypist.ipynb",
-    # "enrichr.ipynb",
+    "enrichr.ipynb",
 ]
