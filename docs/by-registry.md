@@ -1,4 +1,4 @@
-# Bio-registry
+# By registry
 
 ```{toctree}
 :maxdepth: 1

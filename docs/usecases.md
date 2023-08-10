@@ -3,6 +3,6 @@
 ```{toctree}
 :maxdepth: 1
 
-datatype
-bioregistry
+by-registry
+by-datatype
 ```
