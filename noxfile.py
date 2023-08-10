@@ -5,8 +5,6 @@ import nox
 from laminci import upload_docs_artifact
 from laminci.nox import build_docs, login_testuser1, login_testuser2, run_pre_commit
 
-from lamin_usecases import GROUPS
-
 nox.options.default_venv_backend = "none"
 
 
@@ -52,6 +50,9 @@ def build(session, group):
     # move artifacts into right place
     target_dir = Path(f"./docs_{group}")
     target_dir.mkdir(exist_ok=True)
+    # only installed now
+    from lamin_usecases import GROUPS
+
     for filename in GROUPS[group]:
         shutil.copy(Path("docs") / filename, target_dir / filename)
 
