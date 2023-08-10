@@ -16,7 +16,7 @@ def lint(session: nox.Session) -> None:
 @nox.session
 @nox.parametrize(
     "group",
-    ["by-datatype", "by-registry", "docs"],
+    ["by_datatype", "by_registry", "docs"],
 )
 def install(session, group):
     extras = ""
@@ -58,7 +58,7 @@ def build(session, group):
 @nox.session
 def docs(session):
     # move artifacts into right place
-    for group in ["by-datatype", "by-registry"]:
+    for group in ["by_datatype", "by_registry"]:
         if Path(f"./docs_{group}").exists():
             Path(f"./docs_{group}").rename("./docs/")
     login_testuser1(session)
