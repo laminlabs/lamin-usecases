@@ -3,9 +3,9 @@
 ```{toctree}
 :maxdepth: 1
 
-datatype/scrna
-datatype/bulkrna
-datatype/flow
-datatype/spatial
-datatype/multimodal
+by-datatype/scrna
+by-datatype/bulkrna
+by-datatype/flow
+by-datatype/spatial
+by-datatype/multimodal
 ```
