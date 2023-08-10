@@ -3,6 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
+🚚 Rename folders according to consistent scheme | [28](https://github.com/laminlabs/lamin-usecases/pull/28) | [falexwolf](https://github.com/falexwolf) | 2023-08-10 |
 📝 Fix index | [27](https://github.com/laminlabs/lamin-usecases/pull/27) | [sunnyosun](https://github.com/sunnyosun) | 2023-08-09 |
 Update | [26](https://github.com/laminlabs/lamin-usecases/pull/26) | [sunnyosun](https://github.com/sunnyosun) | 2023-08-08 |
 ♻️ Polish data type guides | [25](https://github.com/laminlabs/lamin-usecases/pull/25) | [sunnyosun](https://github.com/sunnyosun) | 2023-08-07 |
