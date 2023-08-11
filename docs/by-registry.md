@@ -1,4 +1,4 @@
-# By registry
+# Registries
 
 ```{toctree}
 :maxdepth: 1

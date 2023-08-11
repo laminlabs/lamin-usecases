@@ -22,4 +22,7 @@ GROUPS["by_datatype"] = [
 GROUPS["by_registry"] = [
     "celltypist.ipynb",
     "enrichr.ipynb",
+    # these could be bucketed elsewhere
+    "analysis-flow.ipynb",
+    "birds-eye.ipynb",
 ]
