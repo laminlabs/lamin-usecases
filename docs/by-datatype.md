@@ -1,4 +1,4 @@
-# By data type
+# Data types
 
 ```{toctree}
 :maxdepth: 1
