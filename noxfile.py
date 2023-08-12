@@ -7,6 +7,23 @@ from laminci.nox import build_docs, login_testuser1, login_testuser2, run_pre_co
 
 nox.options.default_venv_backend = "none"
 
+GROUPS = {}
+GROUPS["by_datatype"] = [
+    "scrna.ipynb",
+    "scrna2.ipynb",
+    "bulkrna.ipynb",
+    "flow.ipynb",
+    "spatial.ipynb",
+    "multimodal.ipynb",
+]
+GROUPS["by_registry"] = [
+    "celltypist.ipynb",
+    "enrichr.ipynb",
+    # these could be bucketed elsewhere
+    "analysis-flow.ipynb",
+    "birds-eye.ipynb",
+]
+
 
 @nox.session
 def lint(session: nox.Session) -> None:
@@ -50,9 +67,6 @@ def build(session, group):
     # move artifacts into right place
     target_dir = Path(f"./docs_{group}")
     target_dir.mkdir(exist_ok=True)
-    # only installed now
-    from lamin_usecases import GROUPS
-
     for filename in GROUPS[group]:
         shutil.copy(Path("docs") / filename, target_dir / filename)
 
