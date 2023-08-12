@@ -3,6 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
+♻️ Refactor CI | [31](https://github.com/laminlabs/lamin-usecases/pull/31) | [falexwolf](https://github.com/falexwolf) | 2023-08-12 |
 🍱 Add data-lineage use cases | [30](https://github.com/laminlabs/lamin-usecases/pull/30) | [falexwolf](https://github.com/falexwolf) | 2023-08-11 |
 🚚 Move notebooks to root level for prettier persistent URLs | [29](https://github.com/laminlabs/lamin-usecases/pull/29) | [falexwolf](https://github.com/falexwolf) | 2023-08-10 |
 🚚 Rename folders according to consistent scheme | [28](https://github.com/laminlabs/lamin-usecases/pull/28) | [falexwolf](https://github.com/falexwolf) | 2023-08-10 |
