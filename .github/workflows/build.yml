@@ -66,22 +66,6 @@ jobs:
         with:
           name: docs_${{ matrix.group }}
           path: docs_${{ matrix.group }}
-      - uses: voxmedia/github-action-slack-notify-build@v1
-        if: success()
-        env:
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_GITHUB_ACTION }}
-        with:
-          channel: lamindb-tests
-          status: SUCCESS
-          color: good
-      - uses: voxmedia/github-action-slack-notify-build@v1
-        if: failure()
-        env:
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_GITHUB_ACTION }}
-        with:
-          channel: lamindb-tests
-          status: FAILURE
-          color: danger
 
   docs:
     needs: test
@@ -123,3 +107,25 @@ jobs:
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+
+  notify:
+    if: always()
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: voxmedia/github-action-slack-notify-build@v1
+        if: ${{ needs.build.result == 'success' }}
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_GITHUB_ACTION }}
+        with:
+          channel: lamindb-tests
+          status: SUCCESS
+          color: good
+      - uses: voxmedia/github-action-slack-notify-build@v1
+        if: ${{ needs.build.result == 'failure' }}
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_GITHUB_ACTION }}
+        with:
+          channel: lamindb-tests
+          status: FAILURE
+          color: danger
