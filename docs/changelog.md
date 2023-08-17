@@ -3,6 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
+:memo: Improve readme | [33](https://github.com/laminlabs/lamin-usecases/pull/33) | [falexwolf](https://github.com/falexwolf) | 2023-08-17 |
 ♻️ Refactor birds-eye | [32](https://github.com/laminlabs/lamin-usecases/pull/32) | [falexwolf](https://github.com/falexwolf) | 2023-08-16 |
 ♻️ Refactor CI | [31](https://github.com/laminlabs/lamin-usecases/pull/31) | [falexwolf](https://github.com/falexwolf) | 2023-08-12 |
 🍱 Add data-lineage use cases | [30](https://github.com/laminlabs/lamin-usecases/pull/30) | [falexwolf](https://github.com/falexwolf) | 2023-08-11 |
