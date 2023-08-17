@@ -19,4 +19,4 @@ In addition to integration tests running on CI for low-complexity examples, we a
 In the following repositories, notebooks are historical, versioned documents reflecting changes made to a LaminDB instance.
 
 - [lamindata](https://github.com/laminlabs/lamindata)
-- [lamindata](https://github.com/laminlabs/lamin-site-assets)
+- [lamin-site-assets](https://github.com/laminlabs/lamin-site-assets)
