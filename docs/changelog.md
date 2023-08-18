@@ -3,6 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
+📝 Updated data type notebooks | [35](https://github.com/laminlabs/lamin-usecases/pull/35) | [sunnyosun](https://github.com/sunnyosun) | 2023-08-18 |
 📝 Re-structure scrna with 3 step process | [34](https://github.com/laminlabs/lamin-usecases/pull/34) | [sunnyosun](https://github.com/sunnyosun) | 2023-08-17 |
 📝 Improve readme | [33](https://github.com/laminlabs/lamin-usecases/pull/33) | [falexwolf](https://github.com/falexwolf) | 2023-08-17 |
 ♻️ Refactor birds-eye | [32](https://github.com/laminlabs/lamin-usecases/pull/32) | [falexwolf](https://github.com/falexwolf) | 2023-08-16 |
