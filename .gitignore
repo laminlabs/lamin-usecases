@@ -1,5 +1,3 @@
-docs/datatype/bulkrna/
-docs/datatype/test-bulkrna/
 docs_by_datatype
 docs_by_registry
 
@@ -124,3 +122,5 @@ test-scrna/
 test-registries/
 test-multimodal/
 test-spatial/
+test-bulkrna/
+mydata/
