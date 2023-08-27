@@ -1,0 +1,9 @@
+name: lamin-usecases
+channels:
+  - anaconda
+  - conda-forge
+  - bioconda
+dependencies:
+  - pip
+  - pip:
+      - lamindb[jupyter,aws,zarr,bionty]==4.2.0
