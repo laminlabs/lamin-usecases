@@ -114,7 +114,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: voxmedia/github-action-slack-notify-build@v1
-        if: ${{ needs.test.result == 'success' }}
+        if: ${{ needs.test.result == 'success' && github.event_name == 'push' }}
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_GITHUB_ACTION }}
         with:
@@ -122,7 +122,7 @@ jobs:
           status: SUCCESS
           color: good
       - uses: voxmedia/github-action-slack-notify-build@v1
-        if: ${{ needs.test.result == 'failure' }}
+        if: ${{ needs.test.result == 'failure' && github.event_name == 'push' }}
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_GITHUB_ACTION }}
         with:
