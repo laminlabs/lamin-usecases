@@ -3,6 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
+multimodal review | [52](https://github.com/laminlabs/lamin-usecases/pull/52) | [Zethson](https://github.com/Zethson) | 2023-08-28 |
 📝 Further improve scrna | [53](https://github.com/laminlabs/lamin-usecases/pull/53) | [sunnyosun](https://github.com/sunnyosun) | 2023-08-28 |
 Integrate scRNA-seq review | [51](https://github.com/laminlabs/lamin-usecases/pull/51) | [Zethson](https://github.com/Zethson) | 2023-08-28 |
 Bulk review | [50](https://github.com/laminlabs/lamin-usecases/pull/50) | [Zethson](https://github.com/Zethson) | 2023-08-28 |
