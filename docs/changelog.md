@@ -3,6 +3,9 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
+Integrate scRNA-seq review | [51](https://github.com/laminlabs/lamin-usecases/pull/51) | [Zethson](https://github.com/Zethson) | 2023-08-28 |
+Bulk review | [50](https://github.com/laminlabs/lamin-usecases/pull/50) | [Zethson](https://github.com/Zethson) | 2023-08-28 |
+Address flow cytomery review | [49](https://github.com/laminlabs/lamin-usecases/pull/49) | [Zethson](https://github.com/Zethson) | 2023-08-28 |
 🔥 Removed mouse dataset from scrna use cases | [48](https://github.com/laminlabs/lamin-usecases/pull/48) | [sunnyosun](https://github.com/sunnyosun) | 2023-08-28 |
 Address LH birds eye review | [47](https://github.com/laminlabs/lamin-usecases/pull/47) | [Zethson](https://github.com/Zethson) | 2023-08-27 |
 📝 Enable default_field for inspect and validate | [36](https://github.com/laminlabs/lamin-usecases/pull/36) | [sunnyosun](https://github.com/sunnyosun) | 2023-08-22 |
