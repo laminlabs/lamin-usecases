@@ -21,7 +21,7 @@ GROUPS["by_registry"] = [
     "enrichr.ipynb",
     # these could be bucketed elsewhere
     "analysis-flow.ipynb",
-    "birds-eye.ipynb",
+    "project-flow.ipynb",
 ]
 
 
@@ -51,7 +51,8 @@ def install(session, group):
     session.run(
         "pip",
         "install",
-        f"lamindb[dev,bionty{extras}] @ git+https://github.com/laminlabs/lamindb",
+        f"lamindb[dev,bionty{extras}] @"
+        " git+https://github.com/laminlabs/lamindb@release",
     )
 
 
