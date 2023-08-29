@@ -21,7 +21,7 @@ GROUPS["by_registry"] = [
     "enrichr.ipynb",
     # these could be bucketed elsewhere
     "analysis-flow.ipynb",
-    "birds-eye.ipynb",
+    "project-flow.ipynb",
 ]
 
 
