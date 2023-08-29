@@ -3,6 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
+🚚 Rename data lineage to data flow | [56](https://github.com/laminlabs/lamin-usecases/pull/56) | [falexwolf](https://github.com/falexwolf) | 2023-08-29 |
 ♻️ Refactor project flow | [55](https://github.com/laminlabs/lamin-usecases/pull/55) | [falexwolf](https://github.com/falexwolf) | 2023-08-29 |
 🚚 Rename data lineage to data flow | [54](https://github.com/laminlabs/lamin-usecases/pull/54) | [falexwolf](https://github.com/falexwolf) | 2023-08-29 |
 multimodal review | [52](https://github.com/laminlabs/lamin-usecases/pull/52) | [Zethson](https://github.com/Zethson) | 2023-08-28 |
