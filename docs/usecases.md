@@ -3,7 +3,7 @@
 ```{toctree}
 :maxdepth: 1
 
-data-lineage
+data-flow
 by-registry
 by-datatype
 ```
