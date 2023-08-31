@@ -5,7 +5,7 @@
 
 scrna
 bulkrna
-flow
+facs
 spatial
 multimodal
 ```
