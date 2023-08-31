@@ -12,7 +12,7 @@ GROUPS["by_datatype"] = [
     "scrna.ipynb",
     "scrna2.ipynb",
     "bulkrna.ipynb",
-    "flow.ipynb",
+    "facs.ipynb",
     "spatial.ipynb",
     "multimodal.ipynb",
 ]
