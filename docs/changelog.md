@@ -3,6 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
+📝 Rename flow to facs, removed modality assignment | [60](https://github.com/laminlabs/lamin-usecases/pull/60) | [sunnyosun](https://github.com/sunnyosun) | 2023-08-31 |
 📝 Polish flow & scrna | [59](https://github.com/laminlabs/lamin-usecases/pull/59) | [falexwolf](https://github.com/falexwolf) | 2023-08-31 |
 📝 Cleaned cell type and pathway notebooks | [57](https://github.com/laminlabs/lamin-usecases/pull/57) | [sunnyosun](https://github.com/sunnyosun) | 2023-08-30 |
 🚚 Rename data lineage to data flow | [56](https://github.com/laminlabs/lamin-usecases/pull/56) | [falexwolf](https://github.com/falexwolf) | 2023-08-29 |
