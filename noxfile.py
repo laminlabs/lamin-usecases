@@ -37,6 +37,7 @@ def lint(session: nox.Session) -> None:
 )
 def install(session, group):
     extras = ""
+    session.run(*"pip install pandas<2.1")
     if group == "by_datatype":
         extras += ",fcs,jupyter"
         session.run(*"pip install scanpy".split())
