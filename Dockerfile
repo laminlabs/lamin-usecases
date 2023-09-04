@@ -1,4 +1,4 @@
-FROM ghcr.io/laminlabs/lamin-bionty-jupyter:0.51.0
+FROM ghcr.io/laminlabs/lamin-bionty-jupyter:0.52.1
 
 RUN pip install --no-cache-dir notebook jupyterlab
 
@@ -7,7 +7,5 @@ ARG NB_UID=1000
 ENV USER ${NB_USER}
 ENV NB_UID ${NB_UID}
 ENV HOME /home/${NB_USER}
-
-RUN apt install git -y
 
 RUN git clone https://github.com/laminlabs/lamin-usecases
