@@ -8,4 +8,6 @@ ENV USER ${NB_USER}
 ENV NB_UID ${NB_UID}
 ENV HOME /home/${NB_USER}
 
+RUN apt install git -y
+
 RUN git clone https://github.com/laminlabs/lamin-usecases
