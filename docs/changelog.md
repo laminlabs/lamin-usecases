@@ -3,6 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
+Add binder env | [46](https://github.com/laminlabs/lamin-usecases/pull/46) | [Zethson](https://github.com/Zethson) | 2023-09-04 |
 ♻️ Upgrade to latest lamindb | [61](https://github.com/laminlabs/lamin-usecases/pull/61) | [falexwolf](https://github.com/falexwolf) | 2023-08-31 |
 📝 Rename flow to facs, removed modality assignment | [60](https://github.com/laminlabs/lamin-usecases/pull/60) | [sunnyosun](https://github.com/sunnyosun) | 2023-08-31 |
 📝 Polish flow & scrna | [59](https://github.com/laminlabs/lamin-usecases/pull/59) | [falexwolf](https://github.com/falexwolf) | 2023-08-31 |
