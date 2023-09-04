@@ -3,6 +3,20 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
+♻️ Upgrade to latest lamindb | [61](https://github.com/laminlabs/lamin-usecases/pull/61) | [falexwolf](https://github.com/falexwolf) | 2023-08-31 |
+📝 Rename flow to facs, removed modality assignment | [60](https://github.com/laminlabs/lamin-usecases/pull/60) | [sunnyosun](https://github.com/sunnyosun) | 2023-08-31 |
+📝 Polish flow & scrna | [59](https://github.com/laminlabs/lamin-usecases/pull/59) | [falexwolf](https://github.com/falexwolf) | 2023-08-31 |
+📝 Cleaned cell type and pathway notebooks | [57](https://github.com/laminlabs/lamin-usecases/pull/57) | [sunnyosun](https://github.com/sunnyosun) | 2023-08-30 |
+🚚 Rename data lineage to data flow | [56](https://github.com/laminlabs/lamin-usecases/pull/56) | [falexwolf](https://github.com/falexwolf) | 2023-08-29 |
+♻️ Refactor project flow | [55](https://github.com/laminlabs/lamin-usecases/pull/55) | [falexwolf](https://github.com/falexwolf) | 2023-08-29 |
+🚚 Rename data lineage to data flow | [54](https://github.com/laminlabs/lamin-usecases/pull/54) | [falexwolf](https://github.com/falexwolf) | 2023-08-29 |
+multimodal review | [52](https://github.com/laminlabs/lamin-usecases/pull/52) | [Zethson](https://github.com/Zethson) | 2023-08-28 |
+📝 Further improve scrna | [53](https://github.com/laminlabs/lamin-usecases/pull/53) | [sunnyosun](https://github.com/sunnyosun) | 2023-08-28 |
+Integrate scRNA-seq review | [51](https://github.com/laminlabs/lamin-usecases/pull/51) | [Zethson](https://github.com/Zethson) | 2023-08-28 |
+Bulk review | [50](https://github.com/laminlabs/lamin-usecases/pull/50) | [Zethson](https://github.com/Zethson) | 2023-08-28 |
+Address flow cytomery review | [49](https://github.com/laminlabs/lamin-usecases/pull/49) | [Zethson](https://github.com/Zethson) | 2023-08-28 |
+🔥 Removed mouse dataset from scrna use cases | [48](https://github.com/laminlabs/lamin-usecases/pull/48) | [sunnyosun](https://github.com/sunnyosun) | 2023-08-28 |
+Address LH birds eye review | [47](https://github.com/laminlabs/lamin-usecases/pull/47) | [Zethson](https://github.com/Zethson) | 2023-08-27 |
 📝 Enable default_field for inspect and validate | [36](https://github.com/laminlabs/lamin-usecases/pull/36) | [sunnyosun](https://github.com/sunnyosun) | 2023-08-22 |
 📝 Updated data type notebooks | [35](https://github.com/laminlabs/lamin-usecases/pull/35) | [sunnyosun](https://github.com/sunnyosun) | 2023-08-18 |
 📝 Re-structure scrna with 3 step process | [34](https://github.com/laminlabs/lamin-usecases/pull/34) | [sunnyosun](https://github.com/sunnyosun) | 2023-08-17 |

@@ -12,7 +12,7 @@ GROUPS["by_datatype"] = [
     "scrna.ipynb",
     "scrna2.ipynb",
     "bulkrna.ipynb",
-    "flow.ipynb",
+    "facs.ipynb",
     "spatial.ipynb",
     "multimodal.ipynb",
 ]
@@ -21,7 +21,7 @@ GROUPS["by_registry"] = [
     "enrichr.ipynb",
     # these could be bucketed elsewhere
     "analysis-flow.ipynb",
-    "birds-eye.ipynb",
+    "project-flow.ipynb",
 ]
 
 
@@ -37,6 +37,7 @@ def lint(session: nox.Session) -> None:
 )
 def install(session, group):
     extras = ""
+    session.run(*"pip install pandas<2.1".split())
     if group == "by_datatype":
         extras += ",fcs,jupyter"
         session.run(*"pip install scanpy".split())
@@ -51,7 +52,8 @@ def install(session, group):
     session.run(
         "pip",
         "install",
-        f"lamindb[dev,bionty{extras}] @ git+https://github.com/laminlabs/lamindb",
+        f"lamindb[dev,bionty{extras}] @"
+        " git+https://github.com/laminlabs/lamindb@release",
     )
 
 
