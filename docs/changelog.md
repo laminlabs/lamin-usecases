@@ -3,6 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
+📝 Improve FACS example | [63](https://github.com/laminlabs/lamin-usecases/pull/63) | [sunnyosun](https://github.com/sunnyosun) | 2023-09-06 |
 📝 Simplify CellTypist | [62](https://github.com/laminlabs/lamin-usecases/pull/62) | [falexwolf](https://github.com/falexwolf) | 2023-09-05 |
 Add binder env | [46](https://github.com/laminlabs/lamin-usecases/pull/46) | [Zethson](https://github.com/Zethson) | 2023-09-04 |
 ♻️ Upgrade to latest lamindb | [61](https://github.com/laminlabs/lamin-usecases/pull/61) | [falexwolf](https://github.com/falexwolf) | 2023-08-31 |
