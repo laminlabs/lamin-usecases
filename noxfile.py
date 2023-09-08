@@ -41,6 +41,7 @@ def install(session, group):
     if group == "by_datatype":
         extras += ",fcs,jupyter"
         session.run(*"pip install scanpy".split())
+        session.run(*"pip install pytometry".split())
         session.run(*"pip install mudata".split())
     elif group == "by_registry":
         extras += ",zarr,jupyter"
