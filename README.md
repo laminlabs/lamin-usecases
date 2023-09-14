@@ -9,6 +9,7 @@ The following simple use cases are also run on CI, but have their own repository
 
 - [redun-lamin-fasta](https://github.com/laminlabs/redun-lamin-fasta)
 - [nextflow-lamin-usecases](https://github.com/laminlabs/nextflow-lamin-usecases)
+- [snakemake-lamin-usecases](https://github.com/laminlabs/snakemake-lamin-usecases)
 
 ## Complex use cases
 
