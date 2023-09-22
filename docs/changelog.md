@@ -3,6 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
+📝 Break out FACS into 3 notebooks | [66](https://github.com/laminlabs/lamin-usecases/pull/66) | [falexwolf](https://github.com/falexwolf) | 2023-09-22 |
 Add notebook badges | [64](https://github.com/laminlabs/lamin-usecases/pull/64) | [Zethson](https://github.com/Zethson) | 2023-09-06 |
 📝 Improve FACS example | [63](https://github.com/laminlabs/lamin-usecases/pull/63) | [sunnyosun](https://github.com/sunnyosun) | 2023-09-06 |
 📝 Simplify CellTypist | [62](https://github.com/laminlabs/lamin-usecases/pull/62) | [falexwolf](https://github.com/falexwolf) | 2023-09-05 |
