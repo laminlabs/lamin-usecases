@@ -15,6 +15,7 @@ GROUPS["by_datatype"] = [
     "facs.ipynb",
     "facs1.ipynb",
     "facs2.ipynb",
+    "facs3.ipynb",
     "spatial.ipynb",
     "multimodal.ipynb",
 ]
