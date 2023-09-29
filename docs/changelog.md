@@ -3,6 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
+♻️ Refactor scRNA guide | [70](https://github.com/laminlabs/lamin-usecases/pull/70) | [falexwolf](https://github.com/falexwolf) | 2023-09-29 |
 📝 Build up versioned FACS dataset incrementally | [69](https://github.com/laminlabs/lamin-usecases/pull/69) | [falexwolf](https://github.com/falexwolf) | 2023-09-27 |
 📝 Shard dataset in FACS | [68](https://github.com/laminlabs/lamin-usecases/pull/68) | [falexwolf](https://github.com/falexwolf) | 2023-09-26 |
 📝 Slightly polish FACS | [67](https://github.com/laminlabs/lamin-usecases/pull/67) | [falexwolf](https://github.com/falexwolf) | 2023-09-23 |
