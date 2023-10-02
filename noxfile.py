@@ -13,6 +13,7 @@ GROUPS["by_datatype"] = [
     "scrna1.ipynb",
     "scrna2.ipynb",
     "scrna3.ipynb",
+    "scrna4.ipynb",
     "bulkrna.ipynb",
     "facs.ipynb",
     "facs1.ipynb",
@@ -48,6 +49,7 @@ def install(session, group):
         session.run(*"pip install scanpy".split())
         session.run(*"pip install pytometry".split())
         session.run(*"pip install mudata".split())
+        session.run(*"pip install git+https://github.com/theislab/scgen".split())
     elif group == "by_registry":
         extras += ",zarr,jupyter"
         session.run(*"pip install celltypist".split())
