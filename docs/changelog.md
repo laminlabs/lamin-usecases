@@ -3,6 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
+💄 Polish facs | [73](https://github.com/laminlabs/lamin-usecases/pull/73) | [falexwolf](https://github.com/falexwolf) | 2023-10-02 |
 📝 Polish scrna guide | [72](https://github.com/laminlabs/lamin-usecases/pull/72) | [falexwolf](https://github.com/falexwolf) | 2023-10-02 |
 📝 Add VAE notebook for scrnaseq | [71](https://github.com/laminlabs/lamin-usecases/pull/71) | [Koncopd](https://github.com/Koncopd) | 2023-10-02 |
 ♻️ Refactor scRNA guide | [70](https://github.com/laminlabs/lamin-usecases/pull/70) | [falexwolf](https://github.com/falexwolf) | 2023-09-29 |
