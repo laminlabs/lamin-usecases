@@ -3,6 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
+📝 Add VAE notebook for scrnaseq | [71](https://github.com/laminlabs/lamin-usecases/pull/71) | [Koncopd](https://github.com/Koncopd) | 2023-10-02 |
 ♻️ Refactor scRNA guide | [70](https://github.com/laminlabs/lamin-usecases/pull/70) | [falexwolf](https://github.com/falexwolf) | 2023-09-29 |
 📝 Build up versioned FACS dataset incrementally | [69](https://github.com/laminlabs/lamin-usecases/pull/69) | [falexwolf](https://github.com/falexwolf) | 2023-09-27 |
 📝 Shard dataset in FACS | [68](https://github.com/laminlabs/lamin-usecases/pull/68) | [falexwolf](https://github.com/falexwolf) | 2023-09-26 |
