@@ -46,10 +46,11 @@ def install(session, group):
     session.run(*"pip install pandas<2.1".split())
     if group == "by_datatype":
         extras += ",fcs,jupyter"
+        session.run(*"pip install anndata==0.9.2".split())  # compatibility with scvi
         session.run(*"pip install scanpy".split())
         session.run(*"pip install pytometry".split())
         session.run(*"pip install mudata".split())
-        session.run(*"pip install git+https://github.com/theislab/scgen".split())
+        session.run(*"pip install scvi-tools".split())
     elif group == "by_registry":
         extras += ",zarr,jupyter"
         session.run(*"pip install celltypist".split())
