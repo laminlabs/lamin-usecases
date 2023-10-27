@@ -3,6 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
+♻️ Refactored analysis-flow | [78](https://github.com/laminlabs/lamin-usecases/pull/78) | [sunnyosun](https://github.com/sunnyosun) | 2023-10-27 |
 💄 Polish | [77](https://github.com/laminlabs/lamin-usecases/pull/77) | [falexwolf](https://github.com/falexwolf) | 2023-10-23 |
 💚 Try to fix CI | [76](https://github.com/laminlabs/lamin-usecases/pull/76) | [falexwolf](https://github.com/falexwolf) | 2023-10-16 |
 📝 Use scvi in the scrna notebook | [75](https://github.com/laminlabs/lamin-usecases/pull/75) | [Koncopd](https://github.com/Koncopd) | 2023-10-10 |
