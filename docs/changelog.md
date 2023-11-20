@@ -3,6 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
+📝 Show an example of ln.Dataset.indexed usage | [81](https://github.com/laminlabs/lamin-usecases/pull/81) | [Koncopd](https://github.com/Koncopd) | 2023-11-20 |
 📝 Refactor project-flow | [80](https://github.com/laminlabs/lamin-usecases/pull/80) | [sunnyosun](https://github.com/sunnyosun) | 2023-11-15 |
 📝 Simplify scrna guide | [79](https://github.com/laminlabs/lamin-usecases/pull/79) | [falexwolf](https://github.com/falexwolf) | 2023-11-07 |
 ♻️ Refactored analysis-flow | [78](https://github.com/laminlabs/lamin-usecases/pull/78) | [sunnyosun](https://github.com/sunnyosun) | 2023-10-27 |
