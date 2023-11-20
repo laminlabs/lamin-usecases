@@ -3,6 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
+♻️ Simplify scrna5 | [82](https://github.com/laminlabs/lamin-usecases/pull/82) | [falexwolf](https://github.com/falexwolf) | 2023-11-20 |
 📝 Show an example of ln.Dataset.indexed usage | [81](https://github.com/laminlabs/lamin-usecases/pull/81) | [Koncopd](https://github.com/Koncopd) | 2023-11-20 |
 📝 Refactor project-flow | [80](https://github.com/laminlabs/lamin-usecases/pull/80) | [sunnyosun](https://github.com/sunnyosun) | 2023-11-15 |
 📝 Simplify scrna guide | [79](https://github.com/laminlabs/lamin-usecases/pull/79) | [falexwolf](https://github.com/falexwolf) | 2023-11-07 |
