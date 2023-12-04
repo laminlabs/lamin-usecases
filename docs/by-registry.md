@@ -5,4 +5,5 @@
 
 celltypist
 enrichr
+analysis-registries
 ```
