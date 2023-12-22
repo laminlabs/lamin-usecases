@@ -20,4 +20,4 @@ developmental_stage
 ethnicity
 ```
 
-Please refer to - {doc}`~docs:bio-registries` to learn how to manage in-house knowledge.
+Please refer to - {doc}`docs:bio-registries` to learn how to manage in-house knowledge.
