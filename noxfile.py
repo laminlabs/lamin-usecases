@@ -29,7 +29,7 @@ GROUPS["by_registry"] = [
     "analysis-flow.ipynb",
     "project-flow.ipynb",
 ]
-GROUPS["by_ontologies"] = [
+GROUPS["by_ontology"] = [
     "gene",
     "cell_line",
     "cell_marker",
@@ -54,7 +54,7 @@ def lint(session: nox.Session) -> None:
 @nox.session
 @nox.parametrize(
     "group",
-    ["by_datatype", "by_registry", "by_ontologies", "docs"],
+    ["by_datatype", "by_registry", "by_ontology", "docs"],
 )
 def install(session, group):
     extras = ""
