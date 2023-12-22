@@ -30,19 +30,19 @@ GROUPS["by_registry"] = [
     "project-flow.ipynb",
 ]
 GROUPS["by_ontology"] = [
-    "gene",
-    "cell_line",
-    "cell_marker",
-    "cell_type",
-    "developmental_stage",
-    "disease",
-    "ethnicity",
-    "experimental_factor",
-    "organism",
-    "pathway",
-    "phenotype",
-    "protein",
-    "tissue",
+    "gene.ipynb",
+    "cell_line.ipynb",
+    "cell_marker.ipynb",
+    "cell_type.ipynb",
+    "developmental_stage.ipynb",
+    "disease.ipynb",
+    "ethnicity.ipynb",
+    "experimental_factor.ipynb",
+    "organism.ipynb",
+    "pathway.ipynb",
+    "phenotype.ipynb",
+    "protein.ipynb",
+    "tissue.ipynb",
 ]
 
 
