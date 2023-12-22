@@ -3,6 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
+Add single ontology notebooks | [87](https://github.com/laminlabs/lamin-usecases/pull/87) | [Zethson](https://github.com/Zethson) | 2023-12-22 |
 🚚 Rename File to Artifact | [86](https://github.com/laminlabs/lamin-usecases/pull/86) | [falexwolf](https://github.com/falexwolf) | 2023-12-12 |
 📝 Show virtual inner join in mapped | [85](https://github.com/laminlabs/lamin-usecases/pull/85) | [Koncopd](https://github.com/Koncopd) | 2023-12-05 |
 📝 Added celltypist and pathway analyses | [84](https://github.com/laminlabs/lamin-usecases/pull/84) | [sunnyosun](https://github.com/sunnyosun) | 2023-12-04 |
