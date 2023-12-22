@@ -25,4 +25,4 @@ def test_by_registry():
 def test_by_ontology():
     for filename in GROUPS["by_ontology"]:
         print(filename)
-        test.execute_notebooks(DOCS / "ontology" / filename, write=True)
+        test.execute_notebooks(DOCS / filename, write=True)
