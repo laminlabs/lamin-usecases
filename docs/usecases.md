@@ -6,5 +6,5 @@
 data-flow
 by-registry
 by-datatype
-by-ontology
+public-ontologies
 ```
