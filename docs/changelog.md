@@ -3,6 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
+Use public-ontologies text | [88](https://github.com/laminlabs/lamin-usecases/pull/88) | [Zethson](https://github.com/Zethson) | 2023-12-22 |
 Add single ontology notebooks | [87](https://github.com/laminlabs/lamin-usecases/pull/87) | [Zethson](https://github.com/Zethson) | 2023-12-22 |
 🚚 Rename File to Artifact | [86](https://github.com/laminlabs/lamin-usecases/pull/86) | [falexwolf](https://github.com/falexwolf) | 2023-12-12 |
 📝 Show virtual inner join in mapped | [85](https://github.com/laminlabs/lamin-usecases/pull/85) | [Koncopd](https://github.com/Koncopd) | 2023-12-05 |
