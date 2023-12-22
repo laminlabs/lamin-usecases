@@ -29,6 +29,21 @@ GROUPS["by_registry"] = [
     "analysis-flow.ipynb",
     "project-flow.ipynb",
 ]
+GROUPS["by_ontologies"] = [
+    "gene",
+    "cell_line",
+    "cell_marker",
+    "cell_type",
+    "developmental_stage",
+    "disease",
+    "ethnicity",
+    "experimental_factor",
+    "organism",
+    "pathway",
+    "phenotype",
+    "protein",
+    "tissue",
+]
 
 
 @nox.session
@@ -39,7 +54,7 @@ def lint(session: nox.Session) -> None:
 @nox.session
 @nox.parametrize(
     "group",
-    ["by_datatype", "by_registry", "docs"],
+    ["by_datatype", "by_registry", "by_ontologies", "docs"],
 )
 def install(session, group):
     extras = ""
@@ -55,6 +70,8 @@ def install(session, group):
         extras += ",zarr,jupyter"
         session.run(*"pip install celltypist".split())
         session.run(*"pip install gseapy".split())
+    elif group == "by_ontologies":
+        extras += ""
     elif group == "docs":
         extras += ""
     session.run(*"pip install .".split())
@@ -68,7 +85,7 @@ def install(session, group):
 @nox.session
 @nox.parametrize(
     "group",
-    ["by_datatype", "by_registry"],
+    ["by_datatype", "by_registry", "by_ontology"],
 )
 def build(session, group):
     login_testuser2(session)
@@ -78,13 +95,16 @@ def build(session, group):
     target_dir = Path(f"./docs_{group}")
     target_dir.mkdir(exist_ok=True)
     for filename in GROUPS[group]:
-        shutil.copy(Path("docs") / filename, target_dir / filename)
+        if group == "by_ontology":
+            shutil.copy(Path("docs") / "ontology" / filename, target_dir / filename)
+        else:
+            shutil.copy(Path("docs") / filename, target_dir / filename)
 
 
 @nox.session
 def docs(session):
     # move artifacts into right place
-    for group in ["by_datatype", "by_registry"]:
+    for group in ["by_datatype", "by_registry", "by_ontology"]:
         for path in Path(f"./docs_{group}").glob("*"):
             path.rename(f"./docs/{path.name}")
     login_testuser1(session)
