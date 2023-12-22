@@ -20,3 +20,9 @@ def test_by_registry():
     for filename in GROUPS["by_registry"]:
         print(filename)
         test.execute_notebooks(DOCS / filename, write=True)
+
+
+def test_by_ontology():
+    for filename in GROUPS["by_ontology"]:
+        print(filename)
+        test.execute_notebooks(DOCS / filename, write=True)
