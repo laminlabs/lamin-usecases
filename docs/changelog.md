@@ -3,6 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
+💚 Fix | [90](https://github.com/laminlabs/lamin-usecases/pull/90) | [falexwolf](https://github.com/falexwolf) | 2024-01-02 |
 🚚 Rename `Dataset` to `Collection` | [89](https://github.com/laminlabs/lamin-usecases/pull/89) | [falexwolf](https://github.com/falexwolf) | 2023-12-24 |
 Use public-ontologies text | [88](https://github.com/laminlabs/lamin-usecases/pull/88) | [Zethson](https://github.com/Zethson) | 2023-12-22 |
 Add single ontology notebooks | [87](https://github.com/laminlabs/lamin-usecases/pull/87) | [Zethson](https://github.com/Zethson) | 2023-12-22 |
