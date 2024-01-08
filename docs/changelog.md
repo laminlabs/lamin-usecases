@@ -3,6 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
+🎨 Not set organism globally | [92](https://github.com/laminlabs/lamin-usecases/pull/92) | [sunnyosun](https://github.com/sunnyosun) | 2024-01-08 |
 📝 Show virtual outer join in mapped | [93](https://github.com/laminlabs/lamin-usecases/pull/93) | [Koncopd](https://github.com/Koncopd) | 2024-01-07 |
 ♻️ Iterate scrna guide | [91](https://github.com/laminlabs/lamin-usecases/pull/91) | [falexwolf](https://github.com/falexwolf) | 2024-01-03 |
 💚 Fix | [90](https://github.com/laminlabs/lamin-usecases/pull/90) | [falexwolf](https://github.com/falexwolf) | 2024-01-02 |
