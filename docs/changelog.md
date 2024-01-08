@@ -3,6 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
+📝 Show virtual outer join in mapped | [93](https://github.com/laminlabs/lamin-usecases/pull/93) | [Koncopd](https://github.com/Koncopd) | 2024-01-07 |
 ♻️ Iterate scrna guide | [91](https://github.com/laminlabs/lamin-usecases/pull/91) | [falexwolf](https://github.com/falexwolf) | 2024-01-03 |
 💚 Fix | [90](https://github.com/laminlabs/lamin-usecases/pull/90) | [falexwolf](https://github.com/falexwolf) | 2024-01-02 |
 🚚 Rename `Dataset` to `Collection` | [89](https://github.com/laminlabs/lamin-usecases/pull/89) | [falexwolf](https://github.com/falexwolf) | 2023-12-24 |
