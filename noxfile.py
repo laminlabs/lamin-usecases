@@ -23,7 +23,7 @@ GROUPS["by_datatype"] = [
     "multimodal.ipynb",
 ]
 GROUPS["by_registry"] = [
-    "celltypist.ipynb",
+    # "celltypist.ipynb",
     "enrichr.ipynb",
     # these could be bucketed elsewhere
     "analysis-flow.ipynb",
