@@ -1,6 +1,6 @@
 # Access public ontologies
 
-Here we show how to access public knowledge in the form of public ontologies using Bionty with lamindb.
+Here we show how to access public biological ontologies using lamindb.
 
 ```{toctree}
 :maxdepth: 1
@@ -20,4 +20,4 @@ developmental_stage
 ethnicity
 ```
 
-Please refer to - {doc}`docs:bio-registries` to learn how to manage in-house knowledge.
+Please refer to - {doc}`docs:bio-registries` to learn how to manage in-house biological registries.
