@@ -3,6 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
+💚 Fix `from_bionty` | [95](https://github.com/laminlabs/lamin-usecases/pull/95) | [sunnyosun](https://github.com/sunnyosun) | 2024-01-10 |
 Fix typos in scrna5 | [94](https://github.com/laminlabs/lamin-usecases/pull/94) | [Zethson](https://github.com/Zethson) | 2024-01-08 |
 🎨 Not set organism globally | [92](https://github.com/laminlabs/lamin-usecases/pull/92) | [sunnyosun](https://github.com/sunnyosun) | 2024-01-08 |
 📝 Show virtual outer join in mapped | [93](https://github.com/laminlabs/lamin-usecases/pull/93) | [Koncopd](https://github.com/Koncopd) | 2024-01-07 |
