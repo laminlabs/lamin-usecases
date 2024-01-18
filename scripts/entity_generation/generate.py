@@ -1,0 +1,237 @@
+from cookiecutter.main import cookiecutter
+import jupytext
+import shutil
+from pathlib import Path
+
+template = {
+    "entity": "",
+    "example_value": "",
+    "example_dict_value": "",
+    "alternative_field_value": "",
+    "alternative_field": "",
+    "search_value": "",
+    "search_synonyms_value": "",
+    "search_field": "",
+    "search_query": "",
+    "identifiers": "",
+    "database": "",
+    "version": "",
+    "organism": "",
+    "sources": "",
+}
+
+protein = {
+    "entity": "Protein",
+    "example_value": "ac3",
+    "example_dict_value": "AC3",
+    "alternative_field_value": "rab4a",
+    "alternative_field": "gene_symbol",
+    "search_value": "RAS",
+    "search_synonyms_value": "member of RAS oncogene family like 2B",
+    "search_field": "definition",
+    "search_query": "RABL2B",
+    "identifiers": "A0A024QZ08,X6RLV5,X6RM24,A0A024QZQ1",
+    "database": "uniprot",
+    "version": "2023-03",
+    "organism": "human",
+    "sources": "1. [Uniprot](https://www.uniprot.org/)",
+}
+
+organism = {
+    "entity": "Organism",
+    "example_value": "giant_panda",
+    "example_dict_value": "giant panda",
+    "alternative_field_value": "ailuropoda_melanoleuca",
+    "alternative_field": "scientific_name",
+    "search_value": "rabbit",
+    "search_synonyms_value": "sapiens",
+    "search_field": "scientific_name",
+    "search_query": "oryctolagus_cuniculus",
+    "identifiers": "spiny chromis,silver-eye,platyfish,california sea lion",
+    "database": "ensembl",
+    "version": "release-110",
+    "organism": "vertebrates",
+    "sources": "1. [Ensembl Species](https://useast.ensembl.org/info/about/species.html),2. [NCBI Taxonomy](https://www.ncbi.nlm.nih.gov/taxonomy)",
+}
+
+cell_line = {
+    "entity": "CellLine",
+    "example_value": "hek293",
+    "example_dict_value": "HEK293",
+    "alternative_field_value": "clo_0000469",
+    "alternative_field": "ontology_id",
+    "search_value": "hek293",
+    "search_synonyms_value": "Human Embryonic Kidney 293",
+    "search_field": "definition",
+    "search_query": "suspension cell line",
+    "identifiers": "253D cell,HEK293,2C1H7 cell,283TAg cell",
+    "database": "clo",
+    "version": "2022-03-21",
+    "organism": "all",
+    "sources": "1. [Cell Line Ontology](https://github.com/CLO-ontology/CLO)",
+}
+
+cell_type = {
+    "entity": "CellType",
+    "example_value": "cd8_positive_alpha_beta_t_cell",
+    "example_dict_value": "CD8-positive, alpha-beta T cell",
+    "alternative_field_value": "cl_0000625",
+    "alternative_field": "ontology_id",
+    "search_value": "CD8 positive T cell",
+    "search_synonyms_value": "Tc1 T lymphocyte",
+    "search_field": "definition",
+    "search_query": "CD8 positive alpha beta T cell",
+    "identifiers": "Boettcher cell,bone marrow cell,interstitial cell of ovary,pancreatic ductal cell",
+    "database": "cl",
+    "version": "2023-04-20",
+    "organism": "all",
+    "sources": "1. [Cell Ontology](https://obophenotype.github.io/cell-ontology)",
+}
+
+tissue = {
+    "entity": "Tissue",
+    "example_value": "alveolus_of_lung",
+    "example_dict_value": "alveolus of lung",
+    "alternative_field_value": "uberon_0000031",
+    "alternative_field": "ontology_id",
+    "search_value": "alveolus lung",
+    "search_synonyms_value": "nasal sac",
+    "search_field": "definition",
+    "search_query": "alveolus in the lung",
+    "identifiers": "UBERON:0000000,UBERON:0000005,UBERON:0000001,UBERON:0000002",
+    "database": "uberon",
+    "version": "2023-04-19",
+    "organism": "all",
+    "sources": "1. [Uberon](http://obophenotype.github.io/uberon)",
+}
+
+
+disease = {
+    "entity": "Disease",
+    "example_value": "alzheimer_disease",
+    "example_dict_value": "Alzheimer disease",
+    "alternative_field_value": "mondo_0004975",
+    "alternative_field": "ontology_id",
+    "search_value": "parkinsons disease",
+    "search_synonyms_value": "paralysis agitans",
+    "search_field": "definition",
+    "search_query": "progressive degenerative disorder of the central nervous system",
+    "identifiers": "supraglottis cancer,alexia,trigonitis,paranasal sinus disorder",
+    "database": "mondo",
+    "version": "2023-04-04",
+    "organism": "all",
+    "sources": "1. [Mondo](https://mondo.monarchinitiative.org/),2. [Human Disease](https://disease-ontology.org/)",
+}
+
+phenotype = {
+    "entity": "Phenotype",
+    "example_value": "eeg_with_persistent_abnormal_rhythmic_activity",
+    "example_dict_value": "EEG with persistent abnormal rhythmic activity",
+    "alternative_field_value": "hp_0000003",
+    "alternative_field": "ontology_id",
+    "search_value": "dysplasia",
+    "search_synonyms_value": "Congenital hip dysplasia",
+    "search_field": "definition",
+    "search_query": "lack of development of speech and language",
+    "identifiers": "Specific learning disability,Dystonia,Cerebral hemorrhage,Slurred speech",
+    "database": "hp",
+    "version": "2023-06-17",
+    "organism": "human",
+    "sources": "1. [Human Phenotype](https://hpo.jax.org/app),2. [Phecodes](https://phewascatalog.org/phecodes_icd10),3. [PATO](https://github.com/pato-ontology/pato),4. [Mammalian Phenotype](http://obofoundry.org/ontology/mp.html)",
+}
+
+pathway = {
+    "entity": "Pathway",
+    "example_value": "acetyl_coa_assimilation_pathway",
+    "example_dict_value": "acetyl-CoA assimilation pathway",
+    "alternative_field_value": "go_0019681",
+    "alternative_field": "ontology_id",
+    "search_value": "acetyl coa assimilation",
+    "search_synonyms_value": "acetyl-CoA catabolism",
+    "search_field": "definition",
+    "search_query": "Chemical reactions and pathways resulting in the breakdown of Cinnamic Acid,3-Phenyl-2-Propenoic Acid.",
+    "identifiers": "GO:1905210,GO:1905211,GO:1905212,GO:1905208",
+    "database": "go",
+    "version": "2023-05-10",
+    "organism": "all",
+    "sources": "1. [Gene Ontology](https://bioportal.bioontology.org/ontologies/GO),2. [Pathway Ontology](https://bioportal.bioontology.org/ontologies/PW)",
+}
+
+experimental_factor = {
+    "entity": "ExperimentalFactor",
+    "example_value": "sequencer",
+    "example_dict_value": "sequencer",
+    "alternative_field_value": "efo_0003739",
+    "alternative_field": "ontology_id",
+    "search_value": "single-cell rna seq",
+    "search_synonyms_value": "single-cell RNA-seq",
+    "search_field": "definition",
+    "search_query": "assay which analysis the transcriptome of a biological sample",
+    "identifiers": "EFO:0011021,EFO:1002050,EFO:1002047,EFO:1002049",
+    "database": "efo",
+    "version": "3.48.0",
+    "organism": "all",
+    "sources": "1. [Experimental Factor Ontology](https://www.ebi.ac.uk/ols/ontologies/efo)",
+}
+
+developmental_stage = {
+    "entity": "DevelopmentalStage",
+    "example_value": "organogenesis_stage",
+    "example_dict_value": "organogenesis stage",
+    "alternative_field_value": "hsapdv_0000015",
+    "alternative_field": "ontology_id",
+    "search_value": "organogenesis",
+    "search_synonyms_value": "developmental stage",
+    "search_field": "definition",
+    "search_query": "Prenatal Stage That Starts With Fertilization",
+    "identifiers": "blastula stage,Carnegie stage 03,neurula stage,organogenesis stage",
+    "database": "hsapdv",
+    "version": "2020-03-10",
+    "organism": "human",
+    "sources": "1. [Human Developmental Stages](https://github.com/obophenotype/developmental-stage-ontologies/wiki/HsapDv),2. [Mouse Developmental Stages](https://github.com/obophenotype/developmental-stage-ontologies/wiki/MmusDv)",
+}
+
+ethnicity = {
+    "entity": "Ethnicity",
+    "example_value": "american",
+    "example_dict_value": "American",
+    "alternative_field_value": "hancestro_0463",
+    "alternative_field": "ontology_id",
+    "search_value": "American",
+    "search_synonyms_value": "Caucasian",
+    "search_field": "definition",
+    "search_query": "General characterisation of Ancestry of a population",
+    "identifiers": "Mende,European,South Asian,Arab",
+    "database": "hancestro",
+    "version": "3.0",
+    "organism": "human",
+    "sources": "1. [Human Ancestry Ontology](https://github.com/EBISPOT/hancestro)",
+}
+
+
+entities_args = [protein, organism, cell_line, cell_type, tissue, disease, phenotype, pathway, experimental_factor, developmental_stage, ethnicity]
+
+for entity_args in entities_args:
+    cookiecutter(
+        template=".",
+        no_input=True,
+        overwrite_if_exists=True,
+        extra_context=entity_args,
+    )
+
+    entity_name_lower = entity_args['entity'].lower()
+    entity_folder = Path(entity_name_lower)
+    script_file = entity_folder / f"{entity_name_lower}.py"
+    notebook_file = entity_folder / f"{entity_name_lower}.ipynb"
+    output_folder = Path("output")
+
+    # Convert script to notebook
+    with script_file.open('r') as file:
+        script_content = file.read()
+    notebook = jupytext.reads(script_content, fmt='py')
+    jupytext.write(notebook, notebook_file, fmt='ipynb')
+
+    # Clean up output
+    output_folder.mkdir(parents=True, exist_ok=True)
+    shutil.move(str(notebook_file), output_folder)
+    shutil.rmtree(entity_folder)
