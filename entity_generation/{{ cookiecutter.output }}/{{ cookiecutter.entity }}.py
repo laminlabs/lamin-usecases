@@ -80,7 +80,7 @@ lookup_dict["{{ cookiecutter.example_dict_value }}"]
 # By default, the `name` field is used to generate lookup keys. You can specify another field to look up:
 
 # %%
-lookup = {{ cookiecutter.entity_lower }}s.lookup({{ cookiecutter.entity_lower }}s.ontology_id)
+lookup = {{ cookiecutter.entity_lower }}s.lookup({{ cookiecutter.entity_lower }}s.{{ cookiecutter.alternative_field }})
 
 # %%
 lookup.{{ cookiecutter.alternative_field_value }}

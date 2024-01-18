@@ -5,6 +5,7 @@ template_arguments = {
     "example_value": "",
     "example_dict_value": "",
     "alternative_field_value": "",
+    "alternative_field": "",
     "search_value": "",
     "search_synonyms_value": "",
     "search_field": "definition",
@@ -21,6 +22,7 @@ protein_arguments = {
     "example_value": "ac3",
     "example_dict_value": "AC3",
     "alternative_field_value": "rab4a",
+    "alternative_field": "gene_symbol",
     "search_value": "RAS",
     "search_synonyms_value": "member of RAS oncogene family like 2B",
     "search_field": "definition",
@@ -33,19 +35,20 @@ protein_arguments = {
 }
 
 organism_arguments = {
-    "entity": "",
-    "example_value": "",
-    "example_dict_value": "",
-    "alternative_field_value": "",
-    "search_value": "",
-    "search_synonyms_value": "",
-    "search_field": "definition",
-    "search_query": "",
-    "identifiers": "",
-    "database": "",
-    "version": "",
-    "organism": "",
-    "sources": "",
+    "entity": "Organism",
+    "example_value": "giant_panda",
+    "example_dict_value": "giant panda",
+    "alternative_field_value": "ailuropoda_melanoleuca",
+    "alternative_field": "scientific_name",
+    "search_value": "rabbit",
+    "search_synonyms_value": "sapiens",
+    "search_field": "scientific_name",
+    "search_query": "oryctolagus_cuniculus",
+    "identifiers": "spiny chromis,silver-eye,platyfish,california sea lion",
+    "database": "ensembl",
+    "version": "release-110",
+    "organism": "vertebrates",
+    "sources": "1. [Ensembl Species](https://useast.ensembl.org/info/about/species.html),2. [NCBI Taxonomy](https://www.ncbi.nlm.nih.gov/taxonomy)",
 }
 
 
@@ -54,6 +57,7 @@ disease_arguments = {
     "example_value": "alzheimer_disease",
     "example_dict_value": "Alzheimer disease",
     "alternative_field_value": "mondo_0004975",
+    "alternative_field": "ontology_id",
     "search_value": "parkinsons disease",
     "search_synonyms_value": "paralysis agitans",
     "search_field": "definition",
@@ -65,7 +69,7 @@ disease_arguments = {
     "sources": "1. [Mondo](https://mondo.monarchinitiative.org/),2. [Human Disease](https://disease-ontology.org/)",
 }
 
-entities_args = [protein_arguments, disease_arguments]
+entities_args = [protein_arguments, organism_arguments, disease_arguments]
 
 for entity_args in entities_args:
     cookiecutter(
