@@ -213,7 +213,7 @@ entities_args = [protein, organism, cell_line, cell_type, tissue, disease, pheno
 
 for entity_args in entities_args:
     cookiecutter(
-        template=".",
+        template=str(Path(__file__).resolve().parent),
         no_input=True,
         overwrite_if_exists=True,
         extra_context=entity_args,
@@ -223,7 +223,7 @@ for entity_args in entities_args:
     entity_folder = Path(entity_name_lower)
     script_file = entity_folder / f"{entity_name_lower}.py"
     notebook_file = entity_folder / f"{entity_name_lower}.ipynb"
-    output_folder = Path("output")
+    output_folder = Path(__file__).resolve().parent / "output"
 
     # Convert script to notebook
     with script_file.open('r') as file:
