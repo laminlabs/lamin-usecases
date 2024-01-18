@@ -3,6 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
+Entity generation script | [98](https://github.com/laminlabs/lamin-usecases/pull/98) | [Zethson](https://github.com/Zethson) | 2024-01-18 |
 📝 Fix more bionty renaming | [96](https://github.com/laminlabs/lamin-usecases/pull/96) | [sunnyosun](https://github.com/sunnyosun) | 2024-01-12 |
 💚 Fix `from_bionty` | [95](https://github.com/laminlabs/lamin-usecases/pull/95) | [sunnyosun](https://github.com/sunnyosun) | 2024-01-10 |
 Fix typos in scrna5 | [94](https://github.com/laminlabs/lamin-usecases/pull/94) | [Zethson](https://github.com/Zethson) | 2024-01-08 |
