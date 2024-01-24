@@ -91,7 +91,7 @@ def build(session, group):
     login_testuser2(session)
     login_testuser1(session)
     if group == "by_ontology":
-        session.run(*"python ./scripts/entity_generation/generate.py")
+        session.run(*"python ./scripts/entity_generation/generate.py".split())
     session.run(*f"pytest -s ./tests/test_notebooks.py::test_{group}".split())
     # move artifacts into right place
     target_dir = Path(f"./docs_{group}")
