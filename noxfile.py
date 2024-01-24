@@ -74,12 +74,11 @@ def install(session, group):
         extras += ""
     elif group == "docs":
         extras += ""
-    session.run(*"pip install .".split())
+    session.run(*"pip install .[dev]".split())
     session.run(
         "pip",
         "install",
         f"lamindb[dev,bionty{extras}] @ git+https://github.com/laminlabs/lamindb@main",
-        "cookiecutter",
     )
 
 
