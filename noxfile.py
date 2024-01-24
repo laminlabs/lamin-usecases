@@ -79,6 +79,7 @@ def install(session, group):
         "pip",
         "install",
         f"lamindb[dev,bionty{extras}] @ git+https://github.com/laminlabs/lamindb@main",
+        "cookiecutter",
     )
 
 
