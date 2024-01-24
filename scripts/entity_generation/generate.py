@@ -4,6 +4,7 @@ import shutil
 from pathlib import Path
 
 template = {
+    "output": "",
     "entity": "",
     "example_value": "",
     "example_dict_value": "",
@@ -21,6 +22,7 @@ template = {
 }
 
 protein = {
+    "output": "protein",
     "entity": "Protein",
     "example_value": "ac3",
     "example_dict_value": "AC3",
@@ -28,7 +30,7 @@ protein = {
     "alternative_field": "gene_symbol",
     "search_value": "RAS",
     "search_synonyms_value": "member of RAS oncogene family like 2B",
-    "search_field": "definition",
+    "search_field": "gene_symbol",
     "search_query": "RABL2B",
     "identifiers": "A0A024QZ08,X6RLV5,X6RM24,A0A024QZQ1",
     "database": "uniprot",
@@ -38,6 +40,7 @@ protein = {
 }
 
 organism = {
+    "output": "organism",
     "entity": "Organism",
     "example_value": "giant_panda",
     "example_dict_value": "giant panda",
@@ -55,6 +58,7 @@ organism = {
 }
 
 cell_line = {
+    "output": "cell_line",
     "entity": "CellLine",
     "example_value": "hek293",
     "example_dict_value": "HEK293",
@@ -72,6 +76,7 @@ cell_line = {
 }
 
 cell_type = {
+    "output": "cell_type",
     "entity": "CellType",
     "example_value": "cd8_positive_alpha_beta_t_cell",
     "example_dict_value": "CD8-positive, alpha-beta T cell",
@@ -89,6 +94,7 @@ cell_type = {
 }
 
 tissue = {
+    "output": "tissue",
     "entity": "Tissue",
     "example_value": "alveolus_of_lung",
     "example_dict_value": "alveolus of lung",
@@ -107,6 +113,7 @@ tissue = {
 
 
 disease = {
+    "output": "disease",
     "entity": "Disease",
     "example_value": "alzheimer_disease",
     "example_dict_value": "Alzheimer disease",
@@ -124,6 +131,7 @@ disease = {
 }
 
 phenotype = {
+    "output": "phenotype",
     "entity": "Phenotype",
     "example_value": "eeg_with_persistent_abnormal_rhythmic_activity",
     "example_dict_value": "EEG with persistent abnormal rhythmic activity",
@@ -141,6 +149,7 @@ phenotype = {
 }
 
 pathway = {
+    "output": "pathway",
     "entity": "Pathway",
     "example_value": "acetyl_coa_assimilation_pathway",
     "example_dict_value": "acetyl-CoA assimilation pathway",
@@ -158,6 +167,7 @@ pathway = {
 }
 
 experimental_factor = {
+    "output": "experimental_factor",
     "entity": "ExperimentalFactor",
     "example_value": "sequencer",
     "example_dict_value": "sequencer",
@@ -175,6 +185,7 @@ experimental_factor = {
 }
 
 developmental_stage = {
+    "output": "developmental_stage",
     "entity": "DevelopmentalStage",
     "example_value": "organogenesis_stage",
     "example_dict_value": "organogenesis stage",
@@ -192,6 +203,7 @@ developmental_stage = {
 }
 
 ethnicity = {
+    "output": "ethnicity",
     "entity": "Ethnicity",
     "example_value": "american",
     "example_dict_value": "American",
@@ -219,11 +231,11 @@ for entity_args in entities_args:
         extra_context=entity_args,
     )
 
-    entity_name_lower = entity_args['entity'].lower()
-    entity_folder = Path(entity_name_lower)
-    script_file = entity_folder / f"{entity_name_lower}.py"
-    notebook_file = entity_folder / f"{entity_name_lower}.ipynb"
-    output_folder = Path(__file__).resolve().parent / "output"
+    output_name = entity_args["output"] if entity_args["output"] is not None else entity_args['entity'].lower()
+    entity_folder = Path(output_name)
+    script_file = entity_folder / f"{output_name}.py"
+    notebook_file = entity_folder / f"{output_name}.ipynb"
+    output_folder = Path(__file__).resolve().parent.parent.parent / "docs"
 
     # Convert script to notebook
     with script_file.open('r') as file:
@@ -232,6 +244,5 @@ for entity_args in entities_args:
     jupytext.write(notebook, notebook_file, fmt='ipynb')
 
     # Clean up output
-    output_folder.mkdir(parents=True, exist_ok=True)
     shutil.move(str(notebook_file), output_folder)
     shutil.rmtree(entity_folder)

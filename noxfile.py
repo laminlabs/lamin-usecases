@@ -58,7 +58,6 @@ def lint(session: nox.Session) -> None:
 )
 def install(session, group):
     extras = ""
-    session.run(*"pip install pandas<2.1".split())
     if group == "by_datatype":
         extras += ",fcs,jupyter"
         session.run(*"pip install anndata==0.9.2".split())  # compatibility with scvi
@@ -74,7 +73,7 @@ def install(session, group):
         extras += ""
     elif group == "docs":
         extras += ""
-    session.run(*"pip install .".split())
+    session.run(*"pip install .[dev]".split())
     session.run(
         "pip",
         "install",
@@ -90,6 +89,8 @@ def install(session, group):
 def build(session, group):
     login_testuser2(session)
     login_testuser1(session)
+    if group == "by_ontology":
+        session.run(*"python ./scripts/entity_generation/generate.py".split())
     session.run(*f"pytest -s ./tests/test_notebooks.py::test_{group}".split())
     # move artifacts into right place
     target_dir = Path(f"./docs_{group}")

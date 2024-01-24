@@ -1,7 +1,7 @@
 {
+  "output": "",
   "entity": "",
   "entity_lower": "{{ cookiecutter.entity|lower }}",
-  "output": "{{ cookiecutter.entity_lower }}",
   "example_value": "",
   "example_dict_value": "",
   "alternative_field_value": "",
