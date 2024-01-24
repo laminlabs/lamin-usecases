@@ -30,7 +30,7 @@ protein = {
     "alternative_field": "gene_symbol",
     "search_value": "RAS",
     "search_synonyms_value": "member of RAS oncogene family like 2B",
-    "search_field": "definition",
+    "search_field": "gene_symbol",
     "search_query": "RABL2B",
     "identifiers": "A0A024QZ08,X6RLV5,X6RM24,A0A024QZQ1",
     "database": "uniprot",
