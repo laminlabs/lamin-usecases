@@ -69,15 +69,15 @@ def anndata_seurat_ifnb(preprocess: bool = True, populate_registries: bool = Fal
         sc.pp.log1p(adata)
 
     if populate_registries:
+        import bionty as bt
         import lamindb as ln
-        import lnschema_bionty as lb
 
-        lb.settings.organism = "human"
+        bt.settings.organism = "human"
 
         verbosity = ln.settings.verbosity
         ln.settings.verbosity = 0
-        adata.var.index = lb.Gene.standardize(adata.var.index)
-        validated = lb.Gene.validate(adata.var.index)
+        adata.var.index = bt.Gene.standardize(adata.var.index)
+        validated = bt.Gene.validate(adata.var.index)
         adata = adata[:, validated].copy()
         adata.raw = adata.raw[:, validated].to_adata()
         adata.raw.var.index = adata.var.index
@@ -85,7 +85,7 @@ def anndata_seurat_ifnb(preprocess: bool = True, populate_registries: bool = Fal
         adata = adata[:, ~duplicated].copy()
         adata.raw = adata.raw[:, ~duplicated].to_adata()
         adata.raw.var.index = adata.var.index
-        ln.save(lb.Gene.from_values(adata.var.index))
+        ln.save(bt.Gene.from_values(adata.var.index))
         ln.settings.verbosity = verbosity
 
     return adata
