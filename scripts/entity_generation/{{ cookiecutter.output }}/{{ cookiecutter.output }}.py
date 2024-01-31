@@ -37,7 +37,7 @@ import pandas as pd
 # ## PublicOntology objects
 
 # %% [markdown]
-# Let us create a public ontology accessor with {meth}`~docs:bionty.dev.BioRegistry.public`, which chooses a default public ontology source from {class}`~docs:bionty.PublicSource`.
+# Let us create a public ontology accessor with {meth}`~bionty.dev.BioRegistry.public`, which chooses a default public ontology source from {class}`~docs:bionty.PublicSource`.
 # It's a [PublicOntology](https://lamin.ai/docs/bionty.dev.publicontology) object, which you can think about as a public registry:
 
 # %%
