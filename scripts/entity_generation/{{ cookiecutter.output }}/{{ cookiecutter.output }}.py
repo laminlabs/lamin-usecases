@@ -30,18 +30,18 @@
 # !lamin init --storage ./test-{{ cookiecutter.entity|lower }} --schema bionty
 
 # %%
-import lnschema_bionty as lb
+import bionty as bt
 import pandas as pd
 
 # %% [markdown]
 # ## PublicOntology objects
 
 # %% [markdown]
-# Let us create a public ontology accessor with {meth}`~docs:lnschema_bionty.dev.BioRegistry.public`, which chooses a default public ontology source from {class}`~docs:lnschema_bionty.PublicSource`.
-# It's a [PublicOntology](https://lamin.ai/docs/lnschema_bionty.dev.publicontology) object, which you can think about as a public registry:
+# Let us create a public ontology accessor with {meth}`~docs:bionty.dev.BioRegistry.public`, which chooses a default public ontology source from {class}`~docs:bionty.PublicSource`.
+# It's a [PublicOntology](https://lamin.ai/docs/bionty.dev.publicontology) object, which you can think about as a public registry:
 
 # %%
-{{ cookiecutter.entity_lower }}s = lb.{{ cookiecutter.entity }}.public(organism="{{ cookiecutter.organism }}")
+{{ cookiecutter.entity_lower }}s = bt.{{ cookiecutter.entity }}.public(organism="{{ cookiecutter.organism }}")
 {{ cookiecutter.entity_lower }}s
 
 # %% [markdown]
@@ -145,22 +145,22 @@ df_orig.index[~validated]
 # For any given entity, we can choose from a number of versions:
 
 # %%
-lb.PublicSource.filter(entity="{{ cookiecutter.entity }}").df()
+bt.PublicSource.filter(entity="{{ cookiecutter.entity }}").df()
 
 # %% [markdown]
 # When instantiating a Bionty object, we can choose a source or version:
 
 # %%
-public_source = lb.PublicSource.filter(
+public_source = bt.PublicSource.filter(
     source="{{ cookiecutter.database }}", version="{{ cookiecutter.version }}", organism="{{ cookiecutter.organism }}"
 ).one()
-{{ cookiecutter.entity_lower }}s= lb.{{ cookiecutter.entity }}.public(public_source=public_source)
+{{ cookiecutter.entity_lower }}s= bt.{{ cookiecutter.entity }}.public(public_source=public_source)
 {{ cookiecutter.entity_lower }}s
 # %% [markdown]
 # The currently used ontologies can be displayed using:
 
 # %% tags=["hide-output"]
-lb.PublicSource.filter(currently_used=True).df()
+bt.PublicSource.filter(currently_used=True).df()
 
 # %% tags=["hide-cell"]
 # !lamin delete --force test-{{ cookiecutter.entity|lower }}
