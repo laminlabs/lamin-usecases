@@ -123,6 +123,7 @@ test-registries/
 test-multimodal/
 test-spatial/
 test-bulkrna/
+test-project-flow/
 mydata/
 docs/figures/
 use-cases-registries/

@@ -16,18 +16,12 @@
 # # {{ cookiecutter.entity }}
 
 # %% [markdown]
-# lamindb provides access to the following public protein ontologies through [lnschema-bionty](https://github.com/laminlabs/lnschema-bionty):
+# lamindb provides access to the following public protein ontologies through [bionty](https://lamin.ai/docs/bionty):
 #{% set sources = cookiecutter.sources.split(',') -%}{% for src in sources %}
 # {{ src }}
 {%- endfor %}
 #
 # Here we show how to access and search {{ cookiecutter.entity }} ontologies to standardize new data.
-
-# %% [markdown]
-# ## Setup
-
-# %%
-# !lamin init --storage ./test-{{ cookiecutter.entity|lower }} --schema bionty
 
 # %%
 import bionty as bt
@@ -161,7 +155,3 @@ public_source = bt.PublicSource.filter(
 
 # %% tags=["hide-output"]
 bt.PublicSource.filter(currently_used=True).df()
-
-# %% tags=["hide-cell"]
-# !lamin delete --force test-{{ cookiecutter.entity|lower }}
-# !rm -r test-{{ cookiecutter.entity|lower }}
