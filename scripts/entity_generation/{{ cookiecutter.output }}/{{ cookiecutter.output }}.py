@@ -155,7 +155,3 @@ public_source = bt.PublicSource.filter(
 
 # %% tags=["hide-output"]
 bt.PublicSource.filter(currently_used=True).df()
-
-# %% tags=["hide-cell"]
-# !lamin delete --force test-{{ cookiecutter.entity|lower }}
-# !rm -r test-{{ cookiecutter.entity|lower }}
