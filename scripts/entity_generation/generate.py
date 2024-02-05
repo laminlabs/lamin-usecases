@@ -221,7 +221,19 @@ ethnicity = {
 }
 
 
-entities_args = [protein, organism, cell_line, cell_type, tissue, disease, phenotype, pathway, experimental_factor, developmental_stage, ethnicity]
+entities_args = [
+    protein,
+    organism,
+    cell_line,
+    cell_type,
+    tissue,
+    disease,
+    phenotype,
+    pathway,
+    experimental_factor,
+    developmental_stage,
+    ethnicity,
+]
 
 for entity_args in entities_args:
     cookiecutter(
@@ -231,17 +243,21 @@ for entity_args in entities_args:
         extra_context=entity_args,
     )
 
-    output_name = entity_args["output"] if entity_args["output"] is not None else entity_args['entity'].lower()
+    output_name = (
+        entity_args["output"]
+        if entity_args["output"] is not None
+        else entity_args["entity"].lower()
+    )
     entity_folder = Path(output_name)
     script_file = entity_folder / f"{output_name}.py"
     notebook_file = entity_folder / f"{output_name}.ipynb"
     output_folder = Path(__file__).resolve().parent.parent.parent / "docs"
 
     # Convert script to notebook
-    with script_file.open('r') as file:
+    with script_file.open("r") as file:
         script_content = file.read()
-    notebook = jupytext.reads(script_content, fmt='py')
-    jupytext.write(notebook, notebook_file, fmt='ipynb')
+    notebook = jupytext.reads(script_content, fmt="py")
+    jupytext.write(notebook, notebook_file, fmt="ipynb")
 
     # Clean up output
     shutil.move(str(notebook_file), output_folder)

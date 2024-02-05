@@ -23,12 +23,6 @@
 #
 # Here we show how to access and search {{ cookiecutter.entity }} ontologies to standardize new data.
 
-# %% [markdown]
-# ## Setup
-
-# %%
-# !lamin init --storage ./test-{{ cookiecutter.entity|lower }} --schema bionty
-
 # %%
 import bionty as bt
 import pandas as pd
