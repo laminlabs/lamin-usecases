@@ -3,6 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
+💚 Fix CI | [104](https://github.com/laminlabs/lamin-usecases/pull/104) | [sunnyosun](https://github.com/sunnyosun) | 2024-02-06 |
 🔥 Remove setup for public ontologies | [103](https://github.com/laminlabs/lamin-usecases/pull/103) | [sunnyosun](https://github.com/sunnyosun) | 2024-02-05 |
 📝 Import bionty instead of lb | [101](https://github.com/laminlabs/lamin-usecases/pull/101) | [sunnyosun](https://github.com/sunnyosun) | 2024-01-31 |
 Automate entity notebook generation with nox | [100](https://github.com/laminlabs/lamin-usecases/pull/100) | [Zethson](https://github.com/Zethson) | 2024-01-24 |
