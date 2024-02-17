@@ -3,6 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
+Remove cell typist mention in analysis-registries | [106](https://github.com/laminlabs/lamin-usecases/pull/106) | [Zethson](https://github.com/Zethson) | 2024-02-17 |
 Remove warning in enrichr | [105](https://github.com/laminlabs/lamin-usecases/pull/105) | [Zethson](https://github.com/Zethson) | 2024-02-17 |
 💚 Fix CI | [104](https://github.com/laminlabs/lamin-usecases/pull/104) | [sunnyosun](https://github.com/sunnyosun) | 2024-02-06 |
 🔥 Remove setup for public ontologies | [103](https://github.com/laminlabs/lamin-usecases/pull/103) | [sunnyosun](https://github.com/sunnyosun) | 2024-02-05 |
