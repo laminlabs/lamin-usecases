@@ -21,7 +21,7 @@ def anndata_seurat_ifnb(preprocess: bool = True, populate_registries: bool = Fal
     """
     import anndata as ad
     import pandas as pd
-    from bionty.dev._io import s3_bionty_assets
+    from bionty_base.dev._io import s3_bionty_assets
 
     filepath = DATASETDIR / "ifnb.h5ad"
     s3_bionty_assets(
