@@ -3,6 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
+💚 Update docs | [108](https://github.com/laminlabs/lamin-usecases/pull/108) | [sunnyosun](https://github.com/sunnyosun) | 2024-03-01 |
 Simplify text & add analysis-registries back to CI | [107](https://github.com/laminlabs/lamin-usecases/pull/107) | [Zethson](https://github.com/Zethson) | 2024-02-17 |
 Remove cell typist mention in analysis-registries | [106](https://github.com/laminlabs/lamin-usecases/pull/106) | [Zethson](https://github.com/Zethson) | 2024-02-17 |
 Remove warning in enrichr | [105](https://github.com/laminlabs/lamin-usecases/pull/105) | [Zethson](https://github.com/Zethson) | 2024-02-17 |
