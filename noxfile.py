@@ -72,7 +72,7 @@ def install(session, group):
         session.run(*"pip install celltypist".split())
         session.run(*"pip install gseapy".split())
     elif group == "by_ontologies":
-        extras += ",aws"
+        extras += ",aws,jupyter"
     elif group == "docs":
         extras += ""
     session.run(*"pip install .[dev]".split())
