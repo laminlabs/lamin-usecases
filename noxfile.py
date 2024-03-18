@@ -44,6 +44,7 @@ GROUPS["by_ontology"] = [
     "phenotype.ipynb",
     "protein.ipynb",
     "tissue.ipynb",
+    "validator.ipynb",
 ]
 
 
@@ -71,7 +72,7 @@ def install(session, group):
         session.run(*"pip install celltypist".split())
         session.run(*"pip install gseapy".split())
     elif group == "by_ontologies":
-        extras += ""
+        extras += ",aws"
     elif group == "docs":
         extras += ""
     session.run(*"pip install .[dev]".split())
