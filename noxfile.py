@@ -71,7 +71,7 @@ def install(session, group):
         extras += ",zarr,jupyter"
         session.run(*"pip install celltypist".split())
         session.run(*"pip install gseapy".split())
-    elif group == "by_ontologies":
+    elif group == "by_ontology":
         extras += ",aws,jupyter"
     elif group == "docs":
         extras += ""
