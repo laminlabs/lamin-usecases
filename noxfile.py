@@ -44,7 +44,7 @@ GROUPS["by_ontology"] = [
     "phenotype.ipynb",
     "protein.ipynb",
     "tissue.ipynb",
-    "validator.ipynb",
+    "validate.ipynb",
 ]
 
 
