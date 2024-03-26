@@ -3,6 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
+🎨 Use validator for scrna | [110](https://github.com/laminlabs/lamin-usecases/pull/110) | [sunnyosun](https://github.com/sunnyosun) | 2024-03-26 |
 ✨ Add validator guide here | [109](https://github.com/laminlabs/lamin-usecases/pull/109) | [sunnyosun](https://github.com/sunnyosun) | 2024-03-18 |
 💚 Update docs | [108](https://github.com/laminlabs/lamin-usecases/pull/108) | [sunnyosun](https://github.com/sunnyosun) | 2024-03-01 |
 Simplify text & add analysis-registries back to CI | [107](https://github.com/laminlabs/lamin-usecases/pull/107) | [Zethson](https://github.com/Zethson) | 2024-02-17 |
