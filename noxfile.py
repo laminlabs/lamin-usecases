@@ -44,7 +44,6 @@ GROUPS["by_ontology"] = [
     "phenotype.ipynb",
     "protein.ipynb",
     "tissue.ipynb",
-    "annotate.ipynb",
 ]
 
 
@@ -109,5 +108,5 @@ def docs(session):
             path.rename(f"./docs/{path.name}")
     login_testuser1(session)
     session.run(*"lamin init --storage ./docsbuild --schema bionty".split())
-    build_docs(session, strict=False)
+    build_docs(session, strict=True)
     upload_docs_artifact(aws=True)
