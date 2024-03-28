@@ -7,5 +7,4 @@ data-flow
 by-registry
 by-datatype
 public-ontologies
-annotate
 ```
