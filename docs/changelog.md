@@ -3,6 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
+⬆️ Update Annotate | [113](https://github.com/laminlabs/lamin-usecases/pull/113) | [sunnyosun](https://github.com/sunnyosun) | 2024-03-31 |
 🚚 Move the annotate nb to lamindb | [112](https://github.com/laminlabs/lamin-usecases/pull/112) | [sunnyosun](https://github.com/sunnyosun) | 2024-03-28 |
 🚚 Rename Validate to Annotate | [111](https://github.com/laminlabs/lamin-usecases/pull/111) | [sunnyosun](https://github.com/sunnyosun) | 2024-03-28 |
 🎨 Use validator for scrna | [110](https://github.com/laminlabs/lamin-usecases/pull/110) | [sunnyosun](https://github.com/sunnyosun) | 2024-03-26 |
