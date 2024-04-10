@@ -3,6 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
+♻️ Simplify multimodal | [116](https://github.com/laminlabs/lamin-usecases/pull/116) | [falexwolf](https://github.com/falexwolf) | 2024-04-10 |
 ✨ Update multimodal | [114](https://github.com/laminlabs/lamin-usecases/pull/114) | [sunnyosun](https://github.com/sunnyosun) | 2024-04-10 |
 ⬆️ Update Annotate | [113](https://github.com/laminlabs/lamin-usecases/pull/113) | [sunnyosun](https://github.com/sunnyosun) | 2024-03-31 |
 🚚 Move the annotate nb to lamindb | [112](https://github.com/laminlabs/lamin-usecases/pull/112) | [sunnyosun](https://github.com/sunnyosun) | 2024-03-28 |
