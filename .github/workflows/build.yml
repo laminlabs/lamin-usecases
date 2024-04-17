@@ -21,7 +21,7 @@ jobs:
           - "by_datatype"
           - "by_registry"
           - "by_ontology"
-    timeout-minutes: 15
+    timeout-minutes: 25
 
     steps:
       - uses: actions/checkout@v3
