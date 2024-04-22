@@ -61,23 +61,26 @@ def install(session, group):
     extras = ""
     if group == "by_datatype":
         extras += ",fcs,jupyter"
-        session.run(*"pip install anndata==0.9.2".split())  # compatibility with scvi
-        session.run(*"pip install scanpy".split())
-        session.run(*"pip install pytometry".split())
-        session.run(*"pip install mudata".split())
-        session.run(*"pip install scvi-tools".split())
+        session.run(
+            *"uv pip install --system anndata==0.9.2".split()
+        )  # compatibility with scvi
+        session.run(*"uv pip install --system scanpy".split())
+        session.run(*"uv pip install --system pytometry".split())
+        session.run(*"uv pip install --system mudata".split())
+        session.run(*"uv pip install --system scvi-tools".split())
     elif group == "by_registry":
         extras += ",zarr,jupyter"
-        session.run(*"pip install celltypist".split())
-        session.run(*"pip install gseapy".split())
+        session.run(*"uv pip install --system celltypist".split())
+        session.run(*"uv pip install --system gseapy".split())
     elif group == "by_ontology":
         extras += ",aws,jupyter"
     elif group == "docs":
         extras += ""
-    session.run(*"pip install .[dev]".split())
+    session.run(*"uv pip install --system .[dev]".split())
     session.run(
         "pip",
         "install",
+        "--system",
         f"lamindb[dev,bionty{extras}] @ git+https://github.com/laminlabs/lamindb@main",
     )
 
