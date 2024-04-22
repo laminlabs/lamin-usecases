@@ -78,6 +78,7 @@ def install(session, group):
         extras += ""
     session.run(*"uv pip install --system .[dev]".split())
     session.run(
+        "uv",
         "pip",
         "install",
         "--system",
