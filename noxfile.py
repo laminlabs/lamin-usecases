@@ -23,12 +23,12 @@ GROUPS["by_datatype"] = [
     "multimodal.ipynb",
 ]
 GROUPS["by_registry"] = [
-    # "celltypist.ipynb",
     "enrichr.ipynb",
     "analysis-registries.ipynb",
     # these could be bucketed elsewhere
     "analysis-flow.ipynb",
     "project-flow.ipynb",
+    "sparql.ipynb",
 ]
 GROUPS["by_ontology"] = [
     "gene.ipynb",
@@ -72,6 +72,7 @@ def install(session, group):
         extras += ",zarr,jupyter"
         session.run(*"uv pip install --system celltypist".split())
         session.run(*"uv pip install --system gseapy".split())
+        session.run(*"uv pip install --system rdflib".split())
     elif group == "by_ontology":
         extras += ",aws,jupyter"
     elif group == "docs":
