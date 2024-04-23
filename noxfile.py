@@ -70,7 +70,6 @@ def install(session, group):
         session.run(*"uv pip install --system scvi-tools".split())
     elif group == "by_registry":
         extras += ",zarr,jupyter"
-        session.run(*"uv pip install --system celltypist".split())
         session.run(*"uv pip install --system gseapy".split())
     elif group == "by_ontology":
         extras += ",aws,jupyter"
