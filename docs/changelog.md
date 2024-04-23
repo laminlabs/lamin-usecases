@@ -3,6 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
+♻️ Refactor analysis flow | [123](https://github.com/laminlabs/lamin-usecases/pull/123) | [sunnyosun](https://github.com/sunnyosun) | 2024-04-23 |
 ♻️ Use notebooks for project-flow | [122](https://github.com/laminlabs/lamin-usecases/pull/122) | [sunnyosun](https://github.com/sunnyosun) | 2024-04-23 |
 👷 Use uv | [121](https://github.com/laminlabs/lamin-usecases/pull/121) | [sunnyosun](https://github.com/sunnyosun) | 2024-04-22 |
 ✏️ Fix query | [118](https://github.com/laminlabs/lamin-usecases/pull/118) | [sunnyosun](https://github.com/sunnyosun) | 2024-04-18 |
