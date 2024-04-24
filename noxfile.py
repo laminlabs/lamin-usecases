@@ -28,7 +28,7 @@ GROUPS["by_registry"] = [
     # these could be bucketed elsewhere
     "analysis-flow.ipynb",
     "project-flow.ipynb",
-    "sparql.ipynb",
+    "rdf-sparql.ipynb",
 ]
 GROUPS["by_ontology"] = [
     "gene.ipynb",

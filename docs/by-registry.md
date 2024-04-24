@@ -5,5 +5,5 @@
 
 enrichr
 analysis-registries
-sparql
+rdf-sparql
 ```
