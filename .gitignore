@@ -113,6 +113,8 @@ _docs_tmp*
 *.h5mu
 *.tiff
 *.fcs
+*.json
+*.ttl
 data/
 celltypist/
 enrichr/

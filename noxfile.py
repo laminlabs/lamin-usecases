@@ -23,12 +23,12 @@ GROUPS["by_datatype"] = [
     "multimodal.ipynb",
 ]
 GROUPS["by_registry"] = [
-    # "celltypist.ipynb",
     "enrichr.ipynb",
     "analysis-registries.ipynb",
     # these could be bucketed elsewhere
     "analysis-flow.ipynb",
     "project-flow.ipynb",
+    "rdf-sparql.ipynb",
 ]
 GROUPS["by_ontology"] = [
     "gene.ipynb",
@@ -72,6 +72,7 @@ def install(session, group):
         extras += ",zarr,jupyter"
         session.run(*"uv pip install --system celltypist".split())
         session.run(*"uv pip install --system gseapy".split())
+        session.run(*"uv pip install --system rdflib".split())
     elif group == "by_ontology":
         extras += ",aws,jupyter"
     elif group == "docs":
@@ -82,7 +83,7 @@ def install(session, group):
         "pip",
         "install",
         "--system",
-        f"lamindb[dev,bionty{extras}] @ git+https://github.com/laminlabs/lamindb@main",
+        f"lamindb[dev,bionty{extras}] @ git+https://github.com/laminlabs/lamindb@release",
     )
 
 
