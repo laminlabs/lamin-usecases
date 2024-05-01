@@ -3,6 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
+✨ Add celltypist back | [125](https://github.com/laminlabs/lamin-usecases/pull/125) | [sunnyosun](https://github.com/sunnyosun) | 2024-05-01 |
 Add SPARQL demonstration | [124](https://github.com/laminlabs/lamin-usecases/pull/124) | [Zethson](https://github.com/Zethson) | 2024-04-24 |
 ♻️ Refactor analysis flow | [123](https://github.com/laminlabs/lamin-usecases/pull/123) | [sunnyosun](https://github.com/sunnyosun) | 2024-04-23 |
 ♻️ Use notebooks for project-flow | [122](https://github.com/laminlabs/lamin-usecases/pull/122) | [sunnyosun](https://github.com/sunnyosun) | 2024-04-23 |
