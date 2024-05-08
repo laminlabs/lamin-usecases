@@ -118,7 +118,7 @@ lookup.{{ cookiecutter.alternative_field_value }}
 # %%
 df_orig = pd.DataFrame(
     index=[{% set identifiers = cookiecutter.identifiers.split(',') -%}{% for identifier in identifiers %}
-        "{{ identifier }}"
+        "{{ identifier }}",
         {%- endfor %}
         "This {{ cookiecutter.entity_lower }} does not exist",
     ]
