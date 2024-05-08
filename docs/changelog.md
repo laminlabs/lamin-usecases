@@ -3,6 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
+:pencil2: Fix standardization DF for entity notebooks | [127](https://github.com/laminlabs/lamin-usecases/pull/127) | [Zethson](https://github.com/Zethson) | 2024-05-08 |
 💚 Fix add_feature_set | [126](https://github.com/laminlabs/lamin-usecases/pull/126) | [sunnyosun](https://github.com/sunnyosun) | 2024-05-07 |
 ✨ Add celltypist back | [125](https://github.com/laminlabs/lamin-usecases/pull/125) | [sunnyosun](https://github.com/sunnyosun) | 2024-05-01 |
 Add SPARQL demonstration | [124](https://github.com/laminlabs/lamin-usecases/pull/124) | [Zethson](https://github.com/Zethson) | 2024-04-24 |
