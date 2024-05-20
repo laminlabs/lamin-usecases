@@ -84,7 +84,7 @@ def install(session, group):
         "pip",
         "install",
         "--system",
-        f"lamindb[dev,bionty{extras}] @ git+https://github.com/laminlabs/lamindb@release",
+        f"lamindb[dev,bionty{extras}] @ git+https://github.com/laminlabs/lamindb@main",
     )
 
 
