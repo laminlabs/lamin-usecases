@@ -62,13 +62,13 @@ def install(session, group):
     extras = ""
     if group == "by_datatype":
         extras += ",fcs,jupyter"
-        session.run(
-            *"uv pip install --system anndata==0.9.2".split()
-        )  # compatibility with scvi
         session.run(*"uv pip install --system scanpy".split())
         session.run(*"uv pip install --system pytometry".split())
         session.run(*"uv pip install --system mudata".split())
-        session.run(*"uv pip install --system scvi-tools".split())
+        session.run(*"uv pip install --system torch".split())
+        # due to https://github.com/single-cell-data/TileDB-SOMA/issues/2758
+        session.run(*"uv pip install --system tiledb==0.30.0".split())
+        session.run(*"uv pip install --system tiledbsoma==1.12.0".split())
     elif group == "by_registry":
         extras += ",zarr,jupyter"
         session.run(*"uv pip install --system celltypist".split())
