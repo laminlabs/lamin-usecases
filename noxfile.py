@@ -14,6 +14,7 @@ GROUPS["by_datatype"] = [
     "scrna3.ipynb",
     "scrna4.ipynb",
     "scrna5.ipynb",
+    "scrna6.ipynb",
     "bulkrna.ipynb",
     "facs.ipynb",
     "facs2.ipynb",
