@@ -3,6 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
+📝 Add pip install for use cases | [131](https://github.com/laminlabs/lamin-usecases/pull/131) | [sunnyosun](https://github.com/sunnyosun) | 2024-06-26 |
 📝 Add tiledbsoma scrna guide | [130](https://github.com/laminlabs/lamin-usecases/pull/130) | [Koncopd](https://github.com/Koncopd) | 2024-06-25 |
 ♻️ Replace `.features.add_from_anndata()` with `.features._add_set_from_anndata()` | [129](https://github.com/laminlabs/lamin-usecases/pull/129) | [falexwolf](https://github.com/falexwolf) | 2024-05-29 |
 ♻️ Fixes and prettifiation for 0.72 | [128](https://github.com/laminlabs/lamin-usecases/pull/128) | [falexwolf](https://github.com/falexwolf) | 2024-05-20 |
