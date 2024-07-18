@@ -16,7 +16,7 @@
 # # {{ cookiecutter.entity }}
 
 # %% [markdown]
-# lamindb provides access to the following public protein ontologies through [bionty](https://lamin.ai/docs/bionty):
+# lamindb provides access to the following public {{ cookiecutter.entity }} ontologies through [bionty](https://lamin.ai/docs/bionty):
 #{% set sources = cookiecutter.sources.split(',') -%}{% for src in sources %}
 # {{ src }}
 {%- endfor %}
