@@ -67,9 +67,7 @@ def install(session, group):
         session.run(*"uv pip install --system pytometry".split())
         session.run(*"uv pip install --system mudata".split())
         session.run(*"uv pip install --system torch".split())
-        # due to https://github.com/single-cell-data/TileDB-SOMA/issues/2758
-        session.run(*"uv pip install --system tiledb==0.30.0".split())
-        session.run(*"uv pip install --system tiledbsoma==1.12.0".split())
+        session.run(*"uv pip install --system tiledbsoma".split())
     elif group == "by_registry":
         extras += ",zarr,jupyter"
         session.run(*"uv pip install --system celltypist".split())
