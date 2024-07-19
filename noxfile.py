@@ -1,3 +1,4 @@
+import os
 import shutil
 from pathlib import Path
 
@@ -49,6 +50,9 @@ GROUPS["by_ontology"] = [
 ]
 
 
+IS_PR = os.getenv("GITHUB_EVENT_NAME") != "push"
+
+
 @nox.session
 def lint(session: nox.Session) -> None:
     run_pre_commit(session)
@@ -67,9 +71,7 @@ def install(session, group):
         session.run(*"uv pip install --system pytometry".split())
         session.run(*"uv pip install --system mudata".split())
         session.run(*"uv pip install --system torch".split())
-        # due to https://github.com/single-cell-data/TileDB-SOMA/issues/2758
-        session.run(*"uv pip install --system tiledb==0.30.0".split())
-        session.run(*"uv pip install --system tiledbsoma==1.12.0".split())
+        session.run(*"uv pip install --system tiledbsoma".split())
     elif group == "by_registry":
         extras += ",zarr,jupyter"
         session.run(*"uv pip install --system celltypist".split())
@@ -81,11 +83,27 @@ def install(session, group):
         extras += ""
     session.run(*"uv pip install --system .[dev]".split())
     session.run(
+        *"git clone https://github.com/laminlabs/lamindb --recursive --depth 1".split()
+    )
+    if IS_PR:
+        session.run(
+            "uv",
+            "pip",
+            "install",
+            "--system",
+            "--no-deps",
+            "./lamindb/sub/lamindb-setup",
+            "./lamindb/sub/lnschema-core",
+            "./lamindb/sub/lamin-cli",
+            "./lamindb/sub/lnschema-bionty",
+            "./lamindb/sub/bionty",
+        )
+    session.run(
         "uv",
         "pip",
         "install",
         "--system",
-        f"lamindb[dev,bionty{extras}] @ git+https://github.com/laminlabs/lamindb@main",
+        f"./lamindb[dev,bionty{extras}]",
     )
 
 
