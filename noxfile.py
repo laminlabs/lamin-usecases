@@ -90,6 +90,20 @@ def install(session, group):
         "pip",
         "install",
         "--system",
+        "lnschema-bionty @ git+https://github.com/laminlabs/lnschema-bionty@main",
+    )
+    session.run(
+        "uv",
+        "pip",
+        "install",
+        "--system",
+        "lnschema-core @ git+https://github.com/laminlabs/lnschema-core@main",
+    )
+    session.run(
+        "uv",
+        "pip",
+        "install",
+        "--system",
         f"lamindb[dev,bionty{extras}] @ git+https://github.com/laminlabs/lamindb@main",
     )
 
