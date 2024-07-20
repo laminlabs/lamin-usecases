@@ -19,7 +19,7 @@ Add SPARQL demonstration | [124](https://github.com/laminlabs/lamin-usecases/pul
 ♻️ Simplify multimodal | [116](https://github.com/laminlabs/lamin-usecases/pull/116) | [falexwolf](https://github.com/falexwolf) | 2024-04-10 |
 ✨ Update multimodal | [114](https://github.com/laminlabs/lamin-usecases/pull/114) | [sunnyosun](https://github.com/sunnyosun) | 2024-04-10 |
 ⬆️ Update Annotate | [113](https://github.com/laminlabs/lamin-usecases/pull/113) | [sunnyosun](https://github.com/sunnyosun) | 2024-03-31 |
-🚚 Move the annotate nb to lamindb | [112](https://github.com/laminlabs/lamin-usecases/pull/112) | [sunnyosun](https://github.com/sunnyosun) | 2024-03-28 |
+🚚 Move the curate nb to lamindb | [112](https://github.com/laminlabs/lamin-usecases/pull/112) | [sunnyosun](https://github.com/sunnyosun) | 2024-03-28 |
 🚚 Rename Validate to Annotate | [111](https://github.com/laminlabs/lamin-usecases/pull/111) | [sunnyosun](https://github.com/sunnyosun) | 2024-03-28 |
 🎨 Use validator for scrna | [110](https://github.com/laminlabs/lamin-usecases/pull/110) | [sunnyosun](https://github.com/sunnyosun) | 2024-03-26 |
 ✨ Add validator guide here | [109](https://github.com/laminlabs/lamin-usecases/pull/109) | [sunnyosun](https://github.com/sunnyosun) | 2024-03-18 |

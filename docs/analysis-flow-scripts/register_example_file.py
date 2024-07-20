@@ -10,7 +10,7 @@ ln.track()
 adata = ln.core.datasets.anndata_with_obs()
 
 # validate and register features
-annotate = ln.Annotate.from_anndata(
+curate = ln.Curate.from_anndata(
     adata,
     var_index=bt.Gene.ensembl_gene_id,
     categoricals={
@@ -20,9 +20,9 @@ annotate = ln.Annotate.from_anndata(
     },
     organism="human",
 )
-annotate.add_validated_from("all")
-annotate.add_new_from("cell_type")
-annotate.validate()
-annotate.save_artifact(description="anndata with obs")
+curate.add_validated_from("all")
+curate.add_new_from("cell_type")
+curate.validate()
+curate.save_artifact(description="anndata with obs")
 
 ln.finish()
