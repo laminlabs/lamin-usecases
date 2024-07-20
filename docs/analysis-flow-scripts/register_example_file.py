@@ -10,7 +10,7 @@ ln.track()
 adata = ln.core.datasets.anndata_with_obs()
 
 # validate and register features
-annotate = ln.Annotate.from_anndata(
+annotate = ln.Curate.from_anndata(
     adata,
     var_index=bt.Gene.ensembl_gene_id,
     categoricals={
