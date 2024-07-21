@@ -3,6 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
+📝 Rename Artifact.backed to Artifact.open | [134](https://github.com/laminlabs/lamin-usecases/pull/134) | [Koncopd](https://github.com/Koncopd) | 2024-07-21 |
 🚚 Rename `Annotate` to `Curate` | [133](https://github.com/laminlabs/lamin-usecases/pull/133) | [falexwolf](https://github.com/falexwolf) | 2024-07-20 |
 📝 Use Artifact.backed to connect to tiledbsoma | [132](https://github.com/laminlabs/lamin-usecases/pull/132) | [Koncopd](https://github.com/Koncopd) | 2024-07-19 |
 📝 Add pip install for use cases | [131](https://github.com/laminlabs/lamin-usecases/pull/131) | [sunnyosun](https://github.com/sunnyosun) | 2024-06-26 |
