@@ -31,7 +31,7 @@ import pandas as pd
 # ## PublicOntology objects
 
 # %% [markdown]
-# Let us create a public ontology accessor with `.public` method, which chooses a default public ontology source from {class}`~docs:bionty.PublicSource`.
+# Let us create a public ontology accessor with `.public` method, which chooses a default public ontology source from {class}`~docs:bionty.Source`.
 # It's a [PublicOntology](https://lamin.ai/docs/bionty.dev.publicontology) object, which you can think about as a public registry:
 
 # %%
@@ -139,19 +139,19 @@ df_orig.index[~validated]
 # For any given entity, we can choose from a number of versions:
 
 # %%
-bt.PublicSource.filter(entity="{{ cookiecutter.entity }}").df()
+bt.Source.filter(entity="{{ cookiecutter.entity }}").df()
 
 # %% [markdown]
 # When instantiating a Bionty object, we can choose a source or version:
 
 # %%
-public_source = bt.PublicSource.filter(
+source = bt.Source.filter(
     source="{{ cookiecutter.database }}", version="{{ cookiecutter.version }}", organism="{{ cookiecutter.organism }}"
 ).one()
-{{ cookiecutter.entity_lower }}s= bt.{{ cookiecutter.entity }}.public(public_source=public_source)
+{{ cookiecutter.entity_lower }}s= bt.{{ cookiecutter.entity }}.public(source=source)
 {{ cookiecutter.entity_lower }}s
 # %% [markdown]
 # The currently used ontologies can be displayed using:
 
 # %% tags=["hide-output"]
-bt.PublicSource.filter(currently_used=True).df()
+bt.Source.filter(currently_used=True).df()
