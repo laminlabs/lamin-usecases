@@ -1,7 +1,7 @@
 # Access public biological ontologies
 
 - User docs: [here](https://lamin.ai/docs/public-ontologies)
-- Developer docs: [here](https://lamin.ai/docs/bionty-base)
+- Developer docs: [here](https://lamin.ai/docs/bionty)
 
 ## Installation
 
@@ -34,7 +34,7 @@ lamin init --storage <storage_name> --schema bionty
 - `Drug` - [Drug Ontology](https://bioportal.bioontology.org/ontologies/DRON)
 - `Ethnicity` - [Human Ancestry Ontology](https://github.com/EBISPOT/hancestro)
 
-Check out [sources.yaml](https://github.com/laminlabs/bionty-base/blob/main/bionty_base/sources/sources.yaml) for details.
+Check out [sources.yaml](https://github.com/laminlabs/bionty/blob/main/bionty/base/sources.yaml) for details.
 
 ## Examples
 
