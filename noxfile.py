@@ -95,7 +95,6 @@ def install(session, group):
             "./lamindb/sub/lamindb-setup",
             "./lamindb/sub/lnschema-core",
             "./lamindb/sub/lamin-cli",
-            "./lamindb/sub/lnschema-bionty",
             "./lamindb/sub/bionty",
         )
     session.run(
