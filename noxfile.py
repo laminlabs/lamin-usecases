@@ -69,7 +69,7 @@ def install(session, group):
         extras += ",fcs,jupyter"
         session.run(*"uv pip install --system scanpy".split())
         session.run(
-            *"uv pip install --system pytometry 'dask[dataframe]'".split()
+            *"uv pip install --system pytometry dask[dataframe]".split()
         )  # needed by datashader
         session.run(*"uv pip install --system mudata".split())
         session.run(*"uv pip install --system torch".split())
@@ -85,8 +85,6 @@ def install(session, group):
         extras += ""
     session.run(*"uv pip install --system .[dev]".split())
     session.run(*"git clone https://github.com/laminlabs/lamindb --recursive".split())
-    with session.chdir("./lamindb"):
-        session.run(*"git switch fixes".split())
     if IS_PR:
         session.run(
             "uv",
