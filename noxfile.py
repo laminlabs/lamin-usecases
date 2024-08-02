@@ -83,8 +83,9 @@ def install(session, group):
         extras += ""
     session.run(*"uv pip install --system .[dev]".split())
     session.run(
-        *"git clone https://github.com/laminlabs/lamindb@fixes --recursive --depth 1".split()
+        *"git clone https://github.com/laminlabs/lamindb --recursive --depth 1".split()
     )
+    session.run(*"git switch fixes".split())
     if IS_PR:
         session.run(
             "uv",
