@@ -86,11 +86,11 @@ def install(session, group):
     session.run(
         *"uv pip install --system ipywidgets".split()
     )  # needed to silence the jupyter warning
-    session.run(*"git clone https://github.com/laminlabs/lamindb-setup".split())
-    session.run(*"git clone https://github.com/laminlabs/lamindb --recursive".split())
-    with session.chdir("./lamindb"):
-        session.run(*"git switch fix-source".split())
     session.run(*"uv pip install --system .[dev]".split())
+    session.run(
+        *"git clone -b fix-source --recursive https://github.com/laminlabs/lamindb".split()
+    )
+
     if IS_PR:
         session.run(
             "uv",
