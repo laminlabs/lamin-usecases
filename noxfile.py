@@ -84,7 +84,7 @@ def install(session, group):
     elif group == "docs":
         extras += ""
     session.run(*"uv pip install --system .[dev]".split())
-    session.run(*"git clone https://github.com/laminlabs/lamindb-setup".split())
+    session.run(*"git clone https://github.com/laminlabs/lamindb-setupg".split())
     session.run(*"git clone https://github.com/laminlabs/lamindb --recursive".split())
     with session.chdir("./lamindb"):
         session.run(*"git switch fix-source".split())

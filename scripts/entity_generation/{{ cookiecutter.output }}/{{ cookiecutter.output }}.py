@@ -150,7 +150,7 @@ bt.{{ cookiecutter.entity }}.list_source(currently_used=True).df()
 
 # %%
 source = bt.Source.filter(
-    source="{{ cookiecutter.database }}", version="{{ cookiecutter.version }}", organism="{{ cookiecutter.organism }}"
+    name="{{ cookiecutter.database }}", version="{{ cookiecutter.version }}", organism="{{ cookiecutter.organism }}"
 ).one()
 {{ cookiecutter.entity_lower }}s= bt.{{ cookiecutter.entity }}.public(source=source)
 {{ cookiecutter.entity_lower }}s
