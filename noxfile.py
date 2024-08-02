@@ -85,7 +85,8 @@ def install(session, group):
     session.run(
         *"git clone https://github.com/laminlabs/lamindb --recursive --depth 1".split()
     )
-    session.run(*"git switch fixes".split())
+    with session.chdir("./lamindb"):
+        session.run(*"git switch fixes".split())
     if IS_PR:
         session.run(
             "uv",
