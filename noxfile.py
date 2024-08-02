@@ -83,10 +83,6 @@ def install(session, group):
         extras += ",aws,jupyter"
     elif group == "docs":
         extras += ""
-    session.run(*"uv pip install --system .[dev]".split())
-    session.run(*"git clone https://github.com/laminlabs/lamindb --recursive".split())
-    with session.chdir("./lamindb"):
-        session.run(*"git switch fix-source".split())
     if IS_PR:
         session.run(
             "uv",
@@ -99,6 +95,10 @@ def install(session, group):
             "./lamindb/sub/lamin-cli",
             "./lamindb/sub/bionty",
         )
+    session.run(*"git clone https://github.com/laminlabs/lamindb --recursive".split())
+    with session.chdir("./lamindb"):
+        session.run(*"git switch fix-source".split())
+    session.run(*"uv pip install --system .[dev]".split())
     session.run(
         "uv",
         "pip",
