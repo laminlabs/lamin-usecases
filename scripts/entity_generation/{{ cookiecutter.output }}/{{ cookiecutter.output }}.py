@@ -138,15 +138,19 @@ df_orig.index[~validated]
 # %% [markdown]
 # For any given entity, we can choose from a number of versions:
 
+# %% tags=["hide-output"]
+bt.{{ cookiecutter.entity }}.list_source().df()
+
 # %%
-bt.Source.filter(entity="{{ cookiecutter.entity }}").df()
+# only lists the sources that are currently used
+bt.{{ cookiecutter.entity }}.list_source(currently_used=True).df()
 
 # %% [markdown]
 # When instantiating a Bionty object, we can choose a source or version:
 
 # %%
 source = bt.Source.filter(
-    source="{{ cookiecutter.database }}", version="{{ cookiecutter.version }}", organism="{{ cookiecutter.organism }}"
+    name="{{ cookiecutter.database }}", version="{{ cookiecutter.version }}", organism="{{ cookiecutter.organism }}"
 ).one()
 {{ cookiecutter.entity_lower }}s= bt.{{ cookiecutter.entity }}.public(source=source)
 {{ cookiecutter.entity_lower }}s

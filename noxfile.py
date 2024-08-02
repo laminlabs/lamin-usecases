@@ -68,7 +68,9 @@ def install(session, group):
     if group == "by_datatype":
         extras += ",fcs,jupyter"
         session.run(*"uv pip install --system scanpy".split())
-        session.run(*"uv pip install --system pytometry".split())
+        session.run(
+            *"uv pip install --system pytometry dask[dataframe]".split()
+        )  # needed by datashader
         session.run(*"uv pip install --system mudata".split())
         session.run(*"uv pip install --system torch".split())
         session.run(*"uv pip install --system tiledbsoma".split())
@@ -81,12 +83,15 @@ def install(session, group):
         extras += ",aws,jupyter"
     elif group == "docs":
         extras += ""
-    session.run(*"uv pip install --system .[dev]".split())
     session.run(
-        *"git clone https://github.com/laminlabs/lamindb --recursive --depth 1".split()
-    )
-    with session.chdir("./lamindb"):
-        session.run(*"git switch fixes".split())
+        *"uv pip install --system ipywidgets".split()
+    )  # needed to silence the jupyter warning
+    session.run(*"uv pip install --system .[dev]".split())
+    session.run(*"git clone --recursive https://github.com/laminlabs/lamindb".split())
+    # session.run(
+    #     *"git clone -b <branch-name> --recursive https://github.com/laminlabs/lamindb".split()
+    # )
+
     if IS_PR:
         session.run(
             "uv",
