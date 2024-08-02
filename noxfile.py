@@ -82,9 +82,7 @@ def install(session, group):
     elif group == "docs":
         extras += ""
     session.run(*"uv pip install --system .[dev]".split())
-    session.run(
-        *"git clone https://github.com/laminlabs/lamindb --recursive --depth 1".split()
-    )
+    session.run(*"git clone https://github.com/laminlabs/lamindb --recursive".split())
     with session.chdir("./lamindb"):
         session.run(*"git switch fixes".split())
     if IS_PR:
