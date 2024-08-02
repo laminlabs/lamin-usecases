@@ -68,7 +68,9 @@ def install(session, group):
     if group == "by_datatype":
         extras += ",fcs,jupyter"
         session.run(*"uv pip install --system scanpy".split())
-        session.run(*"uv pip install --system pytometry".split())
+        session.run(
+            *"uv pip install --system pytometry 'dask[dataframe]'".split()
+        )  # needed by datashader
         session.run(*"uv pip install --system mudata".split())
         session.run(*"uv pip install --system torch".split())
         session.run(*"uv pip install --system tiledbsoma".split())
