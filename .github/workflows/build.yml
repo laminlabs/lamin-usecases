@@ -54,10 +54,7 @@ jobs:
       - name: Cache postgres use
         if: steps.cache-postgres.outputs.cache-hit == 'true'
         run: docker image load --input ~/postgres.tar
-
-      - name: install Python deps
-        run: pip install -U laminci
-
+      - run: pip install "laminci@git+https://x-access-token:${{ secrets.LAMIN_BUILD_DOCS }}@github.com/laminlabs/laminci"
       - name: install postgres graphviz
         run: sudo apt-get -y install graphviz
       - uses: aws-actions/configure-aws-credentials@v1
