@@ -4,7 +4,14 @@ from pathlib import Path
 
 import nox
 from laminci import upload_docs_artifact
-from laminci.nox import build_docs, login_testuser1, login_testuser2, run_pre_commit
+from laminci.nox import (
+    build_docs,
+    install_lamindb,
+    login_testuser1,
+    login_testuser2,
+    run,
+    run_pre_commit,
+)
 
 nox.options.default_venv_backend = "none"
 
@@ -64,55 +71,31 @@ def lint(session: nox.Session) -> None:
     ["by_datatype", "by_registry", "by_ontology", "docs"],
 )
 def install(session, group):
-    extras = ""
+    extras = "bionty"
     if group == "by_datatype":
         extras += ",fcs,jupyter"
-        session.run(*"uv pip install --system scanpy".split())
-        session.run(
-            *"uv pip install --system pytometry dask[dataframe]".split()
+        run(session, "uv pip install --system scanpy")
+        run(
+            session, "uv pip install --system pytometry dask[dataframe]"
         )  # needed by datashader
-        session.run(*"uv pip install --system mudata".split())
-        session.run(*"uv pip install --system torch".split())
-        session.run(*"uv pip install --system tiledbsoma".split())
+        run(session, "uv pip install --system mudata")
+        run(session, "uv pip install --system torch")
+        run(session, "uv pip install --system tiledbsoma")
     elif group == "by_registry":
         extras += ",zarr,jupyter"
-        session.run(*"uv pip install --system celltypist".split())
-        session.run(*"uv pip install --system gseapy".split())
-        session.run(*"uv pip install --system rdflib".split())
+        run(session, "uv pip install --system celltypist")
+        run(session, "uv pip install --system gseapy")
+        run(session, "uv pip install --system rdflib")
     elif group == "by_ontology":
         extras += ",aws,jupyter"
     elif group == "docs":
         extras += ""
-    session.run(
-        *"uv pip install --system ipywidgets".split()
+    run(
+        session, "uv pip install --system ipywidgets"
     )  # needed to silence the jupyter warning
-    session.run(*"uv pip install --system .[dev]".split())
-    session.run(
-        *"git clone --recursive --depth 1 https://github.com/laminlabs/lamindb".split()
-    )
-    # session.run(
-    #     *"git clone -b <branch-name> --recursive https://github.com/laminlabs/lamindb".split()
-    # )
-
-    if True:  #  IS_PR:  # run integration tests on main
-        session.run(
-            "uv",
-            "pip",
-            "install",
-            "--system",
-            "--no-deps",
-            "./lamindb/sub/lamindb-setup",
-            "./lamindb/sub/lnschema-core",
-            "./lamindb/sub/lamin-cli",
-            "./lamindb/sub/bionty",
-        )
-    session.run(
-        "uv",
-        "pip",
-        "install",
-        "--system",
-        f"./lamindb[dev,bionty{extras}]",
-    )
+    run(session, "uv pip install --system .[dev]")
+    branch = "main" if IS_PR else "main"  # point back to "release"
+    install_lamindb(session, branch=branch, extras=extras)
 
 
 @nox.session
@@ -124,8 +107,8 @@ def build(session, group):
     login_testuser2(session)
     login_testuser1(session)
     if group == "by_ontology":
-        session.run(*"python ./scripts/entity_generation/generate.py".split())
-    session.run(*f"pytest -s ./tests/test_notebooks.py::test_{group}".split())
+        run(session, "python ./scripts/entity_generation/generate.py")
+    run(session, f"pytest -s ./tests/test_notebooks.py::test_{group}")
     # move artifacts into right place
     target_dir = Path(f"./docs_{group}")
     target_dir.mkdir(exist_ok=True)
@@ -139,7 +122,6 @@ def docs(session):
     for group in ["by_datatype", "by_registry", "by_ontology"]:
         for path in Path(f"./docs_{group}").glob("*"):
             path.rename(f"./docs/{path.name}")
-    login_testuser1(session)
-    session.run(*"lamin init --storage ./docsbuild --schema bionty".split())
+    run(session, "lamin init --storage ./docsbuild --schema bionty")
     build_docs(session, strict=True)
     upload_docs_artifact(aws=True)
