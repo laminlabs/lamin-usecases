@@ -120,7 +120,7 @@ jobs:
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_GITHUB_ACTION }}
         with:
-          channel: mirror-github-actions-lamindb
+          channel_id: C05FDBBFJ1F
           status: SUCCESS
           color: good
       - uses: voxmedia/github-action-slack-notify-build@v1
@@ -128,6 +128,6 @@ jobs:
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_GITHUB_ACTION }}
         with:
-          channel: mirror-github-actions-lamindb
+          channel_id: C05FDBBFJ1F
           status: FAILURE
           color: danger

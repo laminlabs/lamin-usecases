@@ -1,23 +1,17 @@
-# Access public biological ontologies
+# Access public ontologies
 
-- User docs: [here](https://lamin.ai/docs/public-ontologies)
-- Developer docs: [here](https://lamin.ai/docs/bionty)
+This docs section shows how to access public biological ontologies.
 
-## Installation
+For managing in-house ontologies, see {doc}`docs:bio-registries`.
 
-```shell
-pip install 'lamindb[bionty]'
-```
-
-## Setup
-
-bionty is a plugin of lamindb, initialize an instance with bionty via:
+You'll need a lamindb instance with the `bionty` schema module mounted.
 
 ```shell
+# !pip install 'lamindb[bionty]'
 lamin init --storage <storage_name> --schema bionty
 ```
 
-## Entities
+The guides cover the following entities.
 
 - `Gene` - [Ensembl](https://ensembl.org), [NCBI Gene](https://www.ncbi.nlm.nih.gov/gene)
 - `Protein` - [Uniprot](https://www.uniprot.org/)
@@ -34,14 +28,11 @@ lamin init --storage <storage_name> --schema bionty
 - `Drug` - [Drug Ontology](https://bioportal.bioontology.org/ontologies/DRON)
 - `Ethnicity` - [Human Ancestry Ontology](https://github.com/EBISPOT/hancestro)
 
-Check out [sources.yaml](https://github.com/laminlabs/bionty/blob/main/bionty/base/sources.yaml) for details.
-
-## Examples
-
-Here we show how to access public biological ontologies using lamindb.
+You can see all suported ontology versions [here](https://github.com/laminlabs/bionty/blob/main/bionty/base/sources.yaml).
 
 ```{toctree}
 :maxdepth: 1
+:hidden:
 
 gene
 protein
@@ -57,5 +48,3 @@ experimental_factor
 developmental_stage
 ethnicity
 ```
-
-Please refer to - {doc}`docs:bio-registries` to learn how to manage in-house biological registries.
