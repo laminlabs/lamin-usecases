@@ -28,7 +28,7 @@ The guides cover the following entities.
 - `Drug` - [Drug Ontology](https://bioportal.bioontology.org/ontologies/DRON)
 - `Ethnicity` - [Human Ancestry Ontology](https://github.com/EBISPOT/hancestro)
 
-You can see all suported ontology versions [here](https://github.com/laminlabs/bionty/blob/main/bionty/base/sources.yaml).
+You can see all supported ontology versions [here](https://github.com/laminlabs/bionty/blob/main/bionty/base/sources.yaml).
 
 ```{toctree}
 :maxdepth: 1
