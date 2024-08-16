@@ -2,9 +2,8 @@ import lamindb as ln
 import bionty as bt
 
 
-ln.settings.transform.stem_uid = "K4wsS5DTYdFp"
-ln.settings.transform.version = "0"
-ln.track()
+ln.context.uid = "K4wsS5DTYdFp0000"
+ln.context.track()
 
 # an example dataset that has a few cell type, tissue and disease annotations
 adata = ln.core.datasets.anndata_with_obs()

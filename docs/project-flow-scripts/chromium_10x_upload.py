@@ -3,9 +3,8 @@ import lamindb as ln
 
 ln.setup.login("testuser1")
 
-ln.settings.transform.stem_uid = "qCJPkOuZAi9q"
-ln.settings.transform.version = "1"
-ln.track()
+ln.context.uid = "qCJPkOuZAi9q0000"
+ln.context.track()
 
 # register output files of the sequencer
 upload_dir = ln.core.datasets.dir_scrnaseq_cellranger(

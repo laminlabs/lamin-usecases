@@ -2,9 +2,8 @@ import lamindb as ln
 
 
 # Post-process 3 cellranger output files
-ln.settings.transform.stem_uid = "YqmbO6oMXjRj"
-ln.settings.transform.version = "2"
-ln.track()
+ln.context.uid = "YqmbO6oMXjRj0000"
+ln.context.track()
 
 output_artifacts = ln.Artifact.filter(
     key__startswith="perturbseq/filtered_feature_bc_matrix"
