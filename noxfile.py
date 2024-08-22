@@ -83,7 +83,9 @@ def install(session, group):
         run(session, "uv pip install --system tiledbsoma")
     elif group == "by_registry":
         extras += ",zarr,jupyter"
-        run(session, "uv pip install --system celltypist")
+        run(
+            session, "pip install celltypist"
+        )  # uv pulls very old llvmlite for some reason
         run(session, "uv pip install --system gseapy")
         run(session, "uv pip install --system rdflib")
     elif group == "by_ontology":
