@@ -13,4 +13,4 @@ upload_dir = ln.core.datasets.dir_scrnaseq_cellranger(
 ln.Artifact(upload_dir.parent / "fastq/perturbseq_R1_001.fastq.gz").save()
 ln.Artifact(upload_dir.parent / "fastq/perturbseq_R2_001.fastq.gz").save()
 
-ln.core.finish()
+ln.context.finish()
