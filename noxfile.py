@@ -74,8 +74,10 @@ def install(session, group):
     extras = "bionty"
     if group == "by_datatype":
         extras += ",fcs,jupyter"
-        run(session, "uv pip install --system pytometry")  # includes scanpy
-        run(session, "uv pip install --system dask[dataframe]")  # needed by datashader
+        run(
+            session, "uv pip install --system pytometry dask[dataframe]"
+        )  # needed by datashader
+        run(session, "uv pip install --system --upgrade scanpy")
         run(session, "uv pip install --system mudata")
         run(session, "uv pip install --system torch")
         run(session, "uv pip install --system tiledbsoma")
