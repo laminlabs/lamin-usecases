@@ -14,11 +14,13 @@ curate = ln.Curate.from_anndata(
     var_index=bt.Gene.ensembl_gene_id,
     categoricals={
         "cell_type": bt.CellType.name,
+        "cell_type_id": bt.CellType.ontology_id,
         "tissue": bt.Tissue.name,
         "disease": bt.Disease.name,
     },
     organism="human",
 )
+curate.add_validated_from_var_index()
 curate.add_validated_from("all")
 curate.add_new_from("cell_type")
 curate.validate()
