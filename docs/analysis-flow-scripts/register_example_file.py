@@ -2,7 +2,7 @@ import lamindb as ln
 import bionty as bt
 
 
-ln.context.uid = "QkQJXJlOTsyM0000"
+ln.context.uid = "K4wsS5DTYdFp0001"
 ln.context.track()
 
 # an example dataset that has a few cell type, tissue and disease annotations
