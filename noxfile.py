@@ -22,7 +22,7 @@ GROUPS["by_datatype"] = [
     "scrna3.ipynb",
     "scrna4.ipynb",
     "scrna5.ipynb",
-    "scrna6.ipynb",
+    "scrna-tiledbsoma.ipynb",
     "bulkrna.ipynb",
     "facs.ipynb",
     "facs2.ipynb",
@@ -74,16 +74,18 @@ def install(session, group):
     extras = "bionty"
     if group == "by_datatype":
         extras += ",fcs,jupyter"
-        run(session, "uv pip install --system scanpy")
         run(
             session, "uv pip install --system pytometry dask[dataframe]"
         )  # needed by datashader
+        run(session, "uv pip install --system --upgrade scanpy")
         run(session, "uv pip install --system mudata")
         run(session, "uv pip install --system torch")
         run(session, "uv pip install --system tiledbsoma")
     elif group == "by_registry":
         extras += ",zarr,jupyter"
-        run(session, "uv pip install --system celltypist")
+        run(
+            session, "pip install celltypist"
+        )  # uv pulls very old llvmlite for some reason
         run(session, "uv pip install --system gseapy")
         run(session, "uv pip install --system rdflib")
     elif group == "by_ontology":
