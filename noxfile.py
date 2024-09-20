@@ -72,7 +72,7 @@ def lint(session: nox.Session) -> None:
     ["by_datatype", "by_registry", "by_ontology", "docs"],
 )
 def install(session, group):
-    extras = "bionty"
+    extras = "bionty,aws"
     if group == "by_datatype":
         extras += ",fcs,jupyter"
         run(
