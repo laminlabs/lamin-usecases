@@ -81,6 +81,7 @@ def install(session, group):
         run(session, "uv pip install --system mudata")
         run(session, "uv pip install --system torch")
         run(session, "uv pip install --system tiledbsoma")
+        run(session, "uv pip install --system git+https://github.com/laminlabs/wetlab")
     elif group == "by_registry":
         extras += ",zarr,jupyter"
         run(
