@@ -1,10 +1,15 @@
 from pathlib import Path
+from typing import TYPE_CHECKING
+
+import anndata as ad
 
 DATASETDIR = Path(__file__).parent.resolve() / "data/"
 DATASETDIR.mkdir(exist_ok=True)
 
 
-def anndata_seurat_ifnb(preprocess: bool = True, populate_registries: bool = False):
+def anndata_seurat_ifnb(
+    preprocess: bool = True, populate_registries: bool = False
+) -> ad.AnnData:
     """Seurat ifnb dataset.
 
     PBMCs were split into a stimulated and control group and the stimulated group was treated with interferon beta.
@@ -87,5 +92,26 @@ def anndata_seurat_ifnb(preprocess: bool = True, populate_registries: bool = Fal
         adata.raw.var.index = adata.var.index
         ln.save(bt.Gene.from_values(adata.var.index))
         ln.settings.verbosity = verbosity
+
+    return adata
+
+
+def anndata_mcfarland() -> ad.AnnData:
+    """Reduced dataset of McFarland 2020.
+
+    Dataset obtained from https://zenodo.org/record/7041849/files/McFarlandTsherniak2020.h5ad
+    Subsampled to 20% of the original data.
+    """
+    import anndata as ad
+    from bionty.base.dev._io import s3_bionty_assets
+
+    filepath = DATASETDIR / "mcfarland.h5ad"
+    s3_bionty_assets(
+        filename="mcfarland.h5ad",
+        localpath=filepath,
+        assets_base_url="s3://lamindb-test",
+    )
+
+    adata = ad.read(filepath)
 
     return adata
