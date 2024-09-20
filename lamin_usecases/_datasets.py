@@ -35,7 +35,7 @@ def anndata_seurat_ifnb(
         assets_base_url="s3://lamindb-test",
     )
 
-    adata = ad.read(filepath)
+    adata = ad.read_h5ad(filepath)
     # from https://satijalab.org/seurat/archive/v3.2/immune_alignment.html
     anno_mapper = {
         "0": "CD14 Mono",
@@ -112,6 +112,6 @@ def anndata_mcfarland() -> ad.AnnData:
         assets_base_url="s3://lamindb-test",
     )
 
-    adata = ad.read(filepath)
+    adata = ad.read_h5ad(filepath)
 
     return adata
