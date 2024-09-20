@@ -30,6 +30,7 @@ GROUPS["by_datatype"] = [
     "facs4.ipynb",
     "spatial.ipynb",
     "multimodal.ipynb",
+    "perturbation.ipynb",
 ]
 GROUPS["by_registry"] = [
     "enrichr.ipynb",
