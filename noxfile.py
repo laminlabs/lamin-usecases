@@ -76,7 +76,7 @@ def install(session, group):
     if group == "by_datatype":
         extras += ",fcs,jupyter"
         run(
-            session, "uv pip install --system pytometry dask[dataframe]>=2024.9.0"
+            session, "uv pip install --system pytometry dask[dataframe]"
         )  # needed by datashader
         run(session, "uv pip install --system --upgrade scanpy")
         run(session, "uv pip install --system mudata")
