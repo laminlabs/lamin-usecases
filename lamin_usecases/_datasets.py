@@ -97,10 +97,10 @@ def anndata_seurat_ifnb(
 
 
 def anndata_mcfarland() -> ad.AnnData:
-    """Reduced dataset of McFarland 2020.
+    """Reduced and mostly curated dataset of McFarland 2020.
 
     Dataset obtained from https://zenodo.org/record/7041849/files/McFarlandTsherniak2020.h5ad
-    Subsampled to 20% of the original data.
+    Subsampled to 1000 cells of the original dataset.
     """
     import anndata as ad
     from bionty.base.dev._io import s3_bionty_assets
