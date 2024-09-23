@@ -78,7 +78,7 @@ def install(session, group):
         run(
             session,
             "uv pip install --system git+https://github.com/scverse/pytometry.git@main dask[dataframe]",
-        )  # needed by datashader
+        )  # Install from git for Pandas 2.x support. Waiting for 0.16 release. Dask is needed by datashader
         run(session, "uv pip install --system --upgrade scanpy")
         run(session, "uv pip install --system mudata")
         run(session, "uv pip install --system torch")
