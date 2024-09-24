@@ -30,6 +30,7 @@ GROUPS["by_datatype"] = [
     "facs4.ipynb",
     "spatial.ipynb",
     "multimodal.ipynb",
+    "perturbation.ipynb",
 ]
 GROUPS["by_registry"] = [
     "enrichr.ipynb",
@@ -71,16 +72,18 @@ def lint(session: nox.Session) -> None:
     ["by_datatype", "by_registry", "by_ontology", "docs"],
 )
 def install(session, group):
-    extras = "bionty"
+    extras = "bionty,aws"
     if group == "by_datatype":
         extras += ",fcs,jupyter"
         run(
-            session, "uv pip install --system pytometry dask[dataframe]"
-        )  # needed by datashader
+            session,
+            "uv pip install --system git+https://github.com/scverse/pytometry.git@main dask[dataframe]",
+        )  # Install from git for Pandas 2.x support. Waiting for 0.16 release. Dask is needed by datashader
         run(session, "uv pip install --system --upgrade scanpy")
         run(session, "uv pip install --system mudata")
         run(session, "uv pip install --system torch")
         run(session, "uv pip install --system tiledbsoma")
+        run(session, "uv pip install --system wetlab")
     elif group == "by_registry":
         extras += ",zarr,jupyter"
         run(
