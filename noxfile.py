@@ -77,7 +77,7 @@ def install(session, group):
         extras += ",fcs,jupyter"
         run(
             session,
-            "uv pip install --system pytrometry dask[dataframe]",
+            "uv pip install --system pytometry dask[dataframe]",
         )  # Dask is needed by datashader
         run(session, "uv pip install --system --upgrade scanpy")
         run(session, "uv pip install --system mudata")
