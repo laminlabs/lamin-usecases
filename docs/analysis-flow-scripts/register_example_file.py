@@ -26,4 +26,4 @@ curate.add_new_from("cell_type")
 curate.validate()
 curate.save_artifact(description="anndata with obs")
 
-ln.context.finish()
+ln.finish()
