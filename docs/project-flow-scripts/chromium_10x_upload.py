@@ -1,10 +1,7 @@
 import lamindb as ln
 
-
 ln.setup.login("testuser1")
-
-ln.context.uid = "qCJPkOuZAi9q0000"
-ln.context.track()
+ln.track("qCJPkOuZAi9q0000")
 
 # register output files of the sequencer
 upload_dir = ln.core.datasets.dir_scrnaseq_cellranger(
@@ -13,4 +10,4 @@ upload_dir = ln.core.datasets.dir_scrnaseq_cellranger(
 ln.Artifact(upload_dir.parent / "fastq/perturbseq_R1_001.fastq.gz").save()
 ln.Artifact(upload_dir.parent / "fastq/perturbseq_R2_001.fastq.gz").save()
 
-ln.context.finish()
+ln.finish()
