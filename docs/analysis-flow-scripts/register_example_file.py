@@ -19,8 +19,6 @@ curate = ln.Curator.from_anndata(
     },
     organism="human",
 )
-curate.add_validated_from_var_index()
-curate.add_validated_from("all")
 curate.add_new_from("cell_type")
 curate.validate()
 curate.save_artifact(description="anndata with obs")
