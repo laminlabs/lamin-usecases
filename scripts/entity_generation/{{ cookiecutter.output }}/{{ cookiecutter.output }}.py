@@ -139,11 +139,11 @@ df_orig.index[~validated]
 # For any given entity, we can choose from a number of versions:
 
 # %% tags=["hide-output"]
-bt.{{ cookiecutter.entity }}.list_source().df()
+bt.Source.filter(entity="bionty.{{ cookiecutter.entity }}").df()
 
 # %%
 # only lists the sources that are currently used
-bt.{{ cookiecutter.entity }}.list_source(currently_used=True).df()
+bt.Source.filter(entity="bionty.{{ cookiecutter.entity }}", currently_used=True).df()
 
 # %% [markdown]
 # When instantiating a Bionty object, we can choose a source or version:
