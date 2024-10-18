@@ -1,7 +1,6 @@
 import lamindb as ln
 import bionty as bt
 
-
 ln.track("K4wsS5DTYdFp0000")
 
 # an example dataset that has a few cell type, tissue and disease annotations
