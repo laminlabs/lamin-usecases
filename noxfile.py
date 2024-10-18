@@ -18,10 +18,10 @@ nox.options.default_venv_backend = "none"
 GROUPS = {}
 GROUPS["by_datatype"] = [
     "scrna.ipynb",
-    "scrna2.ipynb",
+    "scrna-append.ipynb",
     "scrna3.ipynb",
     "scrna4.ipynb",
-    "scrna5.ipynb",
+    "scrna-mappedcollection.ipynb",
     "scrna-tiledbsoma.ipynb",
     "bulkrna.ipynb",
     "facs.ipynb",
