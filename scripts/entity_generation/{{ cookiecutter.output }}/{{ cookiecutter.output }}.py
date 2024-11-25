@@ -89,19 +89,13 @@ lookup.{{ cookiecutter.alternative_field_value }}
 {{ cookiecutter.entity_lower }}s.search("{{ cookiecutter.search_value }}").head(3)
 
 # %% [markdown]
-# By default, search also covers synonyms:
+# By default, search also covers synonyms and all other fileds containing strings:
 
 # %%
 {{ cookiecutter.entity_lower }}s.search("{{ cookiecutter.search_synonyms_value }}").head(3)
 
 # %% [markdown]
-# You can turn this off synonym by passing `synonyms_field=None`:
-
-# %%
-{{ cookiecutter.entity_lower }}s.search("{{ cookiecutter.search_synonyms_value }}", synonyms_field=None).head(3)
-
-# %% [markdown]
-# Search another field (default is `.name`):
+# Search specific field (by default, search is done on all fields containing strings):
 
 # %%
 {{ cookiecutter.entity_lower }}s.search(
