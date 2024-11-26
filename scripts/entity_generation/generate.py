@@ -158,7 +158,7 @@ pathway = {
     "search_value": "acetyl-coa assimilation",
     "search_synonyms_value": "acetyl-CoA catabolism",
     "search_field": "definition",
-    "search_query": "Chemical reactions and pathways resulting in the breakdown of Cinnamic Acid,3-Phenyl-2-Propenoic Acid.",
+    "search_query": "chemical reactions and pathways resulting in the breakdown of acetyl-CoA",
     "identifiers": "GO:1905210,GO:1905211,GO:1905212,GO:1905208",
     "database": "go",
     "version": "2023-05-10",
