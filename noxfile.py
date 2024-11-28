@@ -82,7 +82,7 @@ def install(session, group):
         run(session, "uv pip install --system --upgrade scanpy")
         run(session, "uv pip install --system mudata")
         run(session, "uv pip install --system torch")
-        run(session, "uv pip install --system tiledbsoma>=1.15.0rc3,!=1.15.0rc4")
+        run(session, "uv pip install --system tiledbsoma==1.15.0rc3")
         run(session, "uv pip install --system wetlab")
     elif group == "by_registry":
         extras += ",zarr,jupyter"
