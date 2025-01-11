@@ -30,7 +30,6 @@ GROUPS["by_datatype"] = [
     "facs4.ipynb",
     "spatial.ipynb",
     "multimodal.ipynb",
-    "perturbation.ipynb",
 ]
 GROUPS["by_registry"] = [
     "enrichr.ipynb",
@@ -99,7 +98,7 @@ def install(session, group):
         session, "uv pip install --system ipywidgets"
     )  # needed to silence the jupyter warning
     run(session, "uv pip install --system .[dev]")
-    branch = "main" if IS_PR else "release"  # point back to "release"
+    branch = "intfixes" if IS_PR else "release"  # point back to "release"
     install_lamindb(session, branch=branch, extras=extras)
 
 
