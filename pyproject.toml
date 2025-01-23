@@ -116,3 +116,4 @@ convention = "google"
 "docs/*" = ["I"]
 "tests/*" = ["D"]
 "*/__init__.py" = ["F401"]
+"docs/scrna-mappedcollection.ipynb" = ["B007"]
