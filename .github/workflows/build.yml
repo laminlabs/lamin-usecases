@@ -16,7 +16,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: ["3.11"]
+        python-version: ["3.12"]
         group:
           - "by_datatype"
           - "by_registry"
@@ -54,6 +54,7 @@ jobs:
       - name: Cache postgres use
         if: steps.cache-postgres.outputs.cache-hit == 'true'
         run: docker image load --input ~/postgres.tar
+
       - run: pip install "laminci@git+https://x-access-token:${{ secrets.LAMIN_BUILD_DOCS }}@github.com/laminlabs/laminci"
       - name: install postgres graphviz
         run: sudo apt-get -y install graphviz
@@ -62,8 +63,9 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
+
       - run: nox -s lint
-        if: ${{ matrix.python-version == '3.11' && matrix.group == 'unit' }}
+        if: ${{ matrix.python-version == '3.12' && matrix.group == 'unit' }}
       - run: nox -s "install(group='${{ matrix.group }}')"
       - run: nox -s "build(group='${{ matrix.group }}')"
 
@@ -81,6 +83,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
       - name: checkout lndocs
         uses: actions/checkout@v4
         with:
@@ -88,14 +91,17 @@ jobs:
           ssh-key: ${{ secrets.READ_LNDOCS }}
           path: lndocs
           ref: main
+
       - uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
+
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: "3.12"
+
       - run: pip install "laminci@git+https://x-access-token:${{ secrets.LAMIN_BUILD_DOCS }}@github.com/laminlabs/laminci"
       - run: nox -s "install(group='docs')"
       - uses: actions/download-artifact@v4
