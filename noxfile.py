@@ -17,6 +17,7 @@ nox.options.default_venv_backend = "none"
 
 GROUPS = {}
 GROUPS["by_datatype"] = [
+    "ehr.ipynb",
     "scrna.ipynb",
     "scrna2.ipynb",
     "scrna3.ipynb",
