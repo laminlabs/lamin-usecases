@@ -117,3 +117,8 @@ convention = "google"
 "tests/*" = ["D"]
 "*/__init__.py" = ["F401"]
 "docs/scrna-mappedcollection.ipynb" = ["B007"]
+
+[tool.pytest.ini_options]
+filterwarnings = [
+    "ignore:Jupyter is migrating its paths to use standard platformdirs:DeprecationWarning"
+]
