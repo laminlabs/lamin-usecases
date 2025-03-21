@@ -135,3 +135,7 @@ docs/test-facs/
 docs/suo22/
 docs/test-perturbation
 test.ipynb
+docs/input_data_imaging_usecase
+docs/processed_data
+docs/test-imaging
+docs/CellFeaturizer_*/temp_mmap_*.hdf
