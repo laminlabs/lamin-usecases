@@ -123,7 +123,9 @@ def build(session, group):
     target_dir = Path(f"./docs_{group}")
     target_dir.mkdir(exist_ok=True)
     for filename in GROUPS[group]:
-        shutil.copy(Path("docs") / f"{filename}.ipynb", target_dir / filename)
+        shutil.copy(
+            Path("docs") / f"{filename}.ipynb", target_dir / f"{filename}.ipynb"
+        )
 
 
 @nox.session
