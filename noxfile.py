@@ -17,20 +17,6 @@ nox.options.default_venv_backend = "none"
 
 GROUPS = {}
 GROUPS["by_datatype"] = [
-    "ehr",
-    "scrna",
-    "scrna2",
-    "scrna3",
-    "scrna4",
-    "scrna-mappedcollection",
-    "scrna-tiledbsoma",
-    "bulkrna",
-    "facs",
-    "facs2",
-    "facs3",
-    "facs4",
-    "spatial",
-    "multimodal",
     "imaging",
     "imaging2",
     "imaging3",
