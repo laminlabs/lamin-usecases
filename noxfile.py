@@ -17,48 +17,48 @@ nox.options.default_venv_backend = "none"
 
 GROUPS = {}
 GROUPS["by_datatype"] = [
-    "ehr.ipynb",
-    "scrna.ipynb",
-    "scrna2.ipynb",
-    "scrna3.ipynb",
-    "scrna4.ipynb",
-    "scrna-mappedcollection.ipynb",
-    "scrna-tiledbsoma.ipynb",
-    "bulkrna.ipynb",
-    "facs.ipynb",
-    "facs2.ipynb",
-    "facs3.ipynb",
-    "facs4.ipynb",
-    "spatial.ipynb",
-    "multimodal.ipynb",
-    "imaging.ipynb",
-    "imaging2.ipynb",
-    "imaging3.ipynb",
-    "imaging4.ipynb",
+    "ehr",
+    "scrna",
+    "scrna2",
+    "scrna3",
+    "scrna4",
+    "scrna-mappedcollection",
+    "scrna-tiledbsoma",
+    "bulkrna",
+    "facs",
+    "facs2",
+    "facs3",
+    "facs4",
+    "spatial",
+    "multimodal",
+    "imaging",
+    "imaging2",
+    "imaging3",
+    "imaging4",
 ]
 GROUPS["by_registry"] = [
-    "enrichr.ipynb",
-    "celltypist.ipynb",
-    "analysis-registries.ipynb",
+    "enrichr",
+    "celltypist",
+    "analysis-registries",
     # these could be bucketed elsewhere
-    "analysis-flow.ipynb",
-    "project-flow.ipynb",
-    "rdf-sparql.ipynb",
+    "analysis-flow",
+    "project-flow",
+    "rdf-sparql",
 ]
 GROUPS["by_ontology"] = [
-    "gene.ipynb",
-    "cell_line.ipynb",
-    "cell_marker.ipynb",
-    "cell_type.ipynb",
-    "developmental_stage.ipynb",
-    "disease.ipynb",
-    "ethnicity.ipynb",
-    "experimental_factor.ipynb",
-    "organism.ipynb",
-    "pathway.ipynb",
-    "phenotype.ipynb",
-    "protein.ipynb",
-    "tissue.ipynb",
+    "gene",
+    "cell_line",
+    "cell_marker",
+    "cell_type",
+    "developmental_stage",
+    "disease",
+    "ethnicity",
+    "experimental_factor",
+    "organism",
+    "pathway",
+    "phenotype",
+    "protein",
+    "tissue",
 ]
 
 
@@ -76,7 +76,7 @@ def lint(session: nox.Session) -> None:
     ["by_datatype", "by_registry", "by_ontology", "docs"],
 )
 def install(session, group):
-    extras = "bionty,wetlab"
+    extras = "bionty,aws"
     if group == "by_datatype":
         extras += ",fcs,jupyter"
         run(
@@ -87,6 +87,7 @@ def install(session, group):
         run(session, "uv pip install --system mudata")
         run(session, "uv pip install --system torch")
         run(session, "uv pip install --system tiledbsoma")
+        run(session, "uv pip install --system numpy<2")
         run(session, "uv pip install --system scportrait")
     elif group == "by_registry":
         extras += ",zarr,jupyter"
@@ -96,7 +97,7 @@ def install(session, group):
         run(session, "uv pip install --system gseapy")
         run(session, "uv pip install --system rdflib")
     elif group == "by_ontology":
-        extras += ",jupyter"
+        extras += ",aws,jupyter"
     elif group == "docs":
         extras += ""
     run(
