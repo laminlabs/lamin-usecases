@@ -76,19 +76,20 @@ def lint(session: nox.Session) -> None:
     ["by_datatype", "by_registry", "by_ontology", "docs"],
 )
 def install(session, group):
-    extras = "bionty,aws"
+    extras = "bionty"
     if group == "by_datatype":
         extras += ",fcs,jupyter"
         run(
             session,
             "uv pip install --system pytometry dask[dataframe]",
         )  # Dask is needed by datashader
-        run(session, "uv pip install --system --upgrade scanpy")
         run(session, "uv pip install --system mudata")
         run(session, "uv pip install --system torch")
         run(session, "uv pip install --system tiledbsoma")
-        run(session, "uv pip install --system numpy<2")
         run(session, "uv pip install --system scportrait")
+        run(
+            session, "uv pip install --system --upgrade scanpy"
+        )  # ensure compatible numpy and numba versions
     elif group == "by_registry":
         extras += ",zarr,jupyter"
         run(
@@ -97,7 +98,7 @@ def install(session, group):
         run(session, "uv pip install --system gseapy")
         run(session, "uv pip install --system rdflib")
     elif group == "by_ontology":
-        extras += ",aws,jupyter"
+        extras += ",jupyter"
     elif group == "docs":
         extras += ""
     run(
@@ -124,7 +125,7 @@ def build(session, group):
     target_dir = Path(f"./docs_{group}")
     target_dir.mkdir(exist_ok=True)
     for filename in GROUPS[group]:
-        shutil.copy(Path("docs") / f"{filename}", target_dir / f"{filename}")
+        shutil.copy(Path("docs") / filename, target_dir / filename)
 
 
 @nox.session

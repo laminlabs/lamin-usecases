@@ -24,7 +24,7 @@ dev = [
 ]
 
 [tool.ruff]
-src = ["bionty"]
+src = ["lamin_usecases"]
 line-length = 88
 lint.select = [
     "F",  # Errors detected by Pyflakes
