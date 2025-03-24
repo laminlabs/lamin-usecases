@@ -83,13 +83,16 @@ def install(session, group):
             session,
             "uv pip install --system pytometry dask[dataframe]",
         )  # Dask is needed by datashader
+        run(
+            session, "uv pip install --system --upgrade scanpy"
+        )  # ensure compatible numpy and numba versions
         run(session, "uv pip install --system mudata")
         run(session, "uv pip install --system torch")
         run(session, "uv pip install --system tiledbsoma")
         run(session, "uv pip install --system scportrait")
         run(
-            session, "uv pip install --system --upgrade scanpy"
-        )  # ensure compatible numpy and numba versions
+            session, "uv pip install --system numpy<2"
+        )  # https://github.com/scverse/pytometry/issues/80
     elif group == "by_registry":
         extras += ",zarr,jupyter"
         run(
@@ -125,7 +128,9 @@ def build(session, group):
     target_dir = Path(f"./docs_{group}")
     target_dir.mkdir(exist_ok=True)
     for filename in GROUPS[group]:
-        shutil.copy(Path("docs") / filename, target_dir / filename)
+        shutil.copy(
+            Path("docs") / f"{filename}.ipynb", target_dir / f"{filename}.ipynb"
+        )
 
 
 @nox.session
