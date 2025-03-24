@@ -135,3 +135,5 @@ docs/test-facs/
 docs/suo22/
 docs/test-perturbation
 test.ipynb
+*.zarr
+run-tests
