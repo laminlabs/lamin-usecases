@@ -86,7 +86,7 @@ def install(session, group):
         run(session, "uv pip install --system mudata")
         run(session, "uv pip install --system tiledbsoma")
         run(
-            session, "uv pip install --system setuptools<0.78.0"
+            session, "uv pip install --system setuptools<78.0"
         )  #  https://github.com/soft-matter/pims/issues/462
         run(session, "uv pip install --system scportrait")
         run(
