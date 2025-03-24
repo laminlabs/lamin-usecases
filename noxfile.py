@@ -105,7 +105,7 @@ def install(session, group):
         session, "uv pip install --system ipywidgets"
     )  # needed to silence the jupyter warning
     run(session, "uv pip install --system .[dev]")
-    branch = "release" if IS_PR else "release"  # TODO back to main
+    branch = "main" if IS_PR else "release"
     install_lamindb(session, branch=branch, extras=extras)
 
 
@@ -134,6 +134,6 @@ def docs(session):
     for group in ["by_datatype", "by_registry", "by_ontology"]:
         for path in Path(f"./docs_{group}").glob("*"):
             path.rename(f"./docs/{path.name}.ipynb")
-    run(session, "lamin init --storage ./docsbuild --schema bionty")
+    run(session, "lamin init --storage ./docsbuild --modules bionty")
     build_docs(session, strict=True)
     upload_docs_artifact(aws=True)
