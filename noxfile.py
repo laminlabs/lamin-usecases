@@ -85,7 +85,7 @@ def install(session, group):
         )  # Dask is needed by datashader
         run(session, "uv pip install --system mudata")
         run(session, "uv pip install --system tiledbsoma")
-        run(session, "uv pip install --system pims")
+        run(session, "pip install pims")
         run(session, "uv pip install --system scportrait")
         run(
             session, "uv pip install --system numpy<2"
