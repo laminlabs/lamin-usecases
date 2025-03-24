@@ -83,12 +83,9 @@ def install(session, group):
             session,
             "uv pip install --system pytometry dask[dataframe]",
         )  # Dask is needed by datashader
-        run(
-            session, "uv pip install --system --upgrade scanpy"
-        )  # ensure compatible numpy and numba versions
         run(session, "uv pip install --system mudata")
-        run(session, "uv pip install --system torch")
         run(session, "uv pip install --system tiledbsoma")
+        run(session, "uv pip install --system pims")
         run(session, "uv pip install --system scportrait")
         run(
             session, "uv pip install --system numpy<2"
