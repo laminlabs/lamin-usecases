@@ -89,7 +89,7 @@ def install(session, group):
         run(session, "uv pip install --system mudata")
         run(session, "uv pip install --system torch")
         run(session, "uv pip install --system tiledbsoma")
-        run(session, "uv pip install --system scportrait")
+        run(session, "uv pip install --system scportrait<1.3.3")
         run(
             session, "uv pip install --system numpy<2"
         )  # https://github.com/scverse/pytometry/issues/80
