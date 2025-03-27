@@ -31,6 +31,10 @@ GROUPS["by_datatype"] = [
     "facs4.ipynb",
     "spatial.ipynb",
     "multimodal.ipynb",
+    "imaging.ipynb",
+    "imaging2.ipynb",
+    "imaging3.ipynb",
+    "imaging4.ipynb",
 ]
 GROUPS["by_registry"] = [
     "enrichr.ipynb",
@@ -72,18 +76,16 @@ def lint(session: nox.Session) -> None:
     ["by_datatype", "by_registry", "by_ontology", "docs"],
 )
 def install(session, group):
-    extras = "bionty,aws"
+    extras = "bionty"
     if group == "by_datatype":
         extras += ",fcs,jupyter"
         run(
             session,
             "uv pip install --system pytometry dask[dataframe]",
         )  # Dask is needed by datashader
-        run(session, "uv pip install --system --upgrade scanpy")
         run(session, "uv pip install --system mudata")
-        run(session, "uv pip install --system torch")
         run(session, "uv pip install --system tiledbsoma")
-        run(session, "uv pip install --system wetlab")
+        run(session, "uv pip install --system scportrait")
         run(
             session, "uv pip install --system numpy<2"
         )  # https://github.com/scverse/pytometry/issues/80
@@ -95,14 +97,14 @@ def install(session, group):
         run(session, "uv pip install --system gseapy")
         run(session, "uv pip install --system rdflib")
     elif group == "by_ontology":
-        extras += ",aws,jupyter"
+        extras += ",jupyter"
     elif group == "docs":
         extras += ""
     run(
         session, "uv pip install --system ipywidgets"
     )  # needed to silence the jupyter warning
     run(session, "uv pip install --system .[dev]")
-    branch = "main" if IS_PR else "release"  # point back to "release"
+    branch = "main" if IS_PR else "release"
     install_lamindb(session, branch=branch, extras=extras)
 
 
@@ -117,6 +119,7 @@ def build(session, group):
     if group == "by_ontology":
         run(session, "python ./scripts/entity_generation/generate.py")
     run(session, f"pytest -s ./tests/test_notebooks.py::test_{group}")
+
     # move artifacts into right place
     target_dir = Path(f"./docs_{group}")
     target_dir.mkdir(exist_ok=True)

@@ -143,7 +143,7 @@ phenotype = {
     "search_query": "lack of development of speech and language",
     "identifiers": "Specific learning disability,Dystonia,Cerebral hemorrhage,Slurred speech",
     "database": "hp",
-    "version": "2023-06-17",
+    "version": "2024-04-26",
     "organism": "human",
     "sources": "1. [Human Phenotype](https://hpo.jax.org/app),2. [Phecodes](https://phewascatalog.org/phecodes_icd10),3. [PATO](https://github.com/pato-ontology/pato),4. [Mammalian Phenotype](http://obofoundry.org/ontology/mp.html)",
 }
