@@ -88,10 +88,9 @@ def install(session, group):
             session,
             "uv pip install --system pytometry dask[dataframe]",
         )  # Dask is needed by datashader
-        run(session, "uv pip install --system mudata tiledbsoma pytorch-lightning")
         run(
             session,
-            "uv pip install --system spatialdata spatialdata-plot squidpy scanpy[leiden]",
+            "uv pip install --system mudata tiledbsoma pytorch-lightning spatialdata spatialdata-plot squidpy scanpy[leiden] monai",
         )
         run(
             session, "uv pip install --system numpy<2"
