@@ -8,7 +8,7 @@ You'll need a lamindb instance with the `bionty` schema module mounted.
 
 ```shell
 # !pip install 'lamindb[bionty]'
-lamin init --storage <storage_name> --schema bionty
+lamin init --storage <storage_name> --modules bionty
 ```
 
 The guides cover the following entities.
