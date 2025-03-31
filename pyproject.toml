@@ -101,7 +101,7 @@ lint.ignore = [
     "D413",
     # Imports unused
     "F401",
-    # camcelcase imported as lowercase
+    # camelcase imported as lowercase
     "N813",
     # module import not at top level of file
     "E402",
