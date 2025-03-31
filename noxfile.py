@@ -31,10 +31,6 @@ GROUPS["by_datatype"] = [
     "facs4.ipynb",
     "spatial.ipynb",
     "multimodal.ipynb",
-    "imaging.ipynb",
-    "imaging2.ipynb",
-    "imaging3.ipynb",
-    "imaging4.ipynb",
 ]
 GROUPS["by_registry"] = [
     "enrichr.ipynb",
@@ -60,6 +56,12 @@ GROUPS["by_ontology"] = [
     "protein.ipynb",
     "tissue.ipynb",
 ]
+GROUPS["sc-imaging"] = [
+    "sc-imaging.ipynb",
+    "sc-imaging2.ipynb",
+    "sc-imaging3.ipynb",
+    "sc-imaging4.ipynb",
+]
 
 
 IS_PR = os.getenv("GITHUB_EVENT_NAME") != "push"
@@ -73,7 +75,7 @@ def lint(session: nox.Session) -> None:
 @nox.session
 @nox.parametrize(
     "group",
-    ["by_datatype", "by_registry", "by_ontology", "docs"],
+    ["by_datatype", "by_registry", "by_ontology", "sc_imaging", "docs"],
 )
 def install(session, group):
     extras = "bionty"
@@ -85,7 +87,6 @@ def install(session, group):
         )  # Dask is needed by datashader
         run(session, "uv pip install --system mudata")
         run(session, "uv pip install --system tiledbsoma")
-        run(session, "uv pip install --system scportrait")
         run(
             session, "uv pip install --system numpy<2"
         )  # https://github.com/scverse/pytometry/issues/80
@@ -98,6 +99,9 @@ def install(session, group):
         run(session, "uv pip install --system rdflib")
     elif group == "by_ontology":
         extras += ",jupyter"
+    elif group == "sc_imaging":
+        extras += ",jupyter"
+        run(session, "uv pip install --system scportrait")
     elif group == "docs":
         extras += ""
     run(
@@ -111,7 +115,7 @@ def install(session, group):
 @nox.session
 @nox.parametrize(
     "group",
-    ["by_datatype", "by_registry", "by_ontology"],
+    ["by_datatype", "by_registry", "by_ontology", "sc_imaging"],
 )
 def build(session, group):
     login_testuser2(session)
@@ -130,7 +134,7 @@ def build(session, group):
 @nox.session
 def docs(session):
     # move artifacts into right place
-    for group in ["by_datatype", "by_registry", "by_ontology"]:
+    for group in ["by_datatype", "by_registry", "by_ontology", "sc_imaging"]:
         for path in Path(f"./docs_{group}").glob("*"):
             path.rename(f"./docs/{path.name}")
     run(session, "lamin init --storage ./docsbuild --modules bionty")

@@ -8,6 +8,6 @@ bulkrna
 facs
 spatial
 multimodal
-imaging
+sc-imaging
 ehr
 ```
