@@ -91,7 +91,7 @@ def install(session, group):
         run(session, "uv pip install --system mudata tiledbsoma torch")
         run(
             session,
-            "uv pip install --system spatialdata[spatialdata-plot] squidpy scanpy[leiden]",
+            "uv pip install --system spatialdata spatialdata-plot squidpy scanpy[leiden]",
         )
         run(
             session, "uv pip install --system numpy<2"
