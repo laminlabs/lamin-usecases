@@ -30,6 +30,9 @@ GROUPS["by_datatype"] = [
     "facs3.ipynb",
     "facs4.ipynb",
     "spatial.ipynb",
+    "spatial2.ipynb",
+    "spatial3.ipynb",
+    "spatial4.ipynb",
     "multimodal.ipynb",
 ]
 GROUPS["by_registry"] = [
@@ -86,6 +89,10 @@ def install(session, group):
             "uv pip install --system pytometry dask[dataframe]",
         )  # Dask is needed by datashader
         run(session, "uv pip install --system mudata tiledbsoma torch")
+        run(
+            session,
+            "uv pip install --system spatialdata[spatialdata-plot] squidpy scanpy[leiden]",
+        )
         run(
             session, "uv pip install --system numpy<2"
         )  # https://github.com/scverse/pytometry/issues/80
