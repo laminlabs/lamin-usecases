@@ -56,7 +56,7 @@ GROUPS["by_ontology"] = [
     "protein.ipynb",
     "tissue.ipynb",
 ]
-GROUPS["sc-imaging"] = [
+GROUPS["sc_imaging"] = [
     "sc-imaging.ipynb",
     "sc-imaging2.ipynb",
     "sc-imaging3.ipynb",
