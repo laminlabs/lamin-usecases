@@ -115,6 +115,7 @@ _docs_tmp*
 *.fcs
 *.json
 *.ttl
+*.zarr
 data/
 celltypist/
 enrichr/
@@ -135,3 +136,9 @@ docs/test-facs/
 docs/suo22/
 docs/test-perturbation
 test.ipynb
+docs/input_data_imaging_usecase
+docs/processed_data
+docs/test-sc-imaging
+docs/CellFeaturizer_*/temp_mmap_*.hdf
+docs/test-ehrschema
+run-tests
