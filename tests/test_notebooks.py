@@ -28,6 +28,12 @@ def test_by_ontology():
         test.execute_notebooks(DOCS / filename, write=True)
 
 
+def test_spatial():
+    for filename in GROUPS["spatial"]:
+        print(filename)
+        test.execute_notebooks(DOCS / filename, write=True)
+
+
 def test_sc_imaging():
     for filename in GROUPS["sc_imaging"]:
         print(filename)
