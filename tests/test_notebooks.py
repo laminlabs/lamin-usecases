@@ -26,3 +26,9 @@ def test_by_ontology():
     for filename in GROUPS["by_ontology"]:
         print(filename)
         test.execute_notebooks(DOCS / filename, write=True)
+
+
+def test_sc_imaging():
+    for filename in GROUPS["sc_imaging"]:
+        print(filename)
+        test.execute_notebooks(DOCS / filename, write=True)
