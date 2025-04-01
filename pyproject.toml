@@ -4,7 +4,7 @@ build-backend = "flit_core.buildapi"
 
 [project]
 name = "lamin_usecases"
-authors = [{name = "Lamin Labs", email = "laminlabs@gmail.com"}]
+authors = [{name = "Lamin Labs", email = "open-source@gmail.com"}]
 readme = "README.md"
 dynamic = ["version", "description"]
 dependencies = []
