@@ -24,15 +24,9 @@ jobs:
         with:
           filters: |
             spatial:
-              - 'docs/spatial/**'
-              - 'docs/spatial2/**'
-              - 'docs/spatial3/**'
-              - 'docs/spatial4/**'
+              - 'docs/spatial**'
             sc_imaging:
-              - 'docs/sc-imaging/**'
-              - 'docs/sc-imaging2/**'
-              - 'docs/sc-imaging3/**'
-              - 'docs/imaging-4/**'
+              - 'docs/sc-imaging**'
 
       - id: set-matrix
         shell: bash
