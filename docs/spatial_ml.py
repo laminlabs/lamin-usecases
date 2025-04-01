@@ -1,6 +1,5 @@
 from spatialdata import SpatialData
 import torch
-import torch.nn.functional as F
 from torch.utils.data import DataLoader
 from pytorch_lightning import LightningDataModule, LightningModule
 from torch.nn import CrossEntropyLoss
