@@ -31,13 +31,13 @@ GROUPS["by_datatype"] = [
     "facs4.ipynb",
     "multimodal.ipynb",
 ]
-GROUPS["spatial"] = [
+GROUPS["by_datatype_spatial"] = [
     "spatial.ipynb",
     "spatial2.ipynb",
     "spatial3.ipynb",
     "spatial4.ipynb",
 ]
-GROUPS["sc_imaging"] = [
+GROUPS["by_datatype_sc_imaging"] = [
     "sc-imaging.ipynb",
     "sc-imaging2.ipynb",
     "sc-imaging3.ipynb",
@@ -80,7 +80,14 @@ def lint(session: nox.Session) -> None:
 @nox.session
 @nox.parametrize(
     "group",
-    ["by_datatype", "spatial", "sc_imaging", "by_registry", "by_ontology", "docs"],
+    [
+        "by_datatype",
+        "by_datatype_spatial",
+        "by_datatype_sc_imaging",
+        "by_registry",
+        "by_ontology",
+        "docs",
+    ],
 )
 def install(session, group):
     extras = "bionty,jupyter"
@@ -103,12 +110,12 @@ def install(session, group):
             run(session, "uv pip install --system rdflib")
         case "by_ontology":
             extras += ""
-        case "spatial":
+        case "by_datatype_spatial":
             run(
                 session,
                 "uv pip install --system pytorch-lightning spatialdata spatialdata-plot squidpy scanpy[leiden] monai",
             )
-        case "sc_imaging":
+        case "by_datatype_sc_imaging":
             extras += ""
             run(session, "uv pip install --system scportrait")
         case "docs":
@@ -124,7 +131,13 @@ def install(session, group):
 @nox.session
 @nox.parametrize(
     "group",
-    ["by_datatype", "spatial", "sc_imaging", "by_registry", "by_ontology"],
+    [
+        "by_datatype",
+        "by_datatype_spatial",
+        "by_datatype_sc_imaging",
+        "by_registry",
+        "by_ontology",
+    ],
 )
 def build(session, group):
     login_testuser2(session)
@@ -143,7 +156,13 @@ def build(session, group):
 @nox.session
 def docs(session):
     # move artifacts into right place
-    for group in ["by_datatype", "by_registry", "by_ontology", "spatial", "sc_imaging"]:
+    for group in [
+        "by_datatype",
+        "by_datatype_spatial",
+        "by_datatype_sc_imaging",
+        "by_registry",
+        "by_ontology",
+    ]:
         for path in Path(f"./docs_{group}").glob("*"):
             path.rename(f"./docs/{path.name}")
     run(session, "lamin init --storage ./docsbuild --modules bionty")

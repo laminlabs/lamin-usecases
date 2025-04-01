@@ -23,9 +23,9 @@ jobs:
         if: github.event_name != 'push'
         with:
           filters: |
-            spatial:
+            by_datatype_spatial:
               - 'docs/spatial**'
-            sc_imaging:
+            by_datatype_sc_imaging:
               - 'docs/sc-imaging**'
 
       - id: set-matrix
@@ -36,14 +36,14 @@ jobs:
 
           if [[ "${{ github.event_name }}" == "push" ]]; then
             # Run everything on push
-            ADDITIONAL_GROUPS=$(jq -n -c '["spatial", "sc_imaging"]')
+            ADDITIONAL_GROUPS=$(jq -n -c '["by_datatype_spatial", "by_datatype_sc_imaging"]')
           else
             # Otherwise check which paths changed
-            if [[ "${{ steps.changes.outputs.spatial }}" == "true" ]]; then
-              ADDITIONAL_GROUPS=$(jq -n -c --argjson groups "$ADDITIONAL_GROUPS" '$groups + ["spatial"]')
+            if [[ "${{ steps.changes.outputs.by_datatype_spatial }}" == "true" ]]; then
+              ADDITIONAL_GROUPS=$(jq -n -c --argjson groups "$ADDITIONAL_GROUPS" '$groups + ["by_datatype_spatial"]')
             fi
-            if [[ "${{ steps.changes.outputs.sc_imaging }}" == "true" ]]; then
-              ADDITIONAL_GROUPS=$(jq -n -c --argjson groups "$ADDITIONAL_GROUPS" '$groups + ["sc_imaging"]')
+            if [[ "${{ steps.changes.outputs.by_datatype_sc_imaging }}" == "true" ]]; then
+              ADDITIONAL_GROUPS=$(jq -n -c --argjson groups "$ADDITIONAL_GROUPS" '$groups + ["by_datatype_sc_imaging"]')
             fi
           fi
 

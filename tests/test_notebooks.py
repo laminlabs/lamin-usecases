@@ -16,6 +16,18 @@ def test_by_datatype():
         test.execute_notebooks(DOCS / filename, write=True)
 
 
+def test_by_datatype_spatial():
+    for filename in GROUPS["by_datatype_spatial"]:
+        print(filename)
+        test.execute_notebooks(DOCS / filename, write=True)
+
+
+def test_by_datatype_sc_imaging():
+    for filename in GROUPS["by_datatype_sc_imaging"]:
+        print(filename)
+        test.execute_notebooks(DOCS / filename, write=True)
+
+
 def test_by_registry():
     for filename in GROUPS["by_registry"]:
         print(filename)
@@ -24,17 +36,5 @@ def test_by_registry():
 
 def test_by_ontology():
     for filename in GROUPS["by_ontology"]:
-        print(filename)
-        test.execute_notebooks(DOCS / filename, write=True)
-
-
-def test_spatial():
-    for filename in GROUPS["spatial"]:
-        print(filename)
-        test.execute_notebooks(DOCS / filename, write=True)
-
-
-def test_sc_imaging():
-    for filename in GROUPS["sc_imaging"]:
         print(filename)
         test.execute_notebooks(DOCS / filename, write=True)
