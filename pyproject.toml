@@ -4,7 +4,7 @@ build-backend = "flit_core.buildapi"
 
 [project]
 name = "lamin_usecases"
-authors = [{name = "Lamin Labs", email = "laminlabs@gmail.com"}]
+authors = [{name = "Lamin Labs", email = "open-source@gmail.com"}]
 readme = "README.md"
 dynamic = ["version", "description"]
 dependencies = []
@@ -101,7 +101,7 @@ lint.ignore = [
     "D413",
     # Imports unused
     "F401",
-    # camcelcase imported as lowercase
+    # camelcase imported as lowercase
     "N813",
     # module import not at top level of file
     "E402",

@@ -29,8 +29,19 @@ GROUPS["by_datatype"] = [
     "facs2.ipynb",
     "facs3.ipynb",
     "facs4.ipynb",
-    "spatial.ipynb",
     "multimodal.ipynb",
+]
+GROUPS["by_datatype_spatial"] = [
+    "spatial.ipynb",
+    "spatial2.ipynb",
+    "spatial3.ipynb",
+    "spatial4.ipynb",
+]
+GROUPS["by_datatype_sc_imaging"] = [
+    "sc-imaging.ipynb",
+    "sc-imaging2.ipynb",
+    "sc-imaging3.ipynb",
+    "sc-imaging4.ipynb",
 ]
 GROUPS["by_registry"] = [
     "enrichr.ipynb",
@@ -56,12 +67,6 @@ GROUPS["by_ontology"] = [
     "protein.ipynb",
     "tissue.ipynb",
 ]
-GROUPS["sc_imaging"] = [
-    "sc-imaging.ipynb",
-    "sc-imaging2.ipynb",
-    "sc-imaging3.ipynb",
-    "sc-imaging4.ipynb",
-]
 
 
 IS_PR = os.getenv("GITHUB_EVENT_NAME") != "push"
@@ -75,34 +80,46 @@ def lint(session: nox.Session) -> None:
 @nox.session
 @nox.parametrize(
     "group",
-    ["by_datatype", "by_registry", "by_ontology", "sc_imaging", "docs"],
+    [
+        "by_datatype",
+        "by_datatype_spatial",
+        "by_datatype_sc_imaging",
+        "by_registry",
+        "by_ontology",
+        "docs",
+    ],
 )
 def install(session, group):
-    extras = "bionty"
-    if group == "by_datatype":
-        extras += ",fcs,jupyter"
-        run(
-            session,
-            "uv pip install --system pytometry dask[dataframe]",
-        )  # Dask is needed by datashader
-        run(session, "uv pip install --system mudata tiledbsoma torch")
-        run(
-            session, "uv pip install --system numpy<2"
-        )  # https://github.com/scverse/pytometry/issues/80
-    elif group == "by_registry":
-        extras += ",zarr,jupyter"
-        run(
-            session, "pip install celltypist"
-        )  # uv pulls very old llvmlite for some reason
-        run(session, "uv pip install --system gseapy")
-        run(session, "uv pip install --system rdflib")
-    elif group == "by_ontology":
-        extras += ",jupyter"
-    elif group == "sc_imaging":
-        extras += ",jupyter"
-        run(session, "uv pip install --system scportrait")
-    elif group == "docs":
-        extras += ""
+    extras = "bionty,jupyter"
+    match group:
+        case "by_datatype":
+            extras += ",fcs"
+            run(
+                session,
+                "uv pip install --system pytometry dask[dataframe] mudata tiledbsoma torch",
+            )  # Dask is needed by datashader
+            run(
+                session, "uv pip install --system numpy<2"
+            )  # https://github.com/scverse/pytometry/issues/80
+        case "by_registry":
+            extras += ",zarr"
+            run(
+                session, "pip install celltypist"
+            )  # uv pulls very old llvmlite for some reason
+            run(session, "uv pip install --system gseapy")
+            run(session, "uv pip install --system rdflib")
+        case "by_ontology":
+            extras += ""
+        case "by_datatype_spatial":
+            run(
+                session,
+                "uv pip install --system pytorch-lightning spatialdata spatialdata-plot squidpy scanpy[leiden] monai",
+            )
+        case "by_datatype_sc_imaging":
+            extras += ""
+            run(session, "uv pip install --system scportrait")
+        case "docs":
+            extras += ""
     run(
         session, "uv pip install --system ipywidgets"
     )  # needed to silence the jupyter warning
@@ -114,7 +131,13 @@ def install(session, group):
 @nox.session
 @nox.parametrize(
     "group",
-    ["by_datatype", "by_registry", "by_ontology", "sc_imaging"],
+    [
+        "by_datatype",
+        "by_datatype_spatial",
+        "by_datatype_sc_imaging",
+        "by_registry",
+        "by_ontology",
+    ],
 )
 def build(session, group):
     login_testuser2(session)
@@ -133,7 +156,13 @@ def build(session, group):
 @nox.session
 def docs(session):
     # move artifacts into right place
-    for group in ["by_datatype", "by_registry", "by_ontology", "sc_imaging"]:
+    for group in [
+        "by_datatype",
+        "by_datatype_spatial",
+        "by_datatype_sc_imaging",
+        "by_registry",
+        "by_ontology",
+    ]:
         for path in Path(f"./docs_{group}").glob("*"):
             path.rename(f"./docs/{path.name}")
     run(session, "lamin init --storage ./docsbuild --modules bionty")

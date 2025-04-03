@@ -9,19 +9,61 @@ on:
     types: [build]
 
 jobs:
+  pre-filter:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: dorny/paths-filter@v3
+        id: changes
+        if: github.event_name != 'push'
+        with:
+          filters: |
+            by_datatype_spatial:
+              - 'docs/spatial**'
+            by_datatype_sc_imaging:
+              - 'docs/sc-imaging**'
+
+      - id: set-matrix
+        shell: bash
+        run: |
+          BASE_GROUPS=$(jq -n -c '["by_datatype", "by_registry", "by_ontology"]')
+          ADDITIONAL_GROUPS=[]
+
+          if [[ "${{ github.event_name }}" == "push" ]]; then
+            # Run everything on push
+            ADDITIONAL_GROUPS=$(jq -n -c '["by_datatype_spatial", "by_datatype_sc_imaging"]')
+          else
+            # Otherwise check which paths changed
+            if [[ "${{ steps.changes.outputs.by_datatype_spatial }}" == "true" ]]; then
+              ADDITIONAL_GROUPS=$(jq -n -c --argjson groups "$ADDITIONAL_GROUPS" '$groups + ["by_datatype_spatial"]')
+            fi
+            if [[ "${{ steps.changes.outputs.by_datatype_sc_imaging }}" == "true" ]]; then
+              ADDITIONAL_GROUPS=$(jq -n -c --argjson groups "$ADDITIONAL_GROUPS" '$groups + ["by_datatype_sc_imaging"]')
+            fi
+          fi
+
+          # Combine base groups with any additional groups
+          MATRIX=$(jq -n -c --argjson base "$BASE_GROUPS" --argjson additional "$ADDITIONAL_GROUPS" '{group: ($base + $additional)}')
+
+          # Output as single line for GitHub Actions
+          echo "matrix=$(echo "$MATRIX" | jq -c .)" >> $GITHUB_OUTPUT
+          # Pretty print for debugging
+          echo "Generated matrix:"
+          echo "$MATRIX" | jq .
+
   test:
+    needs: pre-filter
     runs-on: ubuntu-latest
     env:
       GITHUB_EVENT_NAME: ${{ github.event_name }}
     strategy:
       fail-fast: false
-      matrix:
-        python-version: ["3.12"]
-        group:
-          - "by_datatype"
-          - "by_registry"
-          - "by_ontology"
-          - "sc_imaging"
+      matrix: ${{fromJson(needs.pre-filter.outputs.matrix)}}
     timeout-minutes: 40
 
     steps:
@@ -30,7 +72,7 @@ jobs:
           fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: "3.12"
 
       - name: cache pre-commit
         uses: actions/cache@v4
@@ -71,7 +113,7 @@ jobs:
       - run: nox -s "build(group='${{ matrix.group }}')"
 
       - name: upload docs
-        if: ${{ matrix.group == 'by_datatype' || matrix.group == 'by_registry' || matrix.group == 'by_ontology' || matrix.group == 'sc_imaging'}}
+        if: ${{ matrix.group == 'by_datatype' || matrix.group == 'by_datatype_spatial' || matrix.group == 'by_datatype_sc_imaging' || matrix.group == 'by_registry' || matrix.group == 'by_ontology' }}
         uses: actions/upload-artifact@v4
         with:
           name: docs_${{ matrix.group }}

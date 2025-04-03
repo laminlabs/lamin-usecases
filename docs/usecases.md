@@ -3,8 +3,8 @@
 ```{toctree}
 :maxdepth: 1
 
-data-flow
-by-registry
 by-datatype
+by-registry
+data-flow
 public-ontologies
 ```
