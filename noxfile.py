@@ -124,7 +124,7 @@ def install(session, group):
         session, "uv pip install --system ipywidgets"
     )  # needed to silence the jupyter warning
     run(session, "uv pip install --system .[dev]")
-    branch = "main" if IS_PR else "release"
+    branch = "feature-required" if IS_PR else "release"
     install_lamindb(session, branch=branch, extras=extras)
 
 
