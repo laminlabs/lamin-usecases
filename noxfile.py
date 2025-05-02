@@ -96,8 +96,11 @@ def install(session, group):
             extras += ",fcs"
             run(
                 session,
-                "uv pip install --system pytometry dask[dataframe] mudata tiledbsoma torch",
+                "uv pip install --system pytometry dask[dataframe] mudata torch",
             )  # Dask is needed by datashader
+            run(
+                session, "uv pip install --system tiledbsoma<1.16.2"
+            )  # test TiledbsomaCatManager
             run(
                 session, "uv pip install --system numpy<2"
             )  # https://github.com/scverse/pytometry/issues/80
