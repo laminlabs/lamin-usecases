@@ -121,6 +121,7 @@ def install(session, group):
         case "by_datatype_sc_imaging":
             extras += ""
             run(session, "uv pip install --system scportrait")
+            run(session, "uv pip install --system cellpose<4")
         case "docs":
             extras += ""
     run(
