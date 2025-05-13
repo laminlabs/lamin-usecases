@@ -34,7 +34,7 @@ jobs:
           BASE_GROUPS=$(jq -n -c '["by_datatype", "by_registry", "by_ontology"]')
           ADDITIONAL_GROUPS=[]
 
-          if [[ "${{ github.event_name }}" == "push" ]]; then
+          if [[ "${{ github.event_name }}" == "push" || "${{ github.event_name }}" == "repository_dispatch" ]]; then
             # Run everything on push
             ADDITIONAL_GROUPS=$(jq -n -c '["by_datatype_spatial", "by_datatype_sc_imaging"]')
           else
