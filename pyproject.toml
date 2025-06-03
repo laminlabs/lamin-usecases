@@ -20,7 +20,8 @@ dev = [
     "pytest-cov",
     "nbproject_test",
     "cookiecutter",
-    "jupytext"
+    "jupytext",
+    "pronto",  # will remove
 ]
 
 [tool.ruff]
