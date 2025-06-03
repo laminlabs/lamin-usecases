@@ -144,8 +144,8 @@ bt.Source.filter(entity="bionty.{{ cookiecutter.entity }}", currently_used=True)
 
 # %%
 source = bt.Source.filter(
-    name="{{ cookiecutter.database }}", version="{{ cookiecutter.version }}", organism="{{ cookiecutter.organism }}"
-).one()
+    name="{{ cookiecutter.database }}", organism="{{ cookiecutter.organism }}"
+).first()
 {{ cookiecutter.entity_lower }}s= bt.{{ cookiecutter.entity }}.public(source=source)
 {{ cookiecutter.entity_lower }}s
 # %% [markdown]
