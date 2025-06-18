@@ -120,7 +120,7 @@ def install(session, group):
             )
         case "by_datatype_sc_imaging":
             extras += ""
-            run(session, "uv pip install --system numpy<2") # Pin numpy to avoid scikit-fmm build error
+            
             run(session, "uv pip install --system scportrait")
             run(session, "uv pip install --system cellpose<4")
 
