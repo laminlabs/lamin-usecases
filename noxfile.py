@@ -120,7 +120,6 @@ def install(session, group):
             )
         case "by_datatype_sc_imaging":
             extras += ""
-            
             run(session, "uv pip install --system scportrait")
             run(session, "uv pip install --system cellpose<4")
 
@@ -130,7 +129,7 @@ def install(session, group):
         session, "uv pip install --system ipywidgets"
     )  # needed to silence the jupyter warning
     run(session, "uv pip install --system .[dev]")
-    branch = "main" if IS_PR else "release"
+    branch = "release" if IS_PR else "release"
     install_lamindb(session, branch=branch, extras=extras)
 
 
