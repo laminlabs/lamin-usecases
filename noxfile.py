@@ -120,8 +120,6 @@ def install(session, group):
             )
         case "by_datatype_sc_imaging":
             extras += ""
-            run(session, "uv pip install --system numpy<2") # needed for scikit-fmm
-            run(session, "uv pip install --system scikit-fmm==2024.5.29") # scportrait depends on scikit-fmm
             run(session, "uv pip install --system scportrait")
             run(session, "uv pip install --system cellpose<4")
 
