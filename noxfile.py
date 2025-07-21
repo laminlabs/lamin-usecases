@@ -93,13 +93,13 @@ def install(session, group):
     extras = "bionty,jupyter"
     match group:
         case "by_datatype":
-            extras += ",fcs"
+            extras += ",fcs,zarr"
             run(
                 session,
                 "uv pip install --system pytometry dask[dataframe] mudata torch",
             )  # Dask is needed by datashader
             run(
-                session, "uv pip install --system tiledbsoma<1.16.2"
+                session, "uv pip install --system tiledbsoma"
             )  # test TiledbsomaCatManager
             run(
                 session, "uv pip install --system numpy<2"
