@@ -93,7 +93,7 @@ def install(session, group):
     extras = "bionty,jupyter"
     match group:
         case "by_datatype":
-            extras += ",fcs"
+            extras += ",fcs,zarr"
             run(
                 session,
                 "uv pip install --system pytometry dask[dataframe] mudata torch",
