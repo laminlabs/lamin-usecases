@@ -142,4 +142,5 @@ docs/test-sc-imaging
 docs/CellFeaturizer_*/temp_mmap_*.hdf
 docs/test-ehrschema
 docs/test-public-ontologies
+docs/lightning_logs/
 run-tests
