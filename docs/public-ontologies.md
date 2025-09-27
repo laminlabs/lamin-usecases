@@ -7,8 +7,8 @@ For managing in-house ontologies, see {doc}`docs:bio-registries`.
 You'll need a lamindb instance with the `bionty` schema module mounted.
 
 ```shell
-# !pip install 'lamindb[bionty]'
-lamin init --storage <storage_name> --modules bionty
+# pip install lamindb
+lamin init --storage ./test-ontologies --modules bionty
 ```
 
 The guides cover the following entities.
