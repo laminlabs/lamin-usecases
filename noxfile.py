@@ -49,7 +49,7 @@ GROUPS["by_registry"] = [
     "analysis-registries.ipynb",
     # these could be bucketed elsewhere
     "analysis-flow.ipynb",
-    "project-flow.ipynb",
+    "schmidt22.ipynb",
     "rdf-sparql.ipynb",
 ]
 GROUPS["by_ontology"] = [
