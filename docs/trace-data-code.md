@@ -1,8 +1,8 @@
-# Data lineage
+# Trace data & code
 
 ```{toctree}
 :maxdepth: 1
 
-project-flow
+schmidt22
 analysis-flow
 ```
