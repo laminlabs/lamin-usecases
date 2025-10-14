@@ -98,7 +98,7 @@ def install(session, group):
     extras = ""
     match group:
         case "by_datatype":
-            extras += ",fcs,zarr"
+            extras += "fcs,zarr"
             run(
                 session,
                 "uv pip install --system pytometry dask[dataframe] mudata torch",
@@ -110,14 +110,12 @@ def install(session, group):
                 session, "uv pip install --system numpy<2"
             )  # https://github.com/scverse/pytometry/issues/80
         case "by_registry":
-            extras += ",zarr"
+            extras += "zarr"
             run(
                 session, "pip install celltypist"
             )  # uv pulls very old llvmlite for some reason
             run(session, "uv pip install --system gseapy")
             run(session, "uv pip install --system rdflib")
-        case "by_ontology":
-            extras += ""
         case "by_datatype_spatial":
             run(
                 session,
@@ -146,6 +144,7 @@ def install(session, group):
         "by_datatype_sc_imaging",
         "by_registry",
         "by_ontology",
+        "atlases",
     ],
 )
 def build(session, group):
