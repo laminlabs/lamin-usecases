@@ -121,6 +121,8 @@ def install(session, group):
                 session,
                 "uv pip install --system pytorch-lightning spatialdata spatialdata-plot squidpy scanpy[leiden] monai",
             )
+        case "atlases":
+            extras += "gcp"
         case "by_datatype_sc_imaging":
             extras += ""
             run(session, "uv pip install --system scportrait")
