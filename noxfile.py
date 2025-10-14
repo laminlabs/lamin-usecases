@@ -16,6 +16,10 @@ from laminci.nox import (
 nox.options.default_venv_backend = "none"
 
 GROUPS = {}
+GROUPS["atlases"] = [
+    "arc-virtual-cell-atlas.ipynb",
+    "hubmap.ipynb",
+]
 GROUPS["by_datatype"] = [
     "ehr.ipynb",
     "scrna.ipynb",
@@ -86,11 +90,12 @@ def lint(session: nox.Session) -> None:
         "by_datatype_sc_imaging",
         "by_registry",
         "by_ontology",
+        "atlases",
         "docs",
     ],
 )
 def install(session, group):
-    extras = "bionty,jupyter"
+    extras = ""
     match group:
         case "by_datatype":
             extras += ",fcs,zarr"
@@ -122,7 +127,6 @@ def install(session, group):
             extras += ""
             run(session, "uv pip install --system scportrait")
             run(session, "uv pip install --system cellpose<4")
-
         case "docs":
             extras += ""
     run(

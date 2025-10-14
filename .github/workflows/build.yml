@@ -27,6 +27,9 @@ jobs:
               - 'docs/spatial**'
             by_datatype_sc_imaging:
               - 'docs/sc-imaging**'
+            atlases:
+              - 'docs/arc-virtual-cell-atlas**'
+              - 'docs/hubmap**'
 
       - id: set-matrix
         shell: bash
@@ -44,6 +47,9 @@ jobs:
             fi
             if [[ "${{ steps.changes.outputs.by_datatype_sc_imaging }}" == "true" ]]; then
               ADDITIONAL_GROUPS=$(jq -n -c --argjson groups "$ADDITIONAL_GROUPS" '$groups + ["by_datatype_sc_imaging"]')
+            fi
+            if [[ "${{ steps.changes.outputs.atlases }}" == "true" ]]; then
+              ADDITIONAL_GROUPS=$(jq -n -c --argjson groups "$ADDITIONAL_GROUPS" '$groups + ["atlases"]')
             fi
           fi
 
@@ -98,7 +104,7 @@ jobs:
         if: steps.cache-postgres.outputs.cache-hit == 'true'
         run: docker image load --input ~/postgres.tar
 
-      - run: pip install "laminci@git+https://x-access-token:${{ secrets.LAMIN_BUILD_DOCS }}@github.com/laminlabs/laminci"
+      - run: pip install "laminci@git+https://@github.com/laminlabs/laminci"
       - name: install postgres graphviz
         run: sudo apt-get -y install graphviz
       - uses: aws-actions/configure-aws-credentials@v4
@@ -145,7 +151,7 @@ jobs:
         with:
           python-version: "3.12"
 
-      - run: pip install "laminci@git+https://x-access-token:${{ secrets.LAMIN_BUILD_DOCS }}@github.com/laminlabs/laminci"
+      - run: pip install "laminci@git+https://github.com/laminlabs/laminci"
       - run: nox -s "install(group='docs')"
       - uses: actions/download-artifact@v4
       - run: nox -s docs
