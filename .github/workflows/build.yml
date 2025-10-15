@@ -37,7 +37,7 @@ jobs:
 
           if [[ "${{ github.event_name }}" == "push" || "${{ github.event_name }}" == "repository_dispatch" ]]; then
             # Run everything on push
-            ADDITIONAL_GROUPS=$(jq -n -c '["by_datatype_spatial", "by_datatype_sc_imaging"]')
+            ADDITIONAL_GROUPS=$(jq -n -c '["by_datatype_spatial", "by_datatype_sc_imaging", "atlases"]')
           else
             # Otherwise check which paths changed
             if [[ "${{ steps.changes.outputs.by_datatype_spatial }}" == "true" ]]; then
