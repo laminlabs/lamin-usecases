@@ -17,7 +17,6 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
       - uses: dorny/paths-filter@v3
         id: changes
         if: github.event_name != 'push'
@@ -27,7 +26,9 @@ jobs:
               - 'docs/spatial**'
             by_datatype_sc_imaging:
               - 'docs/sc-imaging**'
-
+            atlases:
+              - 'docs/arc-virtual-cell-atlas**'
+              - 'docs/hubmap**'
       - id: set-matrix
         shell: bash
         run: |
@@ -44,6 +45,9 @@ jobs:
             fi
             if [[ "${{ steps.changes.outputs.by_datatype_sc_imaging }}" == "true" ]]; then
               ADDITIONAL_GROUPS=$(jq -n -c --argjson groups "$ADDITIONAL_GROUPS" '$groups + ["by_datatype_sc_imaging"]')
+            fi
+            if [[ "${{ steps.changes.outputs.atlases }}" == "true" ]]; then
+              ADDITIONAL_GROUPS=$(jq -n -c --argjson groups "$ADDITIONAL_GROUPS" '$groups + ["atlases"]')
             fi
           fi
 
@@ -64,7 +68,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix: ${{fromJson(needs.pre-filter.outputs.matrix)}}
-    timeout-minutes: 40
+    timeout-minutes: 20
 
     steps:
       - uses: actions/checkout@v4
@@ -73,13 +77,11 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-
       - name: cache pre-commit
         uses: actions/cache@v4
         with:
           path: ~/.cache/pre-commit
           key: pre-commit-${{ runner.os }}-${{ hashFiles('.pre-commit-config.yaml') }}
-
       - name: Cache postgres
         id: cache-postgres
         uses: actions/cache@v4
@@ -97,21 +99,21 @@ jobs:
       - name: Cache postgres use
         if: steps.cache-postgres.outputs.cache-hit == 'true'
         run: docker image load --input ~/postgres.tar
-
-      - run: pip install "laminci@git+https://x-access-token:${{ secrets.LAMIN_BUILD_DOCS }}@github.com/laminlabs/laminci"
-      - name: install postgres graphviz
-        run: sudo apt-get -y install graphviz
+      - run: pip install "laminci@git+https://@github.com/laminlabs/laminci"
+      - name: Cache apt packages
+        uses: awalsh128/cache-apt-pkgs-action@latest
+        with:
+          packages: graphviz
+          version: 1.0
       - uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
-
       - run: nox -s lint
         if: ${{ matrix.python-version == '3.12' && matrix.group == 'unit' }}
       - run: nox -s "install(group='${{ matrix.group }}')"
       - run: nox -s "build(group='${{ matrix.group }}')"
-
       - name: upload docs
         if: ${{ matrix.group == 'by_datatype' || matrix.group == 'by_datatype_spatial' || matrix.group == 'by_datatype_sc_imaging' || matrix.group == 'by_registry' || matrix.group == 'by_ontology' }}
         uses: actions/upload-artifact@v4
@@ -126,7 +128,6 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
       - name: checkout lndocs
         uses: actions/checkout@v4
         with:
@@ -134,18 +135,15 @@ jobs:
           ssh-key: ${{ secrets.READ_LNDOCS }}
           path: lndocs
           ref: main
-
       - uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
-
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-
-      - run: pip install "laminci@git+https://x-access-token:${{ secrets.LAMIN_BUILD_DOCS }}@github.com/laminlabs/laminci"
+      - run: pip install "laminci@git+https://github.com/laminlabs/laminci"
       - run: nox -s "install(group='docs')"
       - uses: actions/download-artifact@v4
       - run: nox -s docs
