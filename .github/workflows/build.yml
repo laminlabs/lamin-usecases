@@ -100,11 +100,7 @@ jobs:
         if: steps.cache-postgres.outputs.cache-hit == 'true'
         run: docker image load --input ~/postgres.tar
       - run: pip install "laminci@git+https://@github.com/laminlabs/laminci"
-      - name: Cache apt packages
-        uses: awalsh128/cache-apt-pkgs-action@latest
-        with:
-          packages: graphviz
-          version: 1.0
+      - run: sudo apt-get -y install graphviz
       - uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
