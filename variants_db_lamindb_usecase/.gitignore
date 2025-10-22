@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyc
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+
+# LaminDB
+.lamin/
+*.lamindb
+
+# Data files
+*.vcf
+*.vcf.gz
+*.vcf.gz.tbi
+
+# OS
+.DS_Store
+Thumbs.db
