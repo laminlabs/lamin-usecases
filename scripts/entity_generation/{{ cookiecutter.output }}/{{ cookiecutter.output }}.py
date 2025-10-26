@@ -42,7 +42,7 @@ import pandas as pd
 # As for registries, you can export the ontology as a `DataFrame`:
 
 # %%
-df = {{ cookiecutter.entity_lower }}s.df()
+df = {{ cookiecutter.entity_lower }}s.to_dataframe()
 df.head()
 
 # %% [markdown]
@@ -133,11 +133,11 @@ df_orig.index[~validated]
 # For any given entity, we can choose from a number of versions:
 
 # %% tags=["hide-output"]
-bt.Source.filter(entity="bionty.{{ cookiecutter.entity }}").df()
+bt.Source.filter(entity="bionty.{{ cookiecutter.entity }}").to_dataframe()
 
 # %%
 # only lists the sources that are currently used
-bt.Source.filter(entity="bionty.{{ cookiecutter.entity }}", currently_used=True).df()
+bt.Source.filter(entity="bionty.{{ cookiecutter.entity }}", currently_used=True).to_dataframe()
 
 # %% [markdown]
 # When instantiating a Bionty object, we can choose a source or version:
@@ -152,4 +152,4 @@ source = bt.Source.filter(
 # The currently used ontologies can be displayed using:
 
 # %% tags=["hide-output"]
-bt.Source.filter(currently_used=True).df()
+bt.Source.filter(currently_used=True).to_dataframe()
