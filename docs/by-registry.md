@@ -1,4 +1,4 @@
-# Registries
+# Leverage ontologies
 
 ```{toctree}
 :maxdepth: 1
