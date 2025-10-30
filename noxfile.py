@@ -51,8 +51,6 @@ GROUPS["by_registry"] = [
     "enrichr.ipynb",
     "celltypist.ipynb",
     "analysis-registries.ipynb",
-    # these could be bucketed elsewhere
-    "analysis-flow.ipynb",
     "rdf-sparql.ipynb",
 ]
 GROUPS["by_ontology"] = [
