@@ -116,12 +116,14 @@ def install(session, group):
         case "by_datatype_spatial":
             run(
                 session,
-                "uv pip install --system pytorch-lightning spatialdata spatialdata-plot squidpy scanpy[leiden] monai",
+                "uv pip install --system pytorch-lightning spatialdata spatialdata-plot squidpy>=1.6.2 scanpy[leiden] monai",
             )
         case "atlases":
             extras += "gcp"
         case "by_datatype_sc_imaging":
-            extras += ""
+            extras += "zarr"
+            # scportrait requires anndata<0.12 that requires zarr<3
+            # this is why zarr extra above to bound zarr<3
             run(session, "uv pip install --system scportrait")
             run(session, "uv pip install --system cellpose<4")
         case "docs":
