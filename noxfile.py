@@ -124,6 +124,8 @@ def install(session, group):
             extras += "zarr"
             # scportrait requires anndata<0.12 that requires zarr<3
             # this is why zarr extra above to bound zarr<3
+            # spatialdata uses zarr v3 since 0.6.0
+            run(session, "uv pip install --system spatialdata<=0.5.0")
             run(session, "uv pip install --system scportrait")
             run(session, "uv pip install --system cellpose<4")
         case "docs":
