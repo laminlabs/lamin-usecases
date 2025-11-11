@@ -126,6 +126,7 @@ def install(session, group):
             # this is why zarr extra above to bound zarr<3
             # spatialdata uses zarr v3 since 0.6.0
             # if pyarrow is not pinned, we run into https://github.com/scverse/spatialdata/issues/1000
+            # we can remove these pins after https://github.com/MannLabs/scPortrait/pull/338 is merged
             run(session, "uv pip install --system pyarrow=0.22.0")
             run(session, "uv pip install --system spatialdata<=0.5.0")
             run(session, "uv pip install --system scportrait")
