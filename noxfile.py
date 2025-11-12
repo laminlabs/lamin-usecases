@@ -114,6 +114,7 @@ def install(session, group):
             run(session, "uv pip install --system gseapy")
             run(session, "uv pip install --system rdflib")
         case "by_datatype_spatial":
+            run(session, "uv pip install --system pyarrow==0.21.0")
             run(
                 session,
                 "uv pip install --system pytorch-lightning spatialdata spatialdata-plot squidpy>=1.6.2 scanpy[leiden] monai",
@@ -127,7 +128,7 @@ def install(session, group):
             # spatialdata uses zarr v3 since 0.6.0
             # if pyarrow is not pinned, we run into https://github.com/scverse/spatialdata/issues/1000
             # we can remove these pins after https://github.com/MannLabs/scPortrait/pull/338 is merged
-            run(session, "uv pip install --system pyarrow<0.22.0")
+            run(session, "uv pip install --system pyarrow==0.21.0")
             run(session, "uv pip install --system spatialdata<=0.5.0")
             run(session, "uv pip install --system scportrait")
             run(session, "uv pip install --system cellpose<4")
