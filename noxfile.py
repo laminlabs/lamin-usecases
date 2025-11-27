@@ -177,6 +177,7 @@ def docs(session):
         "by_datatype_sc_imaging",
         "by_registry",
         "by_ontology",
+        "atlases",
     ]:
         for path in Path(f"./docs_{group}").glob("*"):
             path.rename(f"./docs/{path.name}")
