@@ -5,6 +5,6 @@
 
 by-datatype
 by-registry
-trace-data-code
 public-ontologies
+atlases
 ```
