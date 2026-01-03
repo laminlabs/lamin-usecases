@@ -95,7 +95,7 @@ def install(session, group):
     extras = ""
     match group:
         case "by_datatype":
-            extras += "fcs,zarr"
+            extras += "fcs,zarr_v2"
             run(
                 session,
                 "uv pip install --system pytometry dask[dataframe] mudata torch",
@@ -107,7 +107,7 @@ def install(session, group):
                 session, "uv pip install --system numpy<2"
             )  # https://github.com/scverse/pytometry/issues/80
         case "by_registry":
-            extras += "zarr"
+            extras += "zarr_v2"
             run(
                 session, "pip install celltypist"
             )  # uv pulls very old llvmlite for some reason
@@ -122,9 +122,9 @@ def install(session, group):
         case "atlases":
             extras += "gcp"
         case "by_datatype_sc_imaging":
-            extras += "zarr"
+            extras += "zarr_v2"
             # scportrait requires anndata<0.12 that requires zarr<3
-            # this is why zarr extra above to bound zarr<3
+            # this is why zarr_v2 extra above to bound zarr<3
             # spatialdata uses zarr v3 since 0.6.0
             # if pyarrow is not pinned, we run into https://github.com/scverse/spatialdata/issues/1000
             # we can remove these pins after https://github.com/MannLabs/scPortrait/pull/338 is merged
