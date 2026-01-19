@@ -3,8 +3,8 @@
 ```{toctree}
 :maxdepth: 1
 
-enrichr
 celltypist
+enrichr
 analysis-registries
 rdf-sparql
 ```
