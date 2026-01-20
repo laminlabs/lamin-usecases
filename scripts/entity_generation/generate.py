@@ -52,7 +52,7 @@ organism = {
     "search_query": "oryctolagus_cuniculus",
     "identifiers": "spiny chromis,silver-eye,platyfish,california sea lion",
     "database": "ensembl",
-    "version": "release-110",
+    "version": "release-114",
     "organism": "vertebrates",
     "sources": "1. [Ensembl Species](https://useast.ensembl.org/info/about/species.html),2. [NCBI Taxonomy](https://www.ncbi.nlm.nih.gov/taxonomy)",
 }
@@ -66,7 +66,7 @@ cell_line = {
     "alternative_field": "ontology_id",
     "search_value": "hek293",
     "search_synonyms_value": "Human Embryonic Kidney 293",
-    "search_field": "definition",
+    "search_field": "description",
     "search_query": "suspension cell line",
     "identifiers": "253D cell,HEK293,2C1H7 cell,283TAg cell",
     "database": "cellosaurus",
@@ -88,7 +88,7 @@ cell_type = {
     "search_query": "cd8-positive, alpha-beta positive t cell",
     "identifiers": "Boettcher cell,bone marrow cell,interstitial cell of ovary,pancreatic ductal cell",
     "database": "cl",
-    "version": "2023-04-20",
+    "version": "2025-12-17",
     "organism": "all",
     "sources": "1. [Cell Ontology](https://obophenotype.github.io/cell-ontology)",
 }
@@ -106,7 +106,7 @@ tissue = {
     "search_query": "spherical outcropping of the respiratory",
     "identifiers": "UBERON:0000000,UBERON:0000005,UBERON:0000001,UBERON:0000002",
     "database": "uberon",
-    "version": "2023-04-19",
+    "version": "2025-12-04",
     "organism": "all",
     "sources": "1. [Uberon](http://obophenotype.github.io/uberon)",
 }
@@ -125,7 +125,7 @@ disease = {
     "search_query": "progressive degenerative disorder of the central nervous system",
     "identifiers": "supraglottis cancer,alexia,trigonitis,paranasal sinus disorder",
     "database": "mondo",
-    "version": "2023-04-04",
+    "version": "2026-01-06",
     "organism": "all",
     "sources": "1. [Mondo](https://mondo.monarchinitiative.org/),2. [Human Disease](https://disease-ontology.org/)",
 }
@@ -143,7 +143,7 @@ phenotype = {
     "search_query": "lack of development of speech and language",
     "identifiers": "Specific learning disability,Dystonia,Cerebral hemorrhage,Slurred speech",
     "database": "hp",
-    "version": "2024-04-26",
+    "version": "2026-01-08",
     "organism": "human",
     "sources": "1. [Human Phenotype](https://hpo.jax.org/app),2. [Phecodes](https://phewascatalog.org/phecodes_icd10),3. [PATO](https://github.com/pato-ontology/pato),4. [Mammalian Phenotype](http://obofoundry.org/ontology/mp.html)",
 }
@@ -161,7 +161,7 @@ pathway = {
     "search_query": "chemical reactions and pathways resulting in the breakdown of acetyl-CoA",
     "identifiers": "GO:1905210,GO:1905211,GO:1905212,GO:1905208",
     "database": "go",
-    "version": "2023-05-10",
+    "version": "2025-10-10",
     "organism": "all",
     "sources": "1. [Gene Ontology](https://bioportal.bioontology.org/ontologies/GO),2. [Pathway Ontology](https://bioportal.bioontology.org/ontologies/PW)",
 }
@@ -179,7 +179,7 @@ experimental_factor = {
     "search_query": "protocol that provides the expression profiles of single cells",
     "identifiers": "EFO:0011021,EFO:1002050,EFO:1002047,EFO:1002049",
     "database": "efo",
-    "version": "3.48.0",
+    "version": "3.85.0",
     "organism": "all",
     "sources": "1. [Experimental Factor Ontology](https://www.ebi.ac.uk/ols/ontologies/efo)",
 }
@@ -197,7 +197,7 @@ developmental_stage = {
     "search_query": "Prenatal Stage That Starts With Fertilization",
     "identifiers": "blastula stage,Carnegie stage 03,neurula stage,organogenesis stage",
     "database": "hsapdv",
-    "version": "2020-03-10",
+    "version": "2025-01-23",
     "organism": "human",
     "sources": "1. [Human Developmental Stages](https://github.com/obophenotype/developmental-stage-ontologies/wiki/HsapDv),2. [Mouse Developmental Stages](https://github.com/obophenotype/developmental-stage-ontologies/wiki/MmusDv)",
 }
@@ -215,7 +215,7 @@ ethnicity = {
     "search_query": "General characterisation of the Ancestry of a population",
     "identifiers": "Mende,European,South Asian,Arab",
     "database": "hancestro",
-    "version": "3.0",
+    "version": "2025-10-14",
     "organism": "human",
     "sources": "1. [Human Ancestry Ontology](https://github.com/EBISPOT/hancestro)",
 }
