@@ -62,17 +62,17 @@ cell_line = {
     "entity": "CellLine",
     "example_value": "hek293",
     "example_dict_value": "HEK293",
-    "alternative_field_value": "clo_0000469",
+    "alternative_field_value": "cvcl_0045",
     "alternative_field": "ontology_id",
     "search_value": "hek293",
     "search_synonyms_value": "Human Embryonic Kidney 293",
     "search_field": "definition",
     "search_query": "suspension cell line",
     "identifiers": "253D cell,HEK293,2C1H7 cell,283TAg cell",
-    "database": "clo",
-    "version": "2022-03-21",
+    "database": "cellosaurus",
+    "version": "54.0",
     "organism": "all",
-    "sources": "1. [Cell Line Ontology](https://github.com/CLO-ontology/CLO)",
+    "sources": "1. [Cellosaurus](https://www.cellosaurus.org/),2. [Cell Line Ontology](https://github.com/CLO-ontology/CLO)",
 }
 
 cell_type = {
