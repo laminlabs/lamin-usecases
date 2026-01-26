@@ -117,7 +117,7 @@ def install(session, group):
             run(session, "uv pip install --system pyarrow==21.0.0")
             run(
                 session,
-                "uv pip install --system pytorch-lightning spatialdata spatialdata-plot squidpy>=1.6.2 scanpy[leiden] monai",
+                "uv pip install --system pytorch-lightning spatialdata spatialdata-plot squidpy>=1.6.2 'scanpy[leiden]<1.12' monai",
             )
         case "atlases":
             extras += "gcp"
