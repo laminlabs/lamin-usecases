@@ -3,7 +3,7 @@ import shutil
 from pathlib import Path
 
 import nox
-from laminci import upload_docs_artifact
+from laminci import convert_executable_md_files, upload_docs_artifact
 from laminci.nox import (
     build_docs,
     install_lamindb,
@@ -155,6 +155,7 @@ def install(session, group):
     ],
 )
 def build(session, group):
+    convert_executable_md_files()
     login_testuser2(session)
     login_testuser1(session)
     if group == "by_ontology":
