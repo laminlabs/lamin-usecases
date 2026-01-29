@@ -80,13 +80,15 @@ The Visium image is rotated with respect to the Xenium data.
 Next, we create an `ImageTilesDataset` using our merged `SpatialData` object.
 We further import an image tile transform, the corresponding Pytorch Lightning `DataModule`, and the final `DenseNet` model from an existing script.
 
-````{dropdown} Code of tile_transform, ImageTilesDataset and the DenseNetModel
+:::{dropdown} Code of tile_transform, ImageTilesDataset and the DenseNetModel
+
 ```{eval-rst}
 .. literalinclude:: spatial_ml.py
    :language: python
    :caption: Spatial cell type classification model definition
 ```
-````
+
+:::
 
 ```python
 from spatial_ml import tile_transform, TilesDataModule, DenseNetModel
