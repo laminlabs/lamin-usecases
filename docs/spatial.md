@@ -120,7 +120,7 @@ def crop0(x):
 crop0(sdata).pl.render_images("he_image", scale="scale2").pl.render_shapes(
     "cell_boundaries", fill_alpha=0, outline_alpha=0.5
 ).pl.show(
-    figsize=(8, 4), title="H&E image & cell boundaries", coordinate_systems="global"
+    figsize=(6, 3), title="H&E image & cell boundaries", coordinate_systems="global"
 )
 ```
 
