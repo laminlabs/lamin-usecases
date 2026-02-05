@@ -33,7 +33,7 @@ For more details we refer to the original publication:
 Marconato, L., Palla, G., Yamauchi, K.A. et al. SpatialData: an open and universal data framework for spatial omics. Nat Methods 22, 58–62 (2025). [https://doi.org/10.1038/s41592-024-02212-x](https://doi.org/10.1038/s41592-024-02212-x)
 
 ```{note}
-A collection of curated spatial datasets in SpatialData format is available on the [scverse/spatialdata-db instance](https://lamin.ai/scverse/spatialdata-db).
+A collection of curated spatial datasets in SpatialData format is available on the [scverse/spatialdata-db](https://lamin.ai/scverse/spatialdata-db) instance.
 ```
 
 ```{dropdown} spatial data vs SpatialData terminology
@@ -68,7 +68,7 @@ ln.track()
 We'll work with a human lung cancer dataset generated using 10x Genomics Xenium platform and available in a public instance.
 This FFPE (formalin-fixed paraffin-embedded) tissue sample includes spatial gene expression profiles.
 
-Create the central query object of our public [lamindata instance](https://lamin.ai/laminlabs/lamindata):
+Create the central query object of our public [lamindata](https://lamin.ai/laminlabs/lamindata) instance:
 
 ```python
 db = ln.DB("laminlabs/lamindata")
@@ -94,7 +94,7 @@ Spatial data datasets stored as SpatialData objects can easily be examined and a
 
 We use [spatialdata-plot](https://github.com/scverse/spatialdata-plot) to get an overview of the dataset:
 
-```python
+```python tags=[]
 axes = plt.subplots(1, 2, figsize=(10, 10))[1].flatten()
 sdata.pl.render_images("he_image", scale="scale4").pl.show(
     ax=axes[0], title="H&E image"
@@ -106,7 +106,7 @@ sdata.pl.render_images("morphology_focus", scale="scale4").pl.show(
 
 We can visualize the segmentations masks by rendering the shapes from the SpatialData object:
 
-```python
+```python tags=[]
 def crop0(x):
     return sd.bounding_box_query(
         x,
@@ -120,7 +120,7 @@ def crop0(x):
 crop0(sdata).pl.render_images("he_image", scale="scale2").pl.render_shapes(
     "cell_boundaries", fill_alpha=0, outline_alpha=0.5
 ).pl.show(
-    figsize=(10, 5), title="H&E image & cell boundaries", coordinate_systems="global"
+    figsize=(8, 4), title="H&E image & cell boundaries", coordinate_systems="global"
 )
 ```
 
@@ -147,7 +147,7 @@ For normalization and dimensionality reduction, standard [scanpy](https://github
 - `scanpy.pp.neighbors` for neighborhood graph computation
 
 For this analysis, we use precomputed Leiden clustering results rather than running the full preprocessing pipeline.
-For a full tutorial on how to perform analysis of Xenium data, we refer to [squidpy's Xenium tutorial](https://squidpy.readthedocs.io/en/stable/notebooks/tutorials/tutorial_xenium.html).
+For a full tutorial on how to perform analysis of Xenium data, we refer to squidpy's [Xenium tutorial](https://squidpy.readthedocs.io/en/stable/notebooks/tutorials/tutorial_xenium.html).
 
 Visualize annotation on UMAP and spatial coordinates:
 
@@ -163,7 +163,7 @@ sc.pl.umap(
 )
 ```
 
-```python
+```python tags=[]
 sq.pl.spatial_scatter(
     adata,
     library_id="spatial",
