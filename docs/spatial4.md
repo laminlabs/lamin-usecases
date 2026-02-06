@@ -143,9 +143,7 @@ trainer.test(model, datamodule=tiles_data_module)
 
 If we were to perform a prediction and evaluate it like outlined in the [original guide](https://spatialdata.scverse.org/en/stable/tutorials/notebooks/notebooks/examples/densenet.html), we would see predictions like:
 
-<!-- #region -->
-<img src="https://spatialdata.scverse.org/en/stable/_images/dense_net_predicted.png" width="1000" height="450" alt="Model predictions">
-<!-- #endregion -->
+<img src="https://spatialdata.scverse.org/en/stable/_images/dense_net_predicted.png" width="900px" alt="Model predictions">
 
 ```python
 ln.finish()
