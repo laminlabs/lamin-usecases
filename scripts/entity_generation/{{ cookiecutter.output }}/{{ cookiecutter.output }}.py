@@ -89,7 +89,7 @@ lookup.{{ cookiecutter.alternative_field_value }}
 {{ cookiecutter.entity_lower }}s.search("{{ cookiecutter.search_value }}").head(3)
 
 # %% [markdown]
-# By default, search also covers synonyms and all other fileds containing strings:
+# By default, search also covers synonyms and all other fields containing strings:
 
 # %%
 {{ cookiecutter.entity_lower }}s.search("{{ cookiecutter.search_synonyms_value }}").head(3)
