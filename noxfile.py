@@ -139,6 +139,7 @@ def install(session, group):
     )  # needed to silence the jupyter warning
     run(session, "uv pip install --system .[dev]")
     branch = "main" if IS_PR else "release"
+    extras = "full" if extras == "" else "full," + extras
     install_lamindb(session, branch=branch, extras=extras)
 
 
