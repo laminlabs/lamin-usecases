@@ -71,6 +71,7 @@ GROUPS["by_ontology"] = [
 
 
 IS_PR = os.getenv("GITHUB_EVENT_NAME") != "push"
+SPATIALDATA_OME_ZARR_CONSTRAINT = "ome-zarr<0.14.0"
 
 
 @nox.session
@@ -117,7 +118,9 @@ def install(session, group):
             run(session, "uv pip install --system pyarrow==21.0.0")
             run(
                 session,
-                "uv pip install --system pytorch-lightning spatialdata spatialdata-plot squidpy>=1.6.2 scanpy[leiden] monai",
+                "uv pip install --system pytorch-lightning spatialdata "
+                f"{SPATIALDATA_OME_ZARR_CONSTRAINT} spatialdata-plot "
+                "squidpy>=1.6.2 scanpy[leiden] monai",
             )
         case "atlases":
             extras += "gcp"
@@ -129,7 +132,11 @@ def install(session, group):
             # if pyarrow is not pinned, we run into https://github.com/scverse/spatialdata/issues/1000
             # we can remove these pins after https://github.com/MannLabs/scPortrait/pull/338 is merged
             run(session, "uv pip install --system pyarrow==21.0.0")
-            run(session, "uv pip install --system spatialdata<=0.5.0")
+            run(
+                session,
+                "uv pip install --system spatialdata<=0.5.0 "
+                f"{SPATIALDATA_OME_ZARR_CONSTRAINT}",
+            )
             run(session, "uv pip install --system scportrait")
             run(session, "uv pip install --system cellpose<4")
         case "docs":
