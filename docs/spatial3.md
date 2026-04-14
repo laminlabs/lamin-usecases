@@ -215,7 +215,7 @@ visium_curated_af.view_lineage()
 ```
 
 ```python
-ln.Artifact.to_dataframe(features=True, include=["hash", "size"])
+ln.Artifact.to_dataframe(features=["assay", "organism", "tissue", "celltype_major"])
 ```
 
 ```python
