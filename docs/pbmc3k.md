@@ -1,8 +1,10 @@
 # Preprocessing and clustering 3k PBMCs
 
+
 This template demonstrates how to use **LaminDB** to track data provenance and manage artifacts during a standard single-cell RNA-seq analysis workflow. Adapted from the classic [Scanpy PBMC3k tutorial](https://scanpy.readthedocs.io/en/stable/tutorials/basics/clustering-2017.html), it had additional code showing how to track the notebook's execution, save the raw dataset as an artifact, and register the final annotated dataset in your LaminDB instance.
 
 We will process a dataset of *3k PBMCs from a Healthy Donor* (freely available from [10x Genomics](https://support.10xgenomics.com/single-cell-gene-expression/datasets/1.1.0/pbmc3k)).
+
 
 
 ```python
@@ -15,7 +17,8 @@ import lamindb as ln
 import bionty as bt
 ```
 
-### Track the notebook's execution in Lamin
+Track the notebook's execution in **LaminDB**
+
 
 ```python
 ln.track()
@@ -41,11 +44,11 @@ adata = sc.read_10x_mtx(
     var_names="gene_symbols",  # use gene symbols for the variable names (variables-axis index)
     cache=True,  # write a cache file for faster subsequent reading
 )
-adata.var_names_make_unique()
+adata.var_names_make_unique()  
 adata
 ```
 
-### Save the AnnData object with the raw/unprocessed 3k PBMCs in Lamin
+### Save the AnnData object with the raw/unprocessed 3k PBMCs in LaminDB
 
 
 ```python
@@ -54,7 +57,7 @@ ln.Artifact.from_anndata(adata, key="raw_pbmc3k.h5ad").save()
 
 ## Preprocessing
 
-### Load the Anndata object with the raw/unprocessed 3k PBMCs from Lamin
+### Load the Anndata object with the raw/unprocessed 3k PBMCs from LaminDB
 
 
 ```python
@@ -120,10 +123,6 @@ adata = adata[
     :,
 ].copy()
 adata.layers["counts"] = adata.X.copy()
-```
-
-
-```python
 adata
 ```
 
@@ -166,6 +165,7 @@ Scale each gene to unit variance. Clip values exceeding standard deviation 10.
 
 ```python
 adata.layers["scaled"] = adata.X.toarray()
+sc.pp.regress_out(adata, ["total_counts", "pct_counts_mt"], layer="scaled")
 sc.pp.scale(adata, max_value=10, layer="scaled")
 ```
 
@@ -187,31 +187,22 @@ sc.pl.pca_variance_ratio(adata, n_pcs=20)
 
 ## Computing the neighborhood graph
 
+Compute the neighborhood graph of cells using the PCA representation of the data matrix.
+
 
 ```python
 sc.pp.neighbors(adata, n_neighbors=10, n_pcs=40)
 ```
 
-## Embedding the neighborhood graph
+## Embedding the neighborhood graph in a UMAP
 
 
 ```python
+sc.tl.paga(adata)
+sc.pl.paga(adata, plot=False)  # remove `plot=False` if you want to see the coarse-grained graph
+sc.tl.umap(adata, init_pos='paga')
 sc.tl.umap(adata)
-```
-
-
-```python
 sc.pl.umap(adata, color=["CST3", "NKG7", "PPBP"])
-```
-
-
-```python
-sc.pl.umap(adata, color=["CST3", "NKG7", "PPBP"], layer="counts")
-```
-
-
-```python
-sc.pl.umap(adata, color=["CST3", "NKG7", "PPBP"], layer="scaled")
 ```
 
 ## Clustering the neighborhood graph
@@ -286,7 +277,10 @@ new_cluster_names = [
 ]
 adata.rename_categories("leiden", new_cluster_names)
 adata.obs['cell_type']=adata.obs['leiden']
+adata
 ```
+
+Visualize the cell types in a UMAP
 
 
 ```python
@@ -300,13 +294,15 @@ Now that we annotated the cell types, let us visualize the marker genes.
 sc.pl.dotplot(adata, marker_genes, groupby="cell_type")
 ```
 
-### Save the resulting AnnData object in Lamin
+### Save the resulting AnnData object in LaminDB
+
 
 ```python
 ln.Artifact.from_anndata(adata, key="result_pbmc3k.h5ad").save()
 ```
 
 `ln.finish()` marks the successful completion of the current script or notebook run in LaminDB, finalizing its execution state and saving the source code to the database for reproducibility.
+
 
 ```python
 ln.finish()
