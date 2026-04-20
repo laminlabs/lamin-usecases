@@ -21,6 +21,12 @@ import lamindb as ln
 import bionty as bt
 ```
 
+Note: To run examples, if you don’t have a LaminDB instance, create one:
+
+```python
+!lamin init --storage ./test-track
+```
+
 Track the notebook's execution in **LaminDB**
 
 
