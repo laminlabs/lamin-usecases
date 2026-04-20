@@ -72,9 +72,8 @@ sc.pl.pca(
     title=(
         f"{genes.itm2b.symbol} / {genes.itm2b.ensembl_gene_id} /"
         f" {genes.itm2b.description}"
-    ),
-    save="_itm2b",
-)
+    )
+).figure.savefig('./figures/pca_itm2b.pdf')
 ```
 
 We could save a plot as a pdf and then see it in the flow diagram:
