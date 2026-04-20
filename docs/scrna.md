@@ -24,6 +24,7 @@ scrna3
 scrna4
 scrna-mappedcollection
 scrna-tiledbsoma
+pbmc3k
 ```
 
 ```python

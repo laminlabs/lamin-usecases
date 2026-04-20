@@ -21,6 +21,7 @@ GROUPS["atlases"] = [
     "hubmap.ipynb",
 ]
 GROUPS["by_datatype"] = [
+    "pbmc3k.ipynb",
     "ehr.ipynb",
     "scrna.ipynb",
     "scrna2.ipynb",
