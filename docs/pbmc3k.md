@@ -9,7 +9,11 @@ This template demonstrates how to use **LaminDB** to track data provenance and m
 
 We will process a dataset of *3k PBMCs from a Healthy Donor* (freely available from [10x Genomics](https://support.10xgenomics.com/single-cell-gene-expression/datasets/1.1.0/pbmc3k)).
 
+Note: To run examples, if you don’t have a LaminDB instance, create one:
 
+```python
+!lamin init --storage ./test-pbmc3k
+```
 
 ```python
 from __future__ import annotations
@@ -19,12 +23,6 @@ import pandas as pd
 import scanpy as sc
 import lamindb as ln
 import bionty as bt
-```
-
-Note: To run examples, if you don’t have a LaminDB instance, create one:
-
-```python
-!lamin init --storage ./test-track
 ```
 
 Track the notebook's execution in **LaminDB**
