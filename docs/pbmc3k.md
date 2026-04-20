@@ -22,7 +22,6 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import scanpy as sc
 import lamindb as ln
-import bionty as bt
 ```
 
 Track the notebook's execution in **LaminDB**
