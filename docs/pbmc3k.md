@@ -1,7 +1,11 @@
+---
+execute_via: python
+---
+
 # Preprocessing and clustering 3k PBMCs
 
 
-This template demonstrates how to use **LaminDB** to track data provenance and manage artifacts during a standard single-cell RNA-seq analysis workflow. Adapted from the classic [Scanpy PBMC3k tutorial](https://scanpy.readthedocs.io/en/stable/tutorials/basics/clustering-2017.html), it had additional code showing how to track the notebook's execution, save the raw dataset as an artifact, and register the final annotated dataset in your LaminDB instance.
+This template demonstrates how to use **LaminDB** to track data provenance and manage artifacts during a standard single-cell RNA-seq analysis workflow. Adapted from the classic [Scanpy PBMC3k tutorial](https://scanpy.readthedocs.io/en/stable/tutorials/basics/clustering-2017.html), it has additional code showing how to track the notebook's execution, save the raw dataset as an artifact, and register the final annotated dataset in your LaminDB instance.
 
 We will process a dataset of *3k PBMCs from a Healthy Donor* (freely available from [10x Genomics](https://support.10xgenomics.com/single-cell-gene-expression/datasets/1.1.0/pbmc3k)).
 
