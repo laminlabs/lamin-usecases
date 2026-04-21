@@ -192,17 +192,6 @@ Compute the neighborhood graph of cells using the PCA representation of the data
 sc.pp.neighbors(adata, n_neighbors=10, n_pcs=40)
 ```
 
-## Embedding the neighborhood graph in a UMAP
-
-
-```python
-sc.tl.paga(adata)
-sc.pl.paga(adata, plot=False)  # remove `plot=False` if you want to see the coarse-grained graph
-sc.tl.umap(adata, init_pos='paga')
-sc.tl.umap(adata)
-sc.pl.umap(adata, color=["CST3", "NKG7", "PPBP"])
-```
-
 ## Clustering the neighborhood graph
 
 
@@ -217,11 +206,18 @@ sc.tl.leiden(
 )
 adata.obs["leiden"] = adata.obs["leiden"].copy()
 adata.uns["leiden"] = adata.uns["leiden"].copy()
-adata.obsm["X_umap"] = adata.obsm["X_umap"].copy()
 ```
+
+## Embedding the neighborhood graph in a UMAP
 
 
 ```python
+sc.tl.paga(adata)
+sc.pl.paga(adata, plot=False)  # remove `plot=False` if you want to see the coarse-grained graph
+sc.tl.umap(adata, init_pos='paga')
+sc.tl.umap(adata)
+
+adata.obsm["X_umap"] = adata.obsm["X_umap"].copy()
 sc.pl.umap(adata, color=["leiden", "CD14", "NKG7"])
 ```
 
