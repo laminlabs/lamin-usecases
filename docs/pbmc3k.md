@@ -112,16 +112,7 @@ sc.pl.violin(
 )
 ```
 
-Remove cells that have too many mitochondrial genes expressed or too many total counts:
-
-
-```python
-fig, axs = plt.subplots(1, 2, figsize=(10, 4), layout="constrained")
-sc.pl.scatter(adata, x="total_counts", y="pct_counts_mt", show=False, ax=axs[0])
-sc.pl.scatter(adata, x="total_counts", y="n_genes_by_counts", show=False, ax=axs[1]);
-```
-
-Actually do the filtering by slicing the `AnnData` object.
+Remove cells that have too many mitochondrial genes expressed or too many total counts. Do the filtering by slicing the `AnnData` object.
 
 
 ```python
