@@ -75,14 +75,14 @@ pca_itm2b_fig = sc.pl.pca(
     ),
     return_fig=True
 )
-pca_itm2b_fig.figure.savefig('./figures/pca_itm2b.pdf')
+pca_itm2b_fig.figure.savefig('pca_itm2b.pdf')
 ```
 
 We could save a plot as a pdf and then see it in the flow diagram:
 
 ```python
 artifact = ln.Artifact(
-    "./figures/pca_itm2b.pdf", description="My result on ITM2B"
+    "pca_itm2b.pdf", description="My result on ITM2B"
 ).save()
 artifact.view_lineage()
 ```
