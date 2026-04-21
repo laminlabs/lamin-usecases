@@ -66,14 +66,16 @@ sc.pp.pca(adata, n_comps=2)
 ```
 
 ```python
-sc.pl.pca(
+pca_itm2b_fig = sc.pl.pca(
     adata,
     color=genes.itm2b.ensembl_gene_id,
     title=(
         f"{genes.itm2b.symbol} / {genes.itm2b.ensembl_gene_id} /"
         f" {genes.itm2b.description}"
-    )
-).figure.savefig('./figures/pca_itm2b.pdf')
+    ),
+    return_fig=True
+)
+pca_itm2b_fig.figure.savefig('./figures/pca_itm2b.pdf')
 ```
 
 We could save a plot as a pdf and then see it in the flow diagram:
