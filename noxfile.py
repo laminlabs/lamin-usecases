@@ -112,7 +112,7 @@ def install(session, group):
                 session, "uv pip install --system scikit-misc"
             ) #needed to run pbmc3k notebook
             run(
-                session, "uv pip install --system igraph"
+                session, "uv pip install --system scanpy[leiden]"
             ) #needed to run pbmc3k notebook
         case "by_registry":
             extras += "zarr_v2"
