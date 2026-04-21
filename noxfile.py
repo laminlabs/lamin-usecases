@@ -109,10 +109,7 @@ def install(session, group):
                 session, "uv pip install --system numpy<2"
             )  # https://github.com/scverse/pytometry/issues/80
             run(
-                session, "uv pip install --system scikit-misc"
-            ) #needed to run pbmc3k notebook
-            run(
-                session, "uv pip install --system scanpy[leiden]"
+                session, "uv pip install --system scikit-misc leidenalg igraph"
             ) #needed to run pbmc3k notebook
         case "by_registry":
             extras += "zarr_v2"
