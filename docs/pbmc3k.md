@@ -35,7 +35,6 @@ Download and unpack the data.
 
 
 ```bash
-%%bash
 mkdir -p data
 cd data
 test -f pbmc3k_filtered_gene_bc_matrices.tar.gz || curl https://cf.10xgenomics.com/samples/cell/pbmc3k/pbmc3k_filtered_gene_bc_matrices.tar.gz -o pbmc3k_filtered_gene_bc_matrices.tar.gz
@@ -51,7 +50,6 @@ adata = sc.read_10x_mtx(
     var_names="gene_symbols",  # use gene symbols for the variable names (variables-axis index)
     cache=True,  # write a cache file for faster subsequent reading
 )
-adata.var_names_make_unique()  
 adata
 ```
 
@@ -82,7 +80,7 @@ Basic filtering:
 
 
 ```python
-sc.pp.filter_cells(adata, min_genes=200)  # this does nothing, in this specific case
+sc.pp.filter_cells(adata, min_genes=200)
 sc.pp.filter_genes(adata, min_cells=3)
 adata
 ```
@@ -162,7 +160,7 @@ Scale each gene to unit variance. Clip values exceeding standard deviation 10.
 
 
 ```python
-adata.layers["scaled"] = adata.X.toarray()
+adata.layers["scaled"] = adata.X.toarray(order='C')
 sc.pp.regress_out(adata, ["total_counts", "pct_counts_mt"], layer="scaled")
 sc.pp.scale(adata, max_value=10, layer="scaled")
 ```
