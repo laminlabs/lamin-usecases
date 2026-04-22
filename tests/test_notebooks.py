@@ -44,3 +44,8 @@ def test_atlases():
     for filename in GROUPS["atlases"]:
         print(filename)
         test.execute_notebooks(DOCS / filename, write=True, print_outputs=False)
+
+def test_templates():
+    for filename in GROUPS["templates"]:
+        print(filename)
+        test.execute_notebooks(DOCS / filename, write=True, print_outputs=False)

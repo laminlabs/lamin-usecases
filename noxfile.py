@@ -20,6 +20,9 @@ GROUPS["atlases"] = [
     "arc-virtual-cell-atlas.ipynb",
     "hubmap.ipynb",
 ]
+GROUPS["templates"] = [
+    "pbmc3k.ipynb",
+]
 GROUPS["by_datatype"] = [
     "ehr.ipynb",
     "scrna.ipynb",
@@ -83,6 +86,7 @@ def lint(session: nox.Session) -> None:
 @nox.parametrize(
     "group",
     [
+        "templates",
         "by_datatype",
         "by_datatype_spatial",
         "by_datatype_sc_imaging",
@@ -95,6 +99,13 @@ def lint(session: nox.Session) -> None:
 def install(session, group):
     extras = ""
     match group:
+        case "templates":
+            run(
+                session, "uv pip install --system scanpy[leiden]"
+            )
+            run(
+                session, "uv pip install --system scikit-misc"
+            ) 
         case "by_datatype":
             extras += "fcs,zarr_v2"
             run(
@@ -154,6 +165,7 @@ def install(session, group):
 @nox.parametrize(
     "group",
     [
+        "templates",
         "by_datatype",
         "by_datatype_spatial",
         "by_datatype_sc_imaging",
@@ -182,6 +194,7 @@ def build(session, group):
 def docs(session):
     # move artifacts into right place
     for group in [
+        "templates",
         "by_datatype",
         "by_datatype_spatial",
         "by_datatype_sc_imaging",
