@@ -100,12 +100,8 @@ def install(session, group):
     extras = ""
     match group:
         case "templates":
-            run(
-                session, "uv pip install --system scanpy[leiden]"
-            )
-            run(
-                session, "uv pip install --system scikit-misc"
-            ) 
+            run(session, "uv pip install --system scanpy[leiden]")
+            run(session, "uv pip install --system scikit-misc")
         case "by_datatype":
             extras += "fcs,zarr_v2"
             run(
@@ -123,7 +119,7 @@ def install(session, group):
             run(
                 session, "pip install celltypist"
             )  # uv pulls very old llvmlite for some reason
-            run(session, "uv pip install --system gseapy")
+            run(session, "uv pip install --system gseapy>=1.2.1")
             run(session, "uv pip install --system rdflib")
         case "by_datatype_spatial":
             run(session, "uv pip install --system pyarrow==21.0.0")
