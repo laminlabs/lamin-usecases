@@ -11,4 +11,4 @@ DNA methylation patterns vary with age, disease, and tissue type, which makes th
 
 ## Example ML Workflow: Age Prediction
 
-We also have a [tutorial](https://lamin.ai/laminlabs/methyldata/transform/Jxbyx3uaPNcu000C), where we walk through how to train a ML model to estimate age using data from our curated and analysis-ready [DNA methylation instance](https://lamin.ai/laminlabs/methyldata). 
+We also have a [tutorial](https://lamin.ai/laminlabs/methyldata/transform/Jxbyx3uaPNcu000C) where we walk through how to train a ML model to estimate age using data from our curated and analysis-ready [DNA methylation instance](https://lamin.ai/laminlabs/methyldata). 
