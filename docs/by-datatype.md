@@ -5,6 +5,7 @@
 
 scrna
 bulkrna
+dna-methylation
 facs
 spatial
 multimodal
