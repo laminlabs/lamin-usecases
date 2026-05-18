@@ -177,11 +177,6 @@ ln.Artifact.from_spatialdata(
 ```python
 # Define schemas for single-cell image dataset
 schemas = {
-    "var.T": ln.Schema(
-        name="single-cell image dataset schema var",
-        description="column schema for data measured in obsm[single_cell_images]",
-        itype=ln.Feature,
-    ).save(),
     "obs": ln.Schema(
         name="single-cell image dataset schema obs",
         features=[
@@ -190,8 +185,7 @@ schemas = {
     ).save(),
     "uns": ln.Schema(
         name="single-cell image dataset schema uns",
-        itype=ln.Feature,
-        dtype=dict,
+        features=[ln.Feature(name="single_cell_images", dtype=dict).save()],
     ).save(),
 }
 
@@ -296,6 +290,7 @@ def process_images(
 
     # Save single-cell images
     curator = ln.curators.AnnDataCurator(project.h5sc, h5sc_schema)
+    curator.validate()
     artifact = curator.save_artifact(key=f"{base_key}/single_cell_data.h5ad")
 
     annotation = shared_features.copy()

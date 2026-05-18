@@ -2,7 +2,7 @@
 execute_via: python
 ---
 
-# sc-imaging
+# Single-cell imaging
 
 <!-- #region -->
 

@@ -41,7 +41,7 @@ When we mention spatial data, we refer to data from spatial assays, such as spat
 When we refer SpatialData, we mean spatial omics data stored in the scverse SpatialData framework.
 ```
 
-# Query and analyze spatial data
+## Query and analyze spatial data
 
 ```python
 # pip install lamindb spatialdata spatialdata-plot squidpy
