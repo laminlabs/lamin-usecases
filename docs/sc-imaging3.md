@@ -23,8 +23,10 @@ These comprehensive cellular profiles enable downstream machine learning analysi
 ```python
 import lamindb as ln
 import bionty as bt
+import numpy as np
 import pandas as pd
 
+from alphabase.io import tempmmap
 from scportrait.pipeline.featurization import CellFeaturizer
 
 ln.track()
@@ -59,14 +61,17 @@ def featurize_datasets(artifact_list) -> pd.DataFrame:
     paths = [dataset.cache() for dataset in artifact_list]
     dataset_lookup = {idx: cell.uid for idx, cell in enumerate(artifact_list)}
 
-    results = featurizer.process(
+    mm = featurizer.process(
         dataset_paths=paths,
         dataset_labels=list(dataset_lookup.keys()),
         return_results=True,
     )
 
-    # Current scPortrait returns an InferenceMemmap with DataFrame in .results.
-    results = results.results
+    # Current scPortrait returns InferenceMemmap paths for out-of-memory inference.
+    feature_matrix = tempmmap.mmap_array_from_path(mm.features_path)
+    labels = np.asarray(tempmmap.mmap_array_from_path(mm.labels_path)).ravel().astype(int)
+    results = pd.DataFrame(data=np.asarray(feature_matrix), columns=mm.var_names)
+    results["label"] = labels
 
     # Store original dataset uid for tracking
     results["dataset"] = results["label"].map(dataset_lookup)
