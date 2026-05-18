@@ -65,6 +65,9 @@ def featurize_datasets(artifact_list) -> pd.DataFrame:
         return_results=True,
     )
 
+    # Current scPortrait returns an InferenceMemmap with DataFrame in .results.
+    results = results.results
+
     # Store original dataset uid for tracking
     results["dataset"] = results["label"].map(dataset_lookup)
     return results.drop(columns=["label"])
