@@ -108,7 +108,8 @@ artifact = ln.Artifact.from_dataframe(
     key="featurization_results/WT.parquet",
 ).save()
 
-artifact.cell_lines.add(bt.CellLine.get(name="U-2 OS cell"))
+cell_line = bt.CellLine.from_source(name="U-2 OS cell").save()
+artifact.cell_lines.add(cell_line)
 
 artifact.features.add_values(
     {
@@ -148,7 +149,7 @@ artifact = ln.Artifact.from_dataframe(
     key="featurization_results/EI24KO.parquet",
 ).save()
 
-artifact.cell_lines.add(bt.CellLine.filter(name="U-2 OS cell").one())
+artifact.cell_lines.add(cell_line)
 
 artifact.features.add_values(
     {
