@@ -132,12 +132,9 @@ def install(session, group):
         case "atlases":
             extras += "gcp"
         case "by_datatype_sc_imaging":
-            extras += "zarr_v2"
-            # scportrait requires anndata<0.12 that requires zarr<3
-            # this is why zarr_v2 extra above to bound zarr<3
-            # spatialdata uses zarr v3 since 0.6.0
+            # sc-imaging relies on spatialdata APIs that require zarr v3.
+            # Do not install lamindb's zarr_v2 extra here.
             # if pyarrow is not pinned, we run into https://github.com/scverse/spatialdata/issues/1000
-            # we can remove these pins after https://github.com/MannLabs/scPortrait/pull/338 is merged
             run(session, "uv pip install --system pyarrow==21.0.0")
             run(
                 session,
