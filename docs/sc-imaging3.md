@@ -108,7 +108,7 @@ artifact = ln.Artifact.from_dataframe(
     key="featurization_results/WT.parquet",
 ).save()
 
-cell_line = bt.CellLine.from_source(name="U-2 OS cell").save()
+cell_line = bt.CellLine.from_source(ontology_id="CVCL_0042").save()
 artifact.cell_lines.add(cell_line)
 
 artifact.features.add_values(
