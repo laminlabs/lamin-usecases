@@ -176,8 +176,7 @@ def build(session, group):
     login_testuser1(session)
     if group == "by_ontology":
         run(session, "python ./scripts/entity_generation/generate.py")
-    if group != "by_datatype_sc_imaging":
-        run(session, f"pytest -s ./tests/test_notebooks.py::test_{group}")
+    run(session, f"pytest -s ./tests/test_notebooks.py::test_{group}")
 
     # move artifacts into right place
     target_dir = Path(f"./docs_{group}")

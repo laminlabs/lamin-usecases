@@ -8,6 +8,7 @@ bulkrna
 dna-methylation
 facs
 spatial
+sc-imaging
 multimodal
 ehr
 ```
