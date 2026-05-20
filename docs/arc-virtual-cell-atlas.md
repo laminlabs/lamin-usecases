@@ -20,7 +20,6 @@ If you'd like to transfer data into your own LaminDB instance, see the [transfer
 ```python
 import lamindb as ln
 import pyarrow.compute as pc
-import anndata as ad
 ```
 
 Create the central query object for this instance:
@@ -151,7 +150,7 @@ obs_metadata_df.value_counts("plate")
 Retrieve the corresponding cells from h5ad files.
 
 ```python
-plate_cells = df.groupby("plate")["BARCODE_SUB_LIB_ID"].apply(list)
+plate_cells = obs_metadata_df.groupby("plate")["BARCODE_SUB_LIB_ID"].apply(list)
 
 adatas = []
 for artifact in artifacts_a549_piroxicam:
