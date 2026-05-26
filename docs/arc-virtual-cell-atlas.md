@@ -171,10 +171,10 @@ project_scbasecount = db.Project.get(name="scBaseCount")
 project_scbasecount
 ```
 
-This project has 105 collections (21 organisms x 5 count features):
+This project has 135 collections (27 organisms x 5 count features) for the latest version:
 
 ```python
-project_scbasecount.collections.to_dataframe()
+project_scbasecount.collections.filter(version_tag="2026-01-12").to_dataframe()
 ```
 
 ### Query artifacts of interest based on metadata
@@ -190,13 +190,14 @@ feature_counts = db.ULabel.filter(type__name="STARsolo count features").lookup()
 
 ```python
 h5ads_brain = db.Artifact.filter(
+    version_tag="2026-01-12",
     suffix=".h5ad",
     projects=project_scbasecount,
     organisms=organisms.human,
     ulabels=feature_counts.genefull_ex50pas,
     tissues=tissues.brain,
     experimental_factors=efos.single_cell,
-).distinct()
+).order_by("size").distinct()
 
 h5ads_brain.to_dataframe()
 ```
@@ -214,6 +215,7 @@ Open the sample metadata:
 
 ```python
 sample_meta = db.Artifact.filter(
+    version_tag="2026-01-12",
     key__endswith="sample_metadata.parquet",
     projects=project_scbasecount,
     organisms=organisms.human,
