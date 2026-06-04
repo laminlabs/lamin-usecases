@@ -215,7 +215,7 @@ adata_concat.obs.head()
 This project has 135 collections of artifacts (27 organisms x 5 count features) for the latest version:
 
 ```python
-ln.Collection.filter(version_tag="2026-01-12", projects=scbase).to_dataframe()
+db.Collection.filter(version_tag="2026-01-12", projects=scbase).to_dataframe()
 ```
 
 Collections are immutable collections of artifacts, useful for model training or analytical workflows that need to rely on an immutable set rather than a mutable set of artifact that's grouped by a folder or label annotation.
