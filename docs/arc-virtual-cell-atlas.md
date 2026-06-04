@@ -4,13 +4,13 @@ execute_via: python
 
 # Arc Virtual Cell Atlas
 
-With 2.5B expression profiles that map on about 600M cells, the Arc Virtual Cell Atlas is the globally largest collection of uniformly processed scRNA-seq datasets.
+With 2.5B expression profiles that map to about 600M cells, the Arc Virtual Cell Atlas is the globally largest collection of uniformly processed scRNA-seq datasets.
 Arc distributes the atlas as 460k parquet and h5ad files on Google Cloud Storage, see [github.com/ArcInstitute/arc-virtual-cell-atlas](https://github.com/ArcInstitute/arc-virtual-cell-atlas).
 Lamin mirrors the atlas in a database: [lamin.ai/laminlabs/arc-virtual-cell-atlas](https://lamin.ai/laminlabs/arc-virtual-cell-atlas).
 
 If you use the data academically, please cite the original publications, [Youngblut _et al._ (2025)](https://arcinstitute.org/manuscripts/scBaseCount) and [Zhang _et al._ (2025)](https://biorxiv.org/10.1101/2025.02.20.639398).
 
-To query atlas with `lamindb`, you have to install it with the GCP (Google Cloud Platform) extra. We also recommend to configure the {mod}`bionty` and {mod}`pertdb` modules.
+To query the atlas with `lamindb`, you have to install it with the GCP (Google Cloud Platform) extra. We also recommend configuring the {mod}`bionty` and {mod}`pertdb` modules.
 
 ```python
 # pip install 'lamindb[gcp]'
@@ -121,7 +121,7 @@ for artifact in artifacts_a549_piro:
     idxs = plate_cells.get(plate)
     print(f"Loading {len(idxs)} cells from plate {plate}")
     with artifact.open() as store:
-        adata = store[idxs].to_memory() # can also subst genes here
+        adata = store[idxs].to_memory() # can also subset genes here
         adatas.append(adata)
 ```
 
@@ -165,7 +165,7 @@ h5ads_brain = db.Artifact.filter(
 h5ads_brain.to_dataframe()
 ```
 
-### Load an h5ad files with metadata
+### Load h5ad files with metadata
 
 Load the h5ads as a single `AnnData`:
 
