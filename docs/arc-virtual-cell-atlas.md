@@ -130,14 +130,14 @@ for artifact in artifacts_a549_piro:
 ## scBaseCount
 
 ```python
-project_scbasecount = db.Project.get(name="scBaseCount")
-project_scbasecount
+scbase = db.Project.get(name="scBaseCount")
+scbase
 ```
 
-This project has 135 collections (27 organisms x 5 count features) for the latest version:
+This project has 135 collections of artifacts (27 organisms x 5 count features) for the latest version:
 
 ```python
-project_scbasecount.collections.filter(version_tag="2026-01-12").to_dataframe()
+scbase.collections.filter(version_tag="2026-01-12").to_dataframe()
 ```
 
 ### Query artifacts of interest based on metadata
@@ -155,7 +155,7 @@ feature_counts = db.ULabel.filter(type__name="STARsolo count features").lookup()
 h5ads_brain = db.Artifact.filter(
     version_tag="2026-01-12",
     suffix=".h5ad",
-    projects=project_scbasecount,
+    projects=scbase,
     organisms=organisms.human,
     ulabels=feature_counts.genefull_ex50pas,
     tissues=tissues.brain,
@@ -180,7 +180,7 @@ Open the sample metadata:
 sample_meta = db.Artifact.get(
     version_tag="2026-01-12",
     key__endswith="sample_metadata.parquet",
-    projects=project_scbasecount,
+    projects=scbase,
     organisms=organisms.human,
     ulabels=feature_counts.genefull_ex50pas,
 )
