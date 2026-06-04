@@ -12,7 +12,7 @@ If you use the data academically, please cite the original publications, [Youngb
 
 ```python
 # pip install 'lamindb[gcp]'
-!lamin settings set modules bionty,pertdb
+!lamin settings modules set bionty,pertdb
 ```
 
 Create the central query object for this instance:
