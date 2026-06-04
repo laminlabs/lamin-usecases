@@ -79,7 +79,7 @@ db.pertdb.CompoundPerturbation.filter(artifacts__in=artifacts_tahoe).to_datafram
 Let's find which datasets contain A549 cells perturbed with Piroxicam.
 
 ```python
-a549 = db.bionty.CellLine.filter(name="A549", ontology_id="CVCL_0023")
+a549 = db.bionty.CellLine.get(name="A549", ontology_id="CVCL_0023")
 piroxicam = db.pertdb.Compound.get(name="Piroxicam")
 
 artifacts_a549_piroxicam = artifacts_tahoe.filter(compounds=piroxicam, cell_lines=a549)
