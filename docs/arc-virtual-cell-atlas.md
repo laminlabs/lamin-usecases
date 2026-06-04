@@ -10,6 +10,8 @@ Lamin mirrors the atlas here: [laminlabs/arc-virtual-cell-atlas](https://lamin.a
 
 If you use the data academically, please cite the original publications, [Youngblut _et al._ (2025)](https://arcinstitute.org/manuscripts/scBaseCount) and [Zhang _et al._ (2025)](https://biorxiv.org/10.1101/2025.02.20.639398).
 
+To query atlas with `lamindb`, you have to install it with the GCP (Google Cloud Platform) extra. We also recommend to configure the {mod}`bionty` and {mod}`pertdb` modules.
+
 ```python
 # pip install 'lamindb[gcp]'
 !lamin settings modules set bionty,pertdb
@@ -41,56 +43,48 @@ artifact1 = artifacts_tahoe[0]
 artifact1.describe()
 ```
 
-You can join the whole set of artifacts on its annotations via the dynamic `cell_lines`, `compounds`, and `compound_perturbations` fields that the {mod}`bionty` and {mod}`pertdb` modules provide. Using Django's double underscore syntax, you find 50 cell lines:
+<!-- #region -->
+
+You can download an `.h5ad` into your local cache, load it into memory, or open it for streaming:
 
 ```python
-artifacts_tahoe.to_list("cell_lines__name")[:5]
+local_filepath = artifact1.cache()  # sync into cache 
+adata = artifact1.load()  # sync into cache and load into memory
+with artifact1.open() as adata:  # open for streaming
+    ...
+```
+
+<!-- #endregion -->
+
+You can query the {class}`~bionty.CellLine` ontology, the {class}`~pertdb.Compound`, and the {class}`~pertdb.CompoundPerturbation` registries via their relationship to {class}`~lamindb.Artifact`. You'll find 50 cell lines:
+
+```python
+db.bionty.CellLine.filter(artifacts__in=artifacts_tahoe, limit=5).to_dataframe()
 ```
 
 380 compounds:
 
 ```python
-artifacts_tahoe.to_list("compounds__name")[:5]
+db.pertdb.Compound.filter(artifacts__in=artifacts_tahoe, limit=5).to_dataframe()
 ```
 
 1,138 perturbations:
 
 ```python
-artifacts_tahoe.to_list("compound_perturbations__name")[:5]
+db.pertdb.CompoundPerturbation.filter(artifacts__in=artifacts_tahoe, limit=5).to_dataframe()
 ```
 
 ### Query artifacts of interest based on metadata
 
-Since all metadata are registered in the sql database, we can explore the datasets without accessing them.
-
 Let's find which datasets contain A549 cells perturbed with Piroxicam.
 
 ```python
-# lookup objects give you pythonic access to the values
-cell_lines = db.bionty.CellLine.lookup("ontology_id")
-drugs = db.pertdb.Compound.lookup()
+a549 = db.bionty.CellLine.filter(name="A549", ontology_id="CVCL_0023")
+piroxicam = db.pertdb.Compound.get(name="Piroxicam")
 
-artifacts_a549_piroxicam = artifacts_tahoe.filter(
-    cell_lines=cell_lines.cvcl_0023, compounds=drugs.piroxicam
-)
+artifacts_a549_piroxicam = artifacts_tahoe.filter(compounds=piroxicam, cell_lines=a549)
 artifacts_a549_piroxicam.to_dataframe()
 ```
-
-<!-- #region -->
-
-You can download an `.h5ad` into your local cache:
-
-```python
-artifact1.cache()
-```
-
-Or stream it:
-
-```python
-artifact1.open()
-```
-
-<!-- #endregion -->
 
 ### Open the obs metadata parquet file as a PyArrow Dataset
 
@@ -113,9 +107,7 @@ Which A549 cells are perturbed with Piroxicam?
 <!-- #region -->
 
 ```python
-filter_expr = (pc.field("cell_name") == cell_lines.cvcl_0023.name) & (
-    pc.field("drug") == drugs.piroxicam.name
-)
+filter_expr = (pc.field("cell_name") == a549.name) & (pc.field("drug") == piroxicam.name)
 obs_metadata_df = obs_metadata_ds.scanner(filter=filter_expr).to_table().to_pandas()
 obs_metadata_df.value_counts("plate")
 ```
