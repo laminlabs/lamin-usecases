@@ -26,56 +26,37 @@ db = ln.DB("laminlabs/arc-virtual-cell-atlas")
 
 ## Tahoe-100M
 
-```python
-project_tahoe = db.Project.get(name="Tahoe-100M")
-project_tahoe
-```
+Query all artifacts of the `Tahoe-100M` project:
 
 ```python
-# one collection in this project
-project_tahoe.collections.to_dataframe()
-```
-
-Every individual dataset in the atlas is an `.h5ad` file that is registered as an artifact in LaminDB.
-
-Artifact level metadata are registered and can be explored as follows:
-
-```python
-# get the collection: https://lamin.ai/laminlabs/arc-virtual-cell-atlas/collection/BpavRL4ntRTzWEE5
-collection_tahoe = db.Collection.get(key="tahoe100")
-# 14 artifacts in this collection, each correspond to a plate
-artifacts_tahoe = collection_tahoe.artifacts.distinct()
+tahoe = db.Project.get(name="Tahoe-100M")
+artifacts_tahoe = db.Artifact.filter(projects=tahoe)
 artifacts_tahoe.to_dataframe()
 ```
 
-50 cell lines.
+See the schema and annotations of the first artifact:
+
+```python
+artifact1 = artifacts_tahoe[0]
+artifact1.describe()
+```
+
+You can join the whole set of artifacts on its annotations via the dynamic `cell_lines`, `compounds`, and `compound_perturbations` fields that the {mod}`bionty` and {mod}`pertdb` modules provide. Using Django's double underscore syntax, you find 50 cell lines:
 
 ```python
 artifacts_tahoe.to_list("cell_lines__name")[:5]
 ```
 
-380 compounds.
+380 compounds:
 
 ```python
 artifacts_tahoe.to_list("compounds__name")[:5]
 ```
 
-1,138 perturbations.
+1,138 perturbations:
 
 ```python
 artifacts_tahoe.to_list("compound_perturbations__name")[:5]
-```
-
-```python
-# check the curated metadata of the first artifact
-artifact1 = artifacts_tahoe[0]
-artifact1.describe()
-```
-
-16 obs metadata features.
-
-```python
-artifact1.features.slots["obs"].members.to_dataframe()
 ```
 
 ### Query artifacts of interest based on metadata
@@ -127,7 +108,7 @@ obs_metadata_ds = obs_metadata.open()
 obs_metadata_ds.schema
 ```
 
-Which A549 cells are perturbed with Piroxicam.
+Which A549 cells are perturbed with Piroxicam?
 
 <!-- #region -->
 
