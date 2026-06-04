@@ -138,12 +138,6 @@ scbase = db.Project.get(name="scBaseCount")
 scbase
 ```
 
-This project has 135 collections of artifacts (27 organisms x 5 count features) for the latest version:
-
-```python
-scbase.collections.filter(version_tag="2026-01-12").to_dataframe()
-```
-
 ### Query artifacts of interest based on metadata
 
 Often you might not want to access all the h5ads in a collection, but rather filter them by metadata:
@@ -226,3 +220,13 @@ assert (
     == 1138
 )
 ```
+
+## Explore collections
+
+This project has 135 collections of artifacts (27 organisms x 5 count features) for the latest version:
+
+```python
+ln.Collection.filter(version_tag="2026-01-12", projects=scbase).to_dataframe()
+```
+
+Collections are immutable collections of artifacts, useful for model training or analytical workflows that need to rely on an immutable set rather than a mutable set of artifact that's grouped by a folder or label annotation.
