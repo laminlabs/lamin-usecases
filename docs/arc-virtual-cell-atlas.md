@@ -4,8 +4,8 @@ execute_via: python
 
 # Arc Virtual Cell Atlas
 
-With 2.5B expression profiles that map to about 600M cells, the Arc Virtual Cell Atlas is the globally largest collection of uniformly processed scRNA-seq datasets.
-Arc distributes the atlas as 460k parquet and h5ad files on Google Cloud Storage, see [github.com/ArcInstitute/arc-virtual-cell-atlas](https://github.com/ArcInstitute/arc-virtual-cell-atlas).
+With 2.5B expression profiles that map to about 600M cells, the Arc Virtual Cell Atlas is the world's largest collection of uniformly processed scRNA-seq datasets.
+Arc distributes the atlas as 460k parquet and h5ad files totaling 41TB on Google Cloud Storage, see [github.com/ArcInstitute/arc-virtual-cell-atlas](https://github.com/ArcInstitute/arc-virtual-cell-atlas).
 Lamin mirrors the atlas in a database: [lamin.ai/laminlabs/arc-virtual-cell-atlas](https://lamin.ai/laminlabs/arc-virtual-cell-atlas).
 
 If you use the data academically, please cite the original publications, [Youngblut _et al._ (2025)](https://arcinstitute.org/manuscripts/scBaseCount) and [Zhang _et al._ (2025)](https://biorxiv.org/10.1101/2025.02.20.639398).
@@ -88,17 +88,23 @@ artifacts_a549_piro.to_dataframe()
 
 ### Query the metadata parquet file
 
-Open the metadata file (2.29G) with `PyArrow.Dataset`.
+While the artifact metadata tells us which files contain A549 cells and Piroxicam, we use a parquet file to find the exact cells within those files. To this end, we open the metadata file with `pyarrow.Dataset`:
 
 ```python
 obs_metadata = db.Artifact.get(key__endswith="obs_metadata.parquet", projects=tahoe)
+obs_metadata.describe()
+```
+
+The schema of the parquet file maps to the `pyarrow` schema:
+
+```
 obs_metadata_ds = obs_metadata.open()
 obs_metadata_ds.schema
 ```
 
-Which A549 cells are perturbed with Piroxicam?
-
 <!-- #region -->
+
+Let us now query the columns of interest:
 
 ```python
 filter_expr = (pc.field("cell_name") == a549.name) & (pc.field("drug") == piro.name)
@@ -106,23 +112,21 @@ obs_metadata_df = obs_metadata_ds.scanner(filter=filter_expr).to_table().to_pand
 obs_metadata_df.value_counts("plate")
 ```
 
-<!-- #endregion -->
-
-<!-- #region -->
-
-Retrieve the corresponding cells from h5ad files.
+And then retrieve the corresponding cells from h5ad files:
 
 ```python
 plate_cells = obs_metadata_df.groupby("plate")["BARCODE_SUB_LIB_ID"].apply(list)
 
 adatas = []
 for artifact in artifacts_a549_piro:
-    plate = artifact.features.get_values()["plate"]
+    plate = artifact.features["plate"]
     idxs = plate_cells.get(plate)
     print(f"Loading {len(idxs)} cells from plate {plate}")
     with artifact.open() as store:
-        adata = store[idxs].to_memory() # can also subset genes here
+        adata = store[idxs].to_memory()  # can also subset genes here
         adatas.append(adata)
+
+# continue with concatenating or other processing of the AnnData objects
 ```
 
 <!-- #endregion -->
