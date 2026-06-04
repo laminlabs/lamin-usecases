@@ -98,7 +98,7 @@ Open the obs metadata file (2.29G) with `PyArrow.Dataset`.
 
 ```python
 obs_metadata = db.Artifact.filter(
-    key__endswith="obs_metadata.parquet", projects=project_tahoe
+    key__endswith="obs_metadata.parquet", projects=tahoe
 ).one()
 obs_metadata
 ```
