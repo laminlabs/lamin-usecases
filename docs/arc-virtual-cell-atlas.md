@@ -210,6 +210,16 @@ See the metadata in the `AnnData`:
 adata_concat.obs.head()
 ```
 
+## Explore collections
+
+This project has 135 collections of artifacts (27 organisms x 5 count features) for the latest version:
+
+```python
+ln.Collection.filter(version_tag="2026-01-12", projects=scbase).to_dataframe()
+```
+
+Collections are immutable collections of artifacts, useful for model training or analytical workflows that need to rely on an immutable set rather than a mutable set of artifact that's grouped by a folder or label annotation.
+
 ```python tags=["hide-cell"]
 assert db.bionty.CellLine.filter(artifacts__in=artifacts_tahoe).distinct().count() == 50
 assert db.pertdb.Compound.filter(artifacts__in=artifacts_tahoe).distinct().count() == 380
@@ -220,13 +230,3 @@ assert (
     == 1138
 )
 ```
-
-## Explore collections
-
-This project has 135 collections of artifacts (27 organisms x 5 count features) for the latest version:
-
-```python
-ln.Collection.filter(version_tag="2026-01-12", projects=scbase).to_dataframe()
-```
-
-Collections are immutable collections of artifacts, useful for model training or analytical workflows that need to rely on an immutable set rather than a mutable set of artifact that's grouped by a folder or label annotation.
