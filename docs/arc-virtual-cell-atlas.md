@@ -4,9 +4,9 @@ execute_via: python
 
 # Arc Virtual Cell Atlas
 
-With 2.5B expression profiles that map on about 600M cells, the [Arc Virtual Cell Atlas](https://github.com/ArcInstitute/arc-virtual-cell-atlas) is the globally largest collection of uniformly processed scRNA-seq datasets.
-Arc distributes the atlas as 460k parquet and h5ad files on Google Cloud Storage.
-Lamin mirrors the atlas here: [laminlabs/arc-virtual-cell-atlas](https://lamin.ai/laminlabs/arc-virtual-cell-atlas).
+With 2.5B expression profiles that map on about 600M cells, the Arc Virtual Cell Atlas is the globally largest collection of uniformly processed scRNA-seq datasets.
+Arc distributes the atlas as 460k parquet and h5ad files on Google Cloud Storage, see [github.com/ArcInstitute/arc-virtual-cell-atlas](https://github.com/ArcInstitute/arc-virtual-cell-atlas).
+Lamin mirrors the atlas in a database: [lamin.ai/laminlabs/arc-virtual-cell-atlas](https://lamin.ai/laminlabs/arc-virtual-cell-atlas).
 
 If you use the data academically, please cite the original publications, [Youngblut _et al._ (2025)](https://arcinstitute.org/manuscripts/scBaseCount) and [Zhang _et al._ (2025)](https://biorxiv.org/10.1101/2025.02.20.639398).
 
