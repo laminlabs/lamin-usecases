@@ -28,7 +28,7 @@ db = ln.DB("laminlabs/arc-virtual-cell-atlas")
 
 ## Tahoe-100M
 
-Query all artifacts of the `Tahoe-100M` project:
+Query the 14 `.h5ad` datasets of the `Tahoe-100M` project:
 
 ```python
 tahoe = db.Project.get(name="Tahoe-100M")
@@ -36,7 +36,7 @@ artifacts_tahoe = db.Artifact.filter(projects=tahoe)
 artifacts_tahoe.to_dataframe()
 ```
 
-See the schema and annotations of the first artifact:
+See the schema and annotations of the first dataset:
 
 ```python
 artifact1 = artifacts_tahoe[0]
@@ -80,24 +80,18 @@ Let's find which datasets contain A549 cells perturbed with Piroxicam.
 
 ```python
 a549 = db.bionty.CellLine.get(name="A549", ontology_id="CVCL_0023")
-piroxicam = db.pertdb.Compound.get(name="Piroxicam")
+piro = db.pertdb.Compound.get(name="Piroxicam")
 
-artifacts_a549_piroxicam = artifacts_tahoe.filter(compounds=piroxicam, cell_lines=a549)
-artifacts_a549_piroxicam.to_dataframe()
+artifacts_a549_piro = artifacts_tahoe.filter(compounds=piro, cell_lines=a549)
+artifacts_a549_piro.to_dataframe()
 ```
 
-### Open the obs metadata parquet file as a PyArrow Dataset
+### Query the metadata parquet file
 
-Open the obs metadata file (2.29G) with `PyArrow.Dataset`.
-
-```python
-obs_metadata = db.Artifact.filter(
-    key__endswith="obs_metadata.parquet", projects=tahoe
-).one()
-obs_metadata
-```
+Open the metadata file (2.29G) with `PyArrow.Dataset`.
 
 ```python
+obs_metadata = db.Artifact.get(key__endswith="obs_metadata.parquet", projects=tahoe)
 obs_metadata_ds = obs_metadata.open()
 obs_metadata_ds.schema
 ```
@@ -107,7 +101,7 @@ Which A549 cells are perturbed with Piroxicam?
 <!-- #region -->
 
 ```python
-filter_expr = (pc.field("cell_name") == a549.name) & (pc.field("drug") == piroxicam.name)
+filter_expr = (pc.field("cell_name") == a549.name) & (pc.field("drug") == piro.name)
 obs_metadata_df = obs_metadata_ds.scanner(filter=filter_expr).to_table().to_pandas()
 obs_metadata_df.value_counts("plate")
 ```
@@ -122,7 +116,7 @@ Retrieve the corresponding cells from h5ad files.
 plate_cells = obs_metadata_df.groupby("plate")["BARCODE_SUB_LIB_ID"].apply(list)
 
 adatas = []
-for artifact in artifacts_a549_piroxicam:
+for artifact in artifacts_a549_piro:
     plate = artifact.features.get_values()["plate"]
     idxs = plate_cells.get(plate)
     print(f"Loading {len(idxs)} cells from plate {plate}")
@@ -171,9 +165,9 @@ h5ads_brain = db.Artifact.filter(
 h5ads_brain.to_dataframe()
 ```
 
-### Load the h5ad files with obs metadata
+### Load an h5ad files with metadata
 
-Load the h5ads as a single AnnData:
+Load the h5ads as a single `AnnData`:
 
 ```python
 adata_concat = h5ads_brain[:5].load()
@@ -183,22 +177,18 @@ adata_concat
 Open the sample metadata:
 
 ```python
-sample_meta = db.Artifact.filter(
+sample_meta = db.Artifact.get(
     version_tag="2026-01-12",
     key__endswith="sample_metadata.parquet",
     projects=project_scbasecount,
     organisms=organisms.human,
     ulabels=feature_counts.genefull_ex50pas,
-).one()
-sample_meta
-```
-
-```python
+)
 sample_meta_dataset = sample_meta.open()
 sample_meta_dataset.schema
 ```
 
-Fetch corresponding sample metadata:
+Query the corresponding sample metadata:
 
 ```python
 filter_expr = pc.field("srx_accession").isin(
@@ -207,7 +197,7 @@ filter_expr = pc.field("srx_accession").isin(
 df = sample_meta_dataset.scanner(filter=filter_expr).to_table().to_pandas()
 ```
 
-Add the sample metadata to the AnnData:
+Add the sample metadata to the `AnnData` object:
 
 ```python
 adata_concat.obs = adata_concat.obs.merge(
@@ -215,6 +205,8 @@ adata_concat.obs = adata_concat.obs.merge(
 )
 adata_concat
 ```
+
+See the metadata in the `AnnData`:
 
 ```python
 adata_concat.obs.head()
