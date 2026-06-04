@@ -20,7 +20,6 @@ Create the central query object for this instance:
 ```python
 import lamindb as ln
 import pyarrow.compute as pc
-import anndata as ad
 
 db = ln.DB("laminlabs/arc-virtual-cell-atlas")
 ```
