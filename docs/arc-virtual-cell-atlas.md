@@ -2,29 +2,26 @@
 execute_via: python
 ---
 
-# Arc Virtual Cell Atlas: scRNA-seq
+# Arc Virtual Cell Atlas
 
-The [Arc Virtual Cell Atlas](https://github.com/ArcInstitute/arc-virtual-cell-atlas) hosts one of the biggest collections of scRNA-seq datasets.
-
-Lamin mirrors the dataset for simplified access here: [laminlabs/arc-virtual-cell-atlas](https://lamin.ai/laminlabs/arc-virtual-cell-atlas).
+With 2.5B expression profiles that map on about 600M cells, the [Arc Virtual Cell Atlas](https://github.com/ArcInstitute/arc-virtual-cell-atlas) is the globally largest collection of uniformly processed scRNA-seq datasets.
+Arc distributes the atlas as 460k parquet and h5ad files on Google Cloud Storage.
+Lamin mirrors the atlas here: [laminlabs/arc-virtual-cell-atlas](https://lamin.ai/laminlabs/arc-virtual-cell-atlas).
 
 If you use the data academically, please cite the original publications, [Youngblut _et al._ (2025)](https://arcinstitute.org/manuscripts/scBaseCount) and [Zhang _et al._ (2025)](https://biorxiv.org/10.1101/2025.02.20.639398).
 
-If you'd like to transfer data into your own LaminDB instance, see the [transfer guide](inv:docs#transfer).
-
 ```python
-# pip install 'lamindb[gcp,bionty,pertdb]'
-!lamin init --modules bionty,pertdb --storage ./test-arc-virtual-cell-atlas
-```
-
-```python
-import lamindb as ln
-import pyarrow.compute as pc
+# pip install 'lamindb[gcp]'
+!lamin settings set modules bionty,pertdb
 ```
 
 Create the central query object for this instance:
 
 ```python
+import lamindb as ln
+import pyarrow.compute as pc
+import anndata as ad
+
 db = ln.DB("laminlabs/arc-virtual-cell-atlas")
 ```
 
