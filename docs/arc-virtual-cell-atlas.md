@@ -59,19 +59,19 @@ with artifact1.open() as adata:  # open for streaming
 You can query the {class}`~bionty.CellLine` ontology, the {class}`~pertdb.Compound`, and the {class}`~pertdb.CompoundPerturbation` registries via their relationship to {class}`~lamindb.Artifact`. You'll find 50 cell lines:
 
 ```python
-db.bionty.CellLine.filter(artifacts__in=artifacts_tahoe).to_dataframe()
+db.bionty.CellLine.filter(artifacts__in=artifacts_tahoe).distinct().to_dataframe()
 ```
 
 380 compounds:
 
 ```python
-db.pertdb.Compound.filter(artifacts__in=artifacts_tahoe).to_dataframe()
+db.pertdb.Compound.filter(artifacts__in=artifacts_tahoe).distinct().to_dataframe()
 ```
 
 1,138 perturbations:
 
 ```python
-db.pertdb.CompoundPerturbation.filter(artifacts__in=artifacts_tahoe).to_dataframe()
+db.pertdb.CompoundPerturbation.filter(artifacts__in=artifacts_tahoe).distinct().to_dataframe()
 ```
 
 ### Query artifacts of interest based on metadata
@@ -210,4 +210,15 @@ See the metadata in the `AnnData`:
 
 ```python
 adata_concat.obs.head()
+```
+
+```python tags=["hide-cell"]
+assert db.bionty.CellLine.filter(artifacts__in=artifacts_tahoe).distinct().count() == 50
+assert db.pertdb.Compound.filter(artifacts__in=artifacts_tahoe).distinct().count() == 380
+assert (
+    db.pertdb.CompoundPerturbation.filter(artifacts__in=artifacts_tahoe)
+    .distinct()
+    .count()
+    == 1138
+)
 ```

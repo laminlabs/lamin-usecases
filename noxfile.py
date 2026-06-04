@@ -169,8 +169,10 @@ def install(session, group):
 )
 def build(session, group):
     convert_executable_md_files()
-    login_testuser2(session)
-    login_testuser1(session)
+    # we should likely not login in almost all groups, but let's start with atlases for now
+    if group != "atlases":
+        login_testuser2(session)
+        login_testuser1(session)
     if group == "by_ontology":
         run(session, "python ./scripts/entity_generation/generate.py")
     run(session, f"pytest -s ./tests/test_notebooks.py::test_{group}")
