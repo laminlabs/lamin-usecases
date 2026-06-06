@@ -107,19 +107,24 @@ Let us now query the columns of interest:
 ```python
 filter_expr = (pc.field("cell_name") == a549.name) & (pc.field("drug") == piro.name)
 obs_metadata_df = obs_metadata_ds.scanner(filter=filter_expr).to_table().to_pandas()
-obs_metadata_df.value_counts("plate")
+obs_metadata_df.head()
 ```
 
-And then retrieve the corresponding cells from h5ad files:
+Retrieve the corresponding cells:
 
 ```python
 plate_cells = obs_metadata_df.groupby("plate")["BARCODE_SUB_LIB_ID"].apply(list)
+plate_cells
+```
 
+And their counts:
+
+```python
 adatas = []
 for artifact in artifacts_a549_piro:
-    plate = artifact.features["plate"]
-    idxs = plate_cells.get(plate)
-    print(f"Loading {len(idxs)} cells from plate {plate}")
+    plate_name = artifact.features["plate"].name
+    idxs = plate_cells.get(plate_name)
+    print(f"loading {len(idxs)} cells from plate {plate_name}")
     with artifact.open() as store:
         adata = store[idxs].to_memory()  # can also subset genes here
         adatas.append(adata)
