@@ -86,34 +86,36 @@ artifacts_a549_piro = artifacts_tahoe.filter(compounds=piro, cell_lines=a549)
 artifacts_a549_piro.to_dataframe()
 ```
 
-### Query the metadata parquet file
+### Stream the dataset content
 
 While the artifact metadata tells us which files contain A549 cells and Piroxicam, we use a parquet file to find the exact cells within those files. To this end, we open the metadata file with `pyarrow.Dataset`:
 
 ```python
-obs_metadata = db.Artifact.get(key__endswith="obs_metadata.parquet", projects=tahoe)
-obs_metadata.describe()
+obs_af = db.Artifact.get(key__endswith="obs_metadata.parquet", projects=tahoe)
+obs_af.describe()
 ```
 
 The schema of the parquet file maps to the `pyarrow` schema:
 
 ```python
-obs_metadata_ds = obs_metadata.open()  # consider using with obs_metadata.open() as obs_metadata_ds
-obs_metadata_ds.schema
+obs_ds = obs_af.open()  # consider using with obs_af.open() as obs_ds
+obs_ds.schema
 ```
+
+<!-- #region -->
 
 Let us now query the columns of interest:
 
 ```python
 filter_expr = (pc.field("cell_name") == a549.name) & (pc.field("drug") == piro.name)
-obs_metadata_df = obs_metadata_ds.scanner(filter=filter_expr).to_table().to_pandas()
-obs_metadata_df.head()
+obs_df = obs_ds.scanner(filter=filter_expr).to_table().to_pandas()
+obs_df.head()
 ```
 
 Retrieve the corresponding cells:
 
 ```python
-plate_cells = obs_metadata_df.groupby("plate")["BARCODE_SUB_LIB_ID"].apply(list)
+plate_cells = obs_df.groupby("plate")["BARCODE_SUB_LIB_ID"].apply(list)
 plate_cells
 ```
 
@@ -125,12 +127,18 @@ for artifact in artifacts_a549_piro:
     plate_name = artifact.features["plate"].name
     idxs = plate_cells.get(plate_name)
     print(f"loading {len(idxs)} cells from plate {plate_name}")
-    with artifact.open() as store:
-        adata = store[idxs].to_memory()  # can also subset genes here
+    with artifact.open() as astore:
+        adata = astore[idxs].to_memory()  # can also subset genes here
         adatas.append(adata)
 
+# this will print something like this
+#> loading 2812 cells from plate plate10
+#> ...
 # continue with concatenating or other processing of the AnnData objects
 ```
+
+<!-- #endregion -->
+
 
 ## scBaseCount
 
