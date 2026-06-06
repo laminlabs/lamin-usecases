@@ -102,8 +102,6 @@ obs_metadata_ds = obs_metadata.open()
 obs_metadata_ds.schema
 ```
 
-<!-- #region -->
-
 Let us now query the columns of interest:
 
 ```python
@@ -128,8 +126,6 @@ for artifact in artifacts_a549_piro:
 
 # continue with concatenating or other processing of the AnnData objects
 ```
-
-<!-- #endregion -->
 
 ## scBaseCount
 
