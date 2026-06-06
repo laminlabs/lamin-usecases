@@ -97,8 +97,8 @@ obs_metadata.describe()
 
 The schema of the parquet file maps to the `pyarrow` schema:
 
-```
-obs_metadata_ds = obs_metadata.open()
+```python
+obs_metadata_ds = obs_metadata.open()  # consider using with obs_metadata.open() as obs_metadata_ds
 obs_metadata_ds.schema
 ```
 
