@@ -104,6 +104,20 @@ obs_ds.schema
 
 <!-- #region -->
 
+:::{note} Streaming speed
+
+Streaming large parquet and h5ad files from cloud storage crucially depends on where you run your code.
+
+It'll be much faster if you run it in the data centers where downloads do not have to leave the data center. And it'll be prohibitively slow if you run it locally. The `arc-institute-virtual-cell-atlas` bucket is accessible from any Google Cloud data center in the US with low latency and no egress fees.
+
+If you run logic locally, consider caching the data prior to opening files:
+
+```python
+local_filepath = obs_af.cache()  # subsequent obs_af.open() will automatically read from the cache
+```
+
+:::
+
 Let us now query the columns of interest:
 
 ```python
