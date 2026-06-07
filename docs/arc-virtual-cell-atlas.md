@@ -28,11 +28,11 @@ db = ln.DB("laminlabs/arc-virtual-cell-atlas")
 
 ## Tahoe-100M
 
-Query the 14 `.h5ad` datasets of the `Tahoe-100M` project:
+Retrieve the fourteen `.h5ad` datasets of the `Tahoe-100M` project:
 
 ```python
 tahoe = db.Project.get(name="Tahoe-100M")
-artifacts_tahoe = db.Artifact.filter(projects=tahoe)
+artifacts_tahoe = db.Artifact.filter(projects=tahoe, suffix=".h5ad")
 artifacts_tahoe.to_dataframe()
 ```
 
@@ -74,7 +74,7 @@ db.pertdb.Compound.filter(artifacts__in=artifacts_tahoe).distinct().to_dataframe
 db.pertdb.CompoundPerturbation.filter(artifacts__in=artifacts_tahoe).distinct().to_dataframe()
 ```
 
-### Query artifacts of interest based on metadata
+### Query artifacts based on metadata
 
 Let's find which datasets contain A549 cells perturbed with Piroxicam.
 
@@ -120,15 +120,12 @@ Let us now query the columns of interest:
 
 ```python
 filter_expr = (pc.field("cell_name") == a549.name) & (pc.field("drug") == piro.name)
-obs_df = obs_ds.scanner(filter=filter_expr).to_table().to_pandas()
-obs_df.head()
 ```
 
 Retrieve the corresponding cells:
 
 ```python
 plate_cells = obs_df.groupby("plate")["BARCODE_SUB_LIB_ID"].apply(list)
-plate_cells
 ```
 
 And their counts:
@@ -159,18 +156,16 @@ scbase = db.Project.get(name="scBaseCount")
 scbase
 ```
 
-### Query artifacts of interest based on metadata
+### Query artifacts based on metadata
 
-Often you might not want to access all the h5ads in a collection, but rather filter them by metadata:
+An exemplary query:
 
 ```python
 organisms = db.bionty.Organism.lookup()
 tissues = db.bionty.Tissue.lookup()
 efos = db.bionty.ExperimentalFactor.lookup()
 feature_counts = db.ULabel.filter(type__name="STARsolo count features").lookup()
-```
 
-```python
 h5ads_brain = db.Artifact.filter(
     version_tag="2026-01-12",
     suffix=".h5ad",
@@ -184,9 +179,9 @@ h5ads_brain = db.Artifact.filter(
 h5ads_brain.to_dataframe()
 ```
 
-### Load h5ad files with metadata
+### Cache and load datasets into memory
 
-Load the h5ads as a single `AnnData`:
+Load the h5ads as a single `AnnData` by caching the datasets, concatenating them, and loading them into memory:
 
 ```python
 adata_concat = h5ads_brain[:5].load()
@@ -231,7 +226,7 @@ See the metadata in the `AnnData`:
 adata_concat.obs.head()
 ```
 
-## Explore collections
+### Explore collections
 
 This project has 135 collections of artifacts (27 organisms x 5 count features) for the latest version:
 
