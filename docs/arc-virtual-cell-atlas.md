@@ -148,6 +148,17 @@ for artifact in artifacts_a549_piro:
 
 <!-- #endregion -->
 
+### Train ML models
+
+By applying fast data loaders such as `annbatch`[^gold26] or `scdataset`[^dascenzo25] to locally cached arrays, one can achieve loading times of 50k - 80k vectors/second. This is much faster than cloud-based streaming of the array content.
+
+[Here](https://lamin.ai/laminlabs/arrayloader-benchmarks/artifact/BDttiuV3Te8VB0dU) we zero-copy transferred the `Tahoe-100M` datasets into a database for benchmarking different ML data loaders:
+
+<div style="text-align: center">
+<img src="https://lamin-site-assets.s3.amazonaws.com/.lamindb/D5nJXInD6i3qMItB0002.png" width="700" alt="LaminHub example of lineage-aware syncing of Tahoe-100M datasets" style="padding: 0;">
+</div>
+
+[Here](https://lamin.ai/laminlabs/arrayloader-benchmarks/run/ZSuaqX3BWwLzwduW) is an example for a data loading run that loads these `Tahoe-100M` datasets from a pre-shuffled `.zarr` store, obtained as a transformation of the original 14 `.h5ad` files.
 
 ## scBaseCount
 
@@ -246,3 +257,9 @@ assert (
     == 1138
 )
 ```
+
+## References
+
+[^gold26]: Gold I et al. (2026). MCML - Annbatch Unlocks Terabyte-Scale Training of Biological Data in Anndata. [arXiv](https://arxiv.org/abs/2604.01949).
+
+[^dascenzo25]: D'Ascenzo D & Cultrera di Montesano S (2025). scDataset: Scalable Data Loading for Deep Learning on Large-Scale Single-Cell Omics. [arXiv](https://arxiv.org/abs/2506.01883).
