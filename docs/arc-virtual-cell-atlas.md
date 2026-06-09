@@ -8,7 +8,7 @@ With 2.5B expression profiles that map to about 600M cells, the Arc Virtual Cell
 Arc distributes the atlas as 460k parquet and h5ad files totaling 41TB on Google Cloud Storage, see [github.com/ArcInstitute/arc-virtual-cell-atlas](https://github.com/ArcInstitute/arc-virtual-cell-atlas).
 Lamin mirrors the atlas in a database: [lamin.ai/laminlabs/arc-virtual-cell-atlas](https://lamin.ai/laminlabs/arc-virtual-cell-atlas).
 
-If you use the data academically, please cite the original publications, [Youngblut _et al._ (2025)](https://arcinstitute.org/manuscripts/scBaseCount) and [Zhang _et al._ (2025)](https://biorxiv.org/10.1101/2025.02.20.639398).
+If you use the data academically, please cite the original publications, Youngblut _et al._ (2025)[^youngblut25] and Zhang _et al._ (2025).[^zhang25]
 
 To query the atlas with `lamindb`, you have to install it with the GCP (Google Cloud Platform) extra. We also recommend configuring the {mod}`bionty` and {mod}`pertdb` modules.
 
@@ -259,6 +259,10 @@ assert (
 ```
 
 ## References
+
+[^youngblut25]: Youngblut ND et al. (2025). scBaseCount: an AI agent-curated, uniformly processed, and continually expanding single cell data repository. [bioRxiv](https://www.biorxiv.org/content/10.1101/2025.02.27.640494).
+
+[^zhang25]: Zhang JQ et al. (2025). Tahoe-100M: A Giga-Scale Single-Cell Perturbation Atlas for Context-Dependent Gene Function and Cellular Modeling. [bioRxiv](https://www.biorxiv.org/content/10.1101/2025.02.20.639398).
 
 [^gold26]: Gold I et al. (2026). MCML - Annbatch Unlocks Terabyte-Scale Training of Biological Data in Anndata. [arXiv](https://arxiv.org/abs/2604.01949).
 
