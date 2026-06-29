@@ -63,22 +63,6 @@ def get_cells(dataframe):
 ```
 
 ```python
-# Define RandomForest parameters
-param_definitions = [
-    ("random_state", "int"),
-    ("n_estimators", "int"),
-    ("max_depth", "int"),
-    ("min_samples_split", "int"),
-    ("min_samples_leaf", "int"),
-    ("max_features", "str"),
-    ("criterion", "str"),
-    ("bootstrap", "bool"),
-]
-
-# Create parameter objects
-for name, dtype in param_definitions:
-    ln.Param(name=name, dtype=dtype).save()
-
 rfc_params = {
     "random_state": 42,
     "n_estimators": 100,

@@ -310,10 +310,6 @@ def process_images(
     ).save()
 ```
 
-```python
-ln.Param(name="output_directory", dtype="str").save()
-```
-
 Now we are ready to process all of our input images and upload the generated single-cell image datasets back to our instance.
 
 ```python
