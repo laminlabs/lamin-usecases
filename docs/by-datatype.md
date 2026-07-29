@@ -6,6 +6,7 @@
 scrna
 bulkrna
 dna-methylation
+genomic-variants
 facs
 spatial
 sc-imaging
