@@ -1,3 +1,3 @@
-# 1000 Genomes: genomic variants
+# 1000 Genomes
 
 See {doc}`genomic-variants`.
