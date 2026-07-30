@@ -1,3 +1,3 @@
-# EWAS Data Hub: methylation array data
+# EWAS Data Hub
 
 See {doc}`dna-methylation`.
