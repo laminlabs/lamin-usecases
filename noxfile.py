@@ -74,7 +74,12 @@ GROUPS["by_ontology"] = [
 
 
 IS_PR = os.getenv("GITHUB_EVENT_NAME") != "push"
-SPATIALDATA_OME_ZARR_CONSTRAINT = "ome-zarr<0.14.0"
+# SpatialData.write() had a regression with ome-zarr>=0.14:
+# https://github.com/scverse/spatialdata/issues/1090
+# seems to be solved, unpinning for now
+SPATIALDATA_OME_ZARR_CONSTRAINT = "ome-zarr"
+# compatibility with anndata>=0.13.0
+SPATIALDATA_CONSTRAINT = "spatialdata==0.8.0"
 
 
 @nox.session
@@ -125,7 +130,7 @@ def install(session, group):
             run(session, "uv pip install --system pyarrow==21.0.0")
             run(
                 session,
-                "uv pip install --system pytorch-lightning spatialdata "
+                f"uv pip install --system pytorch-lightning {SPATIALDATA_CONSTRAINT} "
                 f"{SPATIALDATA_OME_ZARR_CONSTRAINT} spatialdata-plot "
                 "squidpy>=1.6.2 scanpy[leiden] monai",
             )
@@ -138,8 +143,7 @@ def install(session, group):
             run(session, "uv pip install --system pyarrow==21.0.0")
             run(
                 session,
-                "uv pip install --system spatialdata<=0.5.0 "
-                f"{SPATIALDATA_OME_ZARR_CONSTRAINT}",
+                "uv pip install --system spatialdata<=0.5.0 ome-zarr<0.14.0",
             )
             run(session, "uv pip install --system scportrait")
             run(session, "uv pip install --system cellpose<4")
