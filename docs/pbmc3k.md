@@ -10,7 +10,7 @@ We will process a dataset of *3k PBMCs from a Healthy Donor* (freely available f
 
 Note: To run examples, if you don’t have a LaminDB instance, create one:
 
-```shell
+```bash
 lamin init --storage ./test-pbmc3k
 ```
 
