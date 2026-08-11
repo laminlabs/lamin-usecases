@@ -86,7 +86,7 @@ artifact = ln.Artifact.from_anndata(
 ).save()
 ```
 
-Some Ensembl gene IDs don't validate because they stem from an older version of Ensembl. If we wanted to be 100% sure that all gene identifiers are valid Ensembl IDs you can import the genes from an old Ensembl version into the `Gene` registry (see [guide](inv:docs#bio-registries)). One can also enforce this through the `.var.T` schema by setting `schema.maximal_set=True`, which will prohibit any non-valid features in the dataframe.
+Some Ensembl gene IDs don't validate because they stem from an older version of Ensembl. If we wanted to be 100% sure that all gene identifiers are valid Ensembl IDs you can import the genes from an old Ensembl version into the `Gene` registry (see [guide](inv:docs#manage-ontologies)). One can also enforce this through the `.var.T` schema by setting `schema.maximal_set=True`, which will prohibit any non-valid features in the dataframe.
 
 ```python
 artifact.describe()
