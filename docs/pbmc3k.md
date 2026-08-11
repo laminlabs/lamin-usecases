@@ -34,16 +34,25 @@ Download and unpack the data:
 ```python
 from pathlib import Path
 import tarfile
-from urllib.request import urlretrieve
+from urllib.request import Request, urlopen
 
 data_dir = Path("data")
 data_dir.mkdir(exist_ok=True)
 archive_path = data_dir / "pbmc3k_filtered_gene_bc_matrices.tar.gz"
 if not archive_path.exists():
-    urlretrieve(
+    urls = [
+        "https://cf.10xgenomics.com/samples/cell-exp/1.1.0/pbmc3k/pbmc3k_filtered_gene_bc_matrices.tar.gz",
         "https://cf.10xgenomics.com/samples/cell/pbmc3k/pbmc3k_filtered_gene_bc_matrices.tar.gz",
-        archive_path,
-    )
+    ]
+    for i, url in enumerate(urls):
+        try:
+            req = Request(url, headers={"User-Agent": "Mozilla/5.0"})
+            with urlopen(req) as response, archive_path.open("wb") as f:
+                f.write(response.read())
+            break
+        except Exception:
+            if i == len(urls) - 1:
+                raise
 with tarfile.open(archive_path, "r:gz") as tar:
     tar.extractall(data_dir)
 ```
