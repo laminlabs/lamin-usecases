@@ -434,8 +434,3 @@ fig.tight_layout()
 ```python
 ln.finish()
 ```
-
-```python
-!rm -rf test-imaging
-!lamin delete --force test-imaging
-```

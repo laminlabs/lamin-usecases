@@ -10,9 +10,9 @@ ECCITE-seq is designed to enable interrogation of single-cell transcriptomes tog
 
 [MuData objects](https://mudata.readthedocs.io) build on top of AnnData objects to store multimodal data.
 
-```python
+```bash
 # pip install lamindb
-!lamin init --storage ./test-multimodal --modules bionty
+lamin init --storage ./test-multimodal --modules bionty
 ```
 
 ```python
@@ -150,11 +150,4 @@ artifact.describe()
 
 ```python
 ln.finish()
-```
-
-```python
-# clean up test instance
-bt.settings.organism = None
-!rm -r test-multimodal
-!lamin delete --force test-multimodal
 ```

@@ -119,8 +119,8 @@ Prepare a new `AnnData` object to be appended to the store.
 ln.core.datasets.anndata_with_obs().write_h5ad("adata_to_append.h5ad")
 ```
 
-```python
-!lamin save adata_to_append.h5ad --description "adata to append"
+```bash
+lamin save adata_to_append.h5ad --description "adata to append"
 ```
 
 ```python

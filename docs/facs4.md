@@ -58,9 +58,3 @@ Given the image is part of the notebook, there isn't an actual need to save it a
 ```
 ln.finish()
 ```
-
-```python
-# clean up test instance
-!rm -r test-flow
-!lamin delete --force test-facs
-```

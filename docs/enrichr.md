@@ -8,9 +8,9 @@ In this notebook we manage a pathway registry based on "2023 GO Biological Proce
 
 In the [Cell type annotation and pathway analysis](analysis-registries) notebook, we'll demonstrate how to perform a pathway enrichment analysis and track the dataset with LaminDB.
 
-```python
+```bash
 # pip install lamindb gseapy
-!lamin init --storage ./use-cases-registries --modules bionty
+lamin init --storage ./use-cases-registries --modules bionty
 ```
 
 ```python

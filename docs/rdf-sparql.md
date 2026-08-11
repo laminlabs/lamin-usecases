@@ -13,9 +13,9 @@ import warnings
 warnings.filterwarnings("ignore")
 ```
 
-```python
+```bash
 # pip install 'lamindb[bionty]' rdflib
-!lamin connect laminlabs/lamindata
+lamin connect laminlabs/lamindata
 ```
 
 ```python

@@ -13,9 +13,9 @@ More comprehensive examples are provided for these data types:
 
 ```
 
-```python
+```bash
 # !pip install 'lamindb[jupyter,bionty]'
-!lamin init --storage test-bulkrna --modules bionty
+lamin init --storage test-bulkrna --modules bionty
 ```
 
 ```python
@@ -153,10 +153,4 @@ ln.Artifact.to_dataframe()
 
 ```python
 curated_af.view_lineage()
-```
-
-```python
-# clean up test instance
-!rm -r test-bulkrna
-!lamin delete --force test-bulkrna
 ```

@@ -31,11 +31,30 @@ ln.track()
 
 Download and unpack the data:
 
-```bash
-mkdir -p data
-cd data
-test -f pbmc3k_filtered_gene_bc_matrices.tar.gz || curl https://cf.10xgenomics.com/samples/cell/pbmc3k/pbmc3k_filtered_gene_bc_matrices.tar.gz -o pbmc3k_filtered_gene_bc_matrices.tar.gz
-tar -xzf pbmc3k_filtered_gene_bc_matrices.tar.gz
+```python
+from pathlib import Path
+import tarfile
+from urllib.request import Request, urlopen
+
+data_dir = Path("data")
+data_dir.mkdir(exist_ok=True)
+archive_path = data_dir / "pbmc3k_filtered_gene_bc_matrices.tar.gz"
+if not archive_path.exists():
+    urls = [
+        "https://cf.10xgenomics.com/samples/cell-exp/1.1.0/pbmc3k/pbmc3k_filtered_gene_bc_matrices.tar.gz",
+        "https://cf.10xgenomics.com/samples/cell/pbmc3k/pbmc3k_filtered_gene_bc_matrices.tar.gz",
+    ]
+    for i, url in enumerate(urls):
+        try:
+            req = Request(url, headers={"User-Agent": "Mozilla/5.0"})
+            with urlopen(req) as response, archive_path.open("wb") as f:
+                f.write(response.read())
+            break
+        except Exception:
+            if i == len(urls) - 1:
+                raise
+with tarfile.open(archive_path, "r:gz") as tar:
+    tar.extractall(data_dir)
 ```
 
 Read in the count matrix into an AnnData object:
