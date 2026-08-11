@@ -4,35 +4,32 @@ execute_via: python
 
 # Preprocessing and clustering 3k PBMCs
 
-
-This template demonstrates how to use **LaminDB** to track data provenance and manage artifacts during a standard single-cell RNA-seq analysis workflow. Adapted from the classic [Scanpy PBMC3k tutorial](https://scanpy.readthedocs.io/en/stable/tutorials/basics/clustering-2017.html), it has additional code showing how to track the notebook's execution, save the raw dataset as an artifact, and register the final annotated dataset in your LaminDB instance.
+This guide demonstrates how to use `lamindb` to track data lineage and manage artifacts during a standard single-cell RNA-seq analysis workflow. Adapted from the [Scanpy PBMC3k tutorial](https://scanpy.readthedocs.io/en/stable/tutorials/basics/clustering-2017.html), it has additional code showing how to track the notebook's execution and how to save the raw and the the final annotated dataset in your database.
 
 We will process a dataset of *3k PBMCs from a Healthy Donor* (freely available from [10x Genomics](https://support.10xgenomics.com/single-cell-gene-expression/datasets/1.1.0/pbmc3k)).
 
 Note: To run examples, if you don’t have a LaminDB instance, create one:
 
-```python
-!lamin init --storage ./test-pbmc3k
+```shell
+lamin init --storage ./test-pbmc3k
 ```
 
-```python
-from __future__ import annotations
+Import modules:
 
+```python
 import matplotlib.pyplot as plt
 import pandas as pd
 import scanpy as sc
 import lamindb as ln
 ```
 
-Track the notebook's execution in **LaminDB**
-
+Track the notebook's execution:
 
 ```python
 ln.track()
 ```
 
-Download and unpack the data.
-
+Download and unpack the data:
 
 ```bash
 mkdir -p data
@@ -41,8 +38,7 @@ test -f pbmc3k_filtered_gene_bc_matrices.tar.gz || curl https://cf.10xgenomics.c
 tar -xzf pbmc3k_filtered_gene_bc_matrices.tar.gz
 ```
 
-Read in the count matrix into an AnnData object.
-
+Read in the count matrix into an AnnData object:
 
 ```python
 adata = sc.read_10x_mtx(
@@ -53,8 +49,7 @@ adata = sc.read_10x_mtx(
 adata
 ```
 
-### Save the AnnData object with the raw/unprocessed 3k PBMCs in LaminDB
-
+Save the AnnData object with the raw data:
 
 ```python
 ln.Artifact.from_anndata(adata, key="raw_pbmc3k.h5ad").save()
@@ -62,15 +57,13 @@ ln.Artifact.from_anndata(adata, key="raw_pbmc3k.h5ad").save()
 
 ## Preprocessing
 
-### Load the Anndata object with the raw/unprocessed 3k PBMCs from LaminDB
-
+Load the raw dataset:
 
 ```python
 adata = ln.Artifact.get(key="raw_pbmc3k.h5ad").load()
 ```
 
-Show those genes that yield the highest fraction of counts in each single cell, across all cells.
-
+Show those genes that yield the highest fraction of counts in each single cell, across all cells:
 
 ```python
 sc.pl.highest_expr_genes(adata, n_top=20)
@@ -78,15 +71,13 @@ sc.pl.highest_expr_genes(adata, n_top=20)
 
 Basic filtering:
 
-
 ```python
 sc.pp.filter_cells(adata, min_genes=200)
 sc.pp.filter_genes(adata, min_cells=3)
 adata
 ```
 
-Let's assemble some information about mitochondrial genes, which are important for quality control.
-
+Let's assemble some information about mitochondrial genes, which are important for quality control:
 
 ```python
 # annotate the group of mitochondrial genes as "mt"
@@ -96,10 +87,9 @@ sc.pp.calculate_qc_metrics(adata, qc_vars=["mt"], percent_top=None, log1p=False,
 
 A violin plot of some of the computed quality measures:
 
-* the number of genes expressed in the count matrix
-* the total counts per cell
-* the percentage of counts in mitochondrial genes
-
+- the number of genes expressed in the count matrix
+- the total counts per cell
+- the percentage of counts in mitochondrial genes
 
 ```python
 sc.pl.violin(
@@ -110,8 +100,7 @@ sc.pl.violin(
 )
 ```
 
-Remove cells that have too many mitochondrial genes expressed or too many total counts. Do the filtering by slicing the `AnnData` object.
-
+Remove cells that have too many mitochondrial genes expressed or too many total counts. Do the filtering by slicing the `AnnData` object:
 
 ```python
 adata = adata[
@@ -122,22 +111,19 @@ adata.layers["counts"] = adata.X.copy()
 adata
 ```
 
-Total-count normalize (library-size correct) the data matrix $\mathbf{X}$ to 10,000 reads per cell, so that counts become comparable among cells.
-
+Total-count normalize (library-size correct) the data matrix $\mathbf{X}$ to 10,000 reads per cell, so that counts become comparable among cells:
 
 ```python
 sc.pp.normalize_total(adata, target_sum=1e4)
 ```
 
-Logarithmize the data.
-
+Logarithmize the data:
 
 ```python
 sc.pp.log1p(adata)
 ```
 
-Identify highly-variable genes.
-
+Identify highly-variable genes:
 
 ```python
 sc.pp.highly_variable_genes(
@@ -151,13 +137,7 @@ sc.pp.highly_variable_genes(
 )
 ```
 
-
-```python
-sc.pl.highly_variable_genes(adata)
-```
-
 Scale each gene to unit variance. Clip values exceeding standard deviation 10.
-
 
 ```python
 adata.layers["scaled"] = adata.X.toarray(order='C')
@@ -169,13 +149,11 @@ sc.pp.scale(adata, max_value=10, layer="scaled")
 
 Reduce the dimensionality of the data by running principal component analysis (PCA), which reveals the main axes of variation and denoises the data.
 
-
 ```python
 sc.pp.pca(adata, layer="scaled", svd_solver="arpack")
 ```
 
 Let us inspect the contribution of single PCs to the total variance in the data. This gives us information about how many PCs we should consider in order to compute the neighborhood relations of cells, e.g. used in the clustering function  `sc.tl.louvain()` or tSNE `sc.tl.tsne()`.
-
 
 ```python
 sc.pl.pca_variance_ratio(adata, n_pcs=20)
@@ -185,13 +163,11 @@ sc.pl.pca_variance_ratio(adata, n_pcs=20)
 
 Compute the neighborhood graph of cells using the PCA representation of the data matrix.
 
-
 ```python
 sc.pp.neighbors(adata, n_neighbors=10, n_pcs=40)
 ```
 
 ## Clustering the neighborhood graph
-
 
 ```python
 sc.tl.leiden(
@@ -208,7 +184,6 @@ adata.uns["leiden"] = adata.uns["leiden"].copy()
 
 ## Embedding the neighborhood graph in a UMAP
 
-
 ```python
 sc.tl.paga(adata)
 sc.pl.paga(adata, plot=False)  # remove `plot=False` if you want to see the coarse-grained graph
@@ -222,7 +197,6 @@ sc.pl.umap(adata, color=["leiden", "CD14", "NKG7"])
 ## Finding marker genes
 
 Let us compute a ranking for the highly differential genes in each cluster.
-
 
 ```python
 sc.tl.rank_genes_groups(adata, "leiden", mask_var="highly_variable", method="wilcoxon")
@@ -244,7 +218,6 @@ Leiden Group | Markers | Cell Type
 
 Let us also define a list of marker genes for later reference.
 
-
 ```python
 marker_genes = [
     *["IL7R", "CD79A", "MS4A1", "CD8A", "CD8B", "LYZ", "CD14"],
@@ -254,7 +227,6 @@ marker_genes = [
 ```
 
 Actually mark the cell types.
-
 
 ```python
 new_cluster_names = [
@@ -274,27 +246,23 @@ adata
 
 Visualize the cell types in a UMAP
 
-
 ```python
 sc.pl.umap(adata, color="cell_type", legend_loc="on data", title="", frameon=False)
 ```
 
 Now that we annotated the cell types, let us visualize the marker genes.
 
-
 ```python
 sc.pl.dotplot(adata, marker_genes, groupby="cell_type")
 ```
 
-### Save the resulting AnnData object in LaminDB
-
+Save the resulting AnnData object in LaminDB:
 
 ```python
 ln.Artifact.from_anndata(adata, key="result_pbmc3k.h5ad").save()
 ```
 
 `ln.finish()` marks the successful completion of the current script or notebook run in LaminDB, finalizing its execution state and saving the source code to the database for reproducibility.
-
 
 ```python
 ln.finish()
