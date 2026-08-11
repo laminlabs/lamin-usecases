@@ -31,7 +31,7 @@ ln.track()
 
 Download and unpack the data:
 
-```bash
+```python
 mkdir -p data
 cd data
 test -f pbmc3k_filtered_gene_bc_matrices.tar.gz || curl https://cf.10xgenomics.com/samples/cell/pbmc3k/pbmc3k_filtered_gene_bc_matrices.tar.gz -o pbmc3k_filtered_gene_bc_matrices.tar.gz

@@ -8,9 +8,9 @@ LaminDB provides access to the following public gene ontologies through [bionty]
 
 Here we show how to access and search gene ontologies.
 
-```python
+```bash
 # pip install lamindb
-!lamin init --storage ./test-public-ontologies --modules bionty
+lamin init --storage ./test-public-ontologies --modules bionty
 ```
 
 ```python

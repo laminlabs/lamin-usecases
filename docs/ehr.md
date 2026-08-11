@@ -10,9 +10,9 @@ In this guide, we'll look at curating a `DataFrame` storing examplary EHR data, 
 2. if columns or values are missing, we standardize the dataframe with default values
 3. any values that are present map against specific versions of pre-defined ontologies
 
-```python
+```bash
 # pip install 'lamindb[bionty]'
-!lamin init --storage ./test-ehrschema --modules bionty
+lamin init --storage ./test-ehrschema --modules bionty
 ```
 
 ```python
@@ -176,7 +176,7 @@ df["developmental_stage"] = df["developmental_stage"].cat.rename_categories(
 curator.validate()
 ```
 
-```python
-!rm -rf test-ehrschema
-!lamin delete --force test-ehrschema
+```bash
+rm -rf test-ehrschema
+lamin delete --force test-ehrschema
 ```

@@ -13,9 +13,9 @@ If you use the data academically, please cite the original publication [Jain et 
 Here, we show how the HubMAP instance is structured and how datasets and be queried and accessed.
 If you'd like to transfer data into your own LaminDB instance, see the [transfer guide](inv:docs#transfer).
 
-```python
+```bash
 # pip install lamindb
-!lamin init --modules bionty --storage ./test-hubmap
+lamin init --modules bionty --storage ./test-hubmap
 ```
 
 ```python

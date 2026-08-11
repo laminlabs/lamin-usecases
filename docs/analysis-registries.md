@@ -6,8 +6,8 @@ execute_via: python
 
 Please make sure that you run the [GO Ontology](enrichr.ipynb) notebook before this one so that your `CellType` and `Pathway` registries are populated.
 
-```python
-!lamin connect use-cases-registries
+```bash
+lamin connect use-cases-registries
 ```
 
 ```python
@@ -250,8 +250,8 @@ contributing_genes = pathway.genes.all() & degs.genes.all()
 contributing_genes.to_list("symbol")
 ```
 
-```python
+```bash
 # clean up test instance
-!rm -r ./use-cases-registries
-!lamin delete --force use-cases-registries
+rm -r ./use-cases-registries
+lamin delete --force use-cases-registries
 ```

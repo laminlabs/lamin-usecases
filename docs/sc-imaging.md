@@ -29,9 +29,9 @@ First, we load and annotate a collection of microscopy images in TIFF format tha
 The images used here were acquired as part of a [study](https://www.biorxiv.org/content/10.1101/2023.06.01.542416v1) on autophagy, a cellular process during which cells recycle their components in autophagosomes.
 The study tracked genetic determinants of autophagy through fluorescence microscopy of human U2OS cells.
 
-```python
+```bash
 # pip install 'lamindb[jupyter,bionty]'
-!lamin init --storage ./test-sc-imaging --modules bionty
+lamin init --storage ./test-sc-imaging --modules bionty
 ```
 
 ```python

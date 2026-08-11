@@ -8,9 +8,9 @@ Here, we register the immune cell type vocabulary from [CellTypist](https://www.
 
 In the following [Cell type annotation and pathway analysis](analysis-registries) guide, we will re-use this vocabulary.
 
-```python
+```bash
 # pip install lamindb
-!lamin init --storage ./use-cases-registries --modules bionty
+lamin init --storage ./use-cases-registries --modules bionty
 ```
 
 ```python

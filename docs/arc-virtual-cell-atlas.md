@@ -12,9 +12,9 @@ If you use the data academically, please cite the original publications, Youngbl
 
 To query the atlas with `lamindb`, you have to install it with the GCP (Google Cloud Platform) extra. We also recommend configuring the {mod}`bionty` and {mod}`pertdb` modules.
 
-```python
+```bash
 # pip install 'lamindb[gcp]'
-!lamin settings modules set bionty,pertdb
+lamin settings modules set bionty,pertdb
 ```
 
 Create the central query object for this instance:

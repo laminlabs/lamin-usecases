@@ -435,7 +435,7 @@ fig.tight_layout()
 ln.finish()
 ```
 
-```python
-!rm -rf test-imaging
-!lamin delete --force test-imaging
+```bash
+rm -rf test-imaging
+lamin delete --force test-imaging
 ```

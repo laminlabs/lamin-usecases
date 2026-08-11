@@ -43,9 +43,9 @@ When we refer SpatialData, we mean spatial omics data stored in the scverse Spat
 
 ## Query and analyze spatial data
 
-```python
+```bash
 # pip install lamindb spatialdata spatialdata-plot squidpy
-!lamin init --storage ./test-spatial --modules bionty
+lamin init --storage ./test-spatial --modules bionty
 ```
 
 ```python

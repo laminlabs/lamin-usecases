@@ -27,9 +27,9 @@ scrna-tiledbsoma
 pbmc3k
 ```
 
-```python
+```bash
 # pip install lamindb
-!lamin init --storage ./test-scrna --modules bionty
+lamin init --storage ./test-scrna --modules bionty
 ```
 
 ```python

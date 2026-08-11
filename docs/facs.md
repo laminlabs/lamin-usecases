@@ -22,9 +22,9 @@ facs3
 facs4
 ```
 
-```python
+```bash
 # !pip install 'lamindb[jupyter,bionty]'
-!lamin init --storage ./test-facs --modules bionty
+lamin init --storage ./test-facs --modules bionty
 ```
 
 ```python
