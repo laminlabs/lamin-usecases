@@ -148,9 +148,3 @@ If we were to perform a prediction and evaluate it like outlined in the [origina
 ```python
 ln.finish()
 ```
-
-```bash
-# clean up test instance
-rm -rf test-spatial
-lamin delete --force test-spatial
-```

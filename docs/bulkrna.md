@@ -154,9 +154,3 @@ ln.Artifact.to_dataframe()
 ```python
 curated_af.view_lineage()
 ```
-
-```bash
-# clean up test instance
-rm -r test-bulkrna
-lamin delete --force test-bulkrna
-```

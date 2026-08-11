@@ -32,10 +32,20 @@ ln.track()
 Download and unpack the data:
 
 ```python
-mkdir -p data
-cd data
-test -f pbmc3k_filtered_gene_bc_matrices.tar.gz || curl https://cf.10xgenomics.com/samples/cell/pbmc3k/pbmc3k_filtered_gene_bc_matrices.tar.gz -o pbmc3k_filtered_gene_bc_matrices.tar.gz
-tar -xzf pbmc3k_filtered_gene_bc_matrices.tar.gz
+from pathlib import Path
+import tarfile
+from urllib.request import urlretrieve
+
+data_dir = Path("data")
+data_dir.mkdir(exist_ok=True)
+archive_path = data_dir / "pbmc3k_filtered_gene_bc_matrices.tar.gz"
+if not archive_path.exists():
+    urlretrieve(
+        "https://cf.10xgenomics.com/samples/cell/pbmc3k/pbmc3k_filtered_gene_bc_matrices.tar.gz",
+        archive_path,
+    )
+with tarfile.open(archive_path, "r:gz") as tar:
+    tar.extractall(data_dir)
 ```
 
 Read in the count matrix into an AnnData object:

@@ -249,9 +249,3 @@ Get the list of genes that are differentially expressed and belong to this pathw
 contributing_genes = pathway.genes.all() & degs.genes.all()
 contributing_genes.to_list("symbol")
 ```
-
-```bash
-# clean up test instance
-rm -r ./use-cases-registries
-lamin delete --force use-cases-registries
-```

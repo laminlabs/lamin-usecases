@@ -115,22 +115,22 @@ except ln.errors.ValidationError as error:
 ```
 
 ```python
+celltype_mapping = {
+    "CAFs": "cancer associated fibroblast",
+    "Endothelial": "endothelial cell",
+    "Myeloid": "myeloid cell",
+    "PVL": "perivascular cell",
+    "T-cells": "T cell",
+    "B-cells": "B cell",
+    "Normal Epithelial": "epithelial cell",
+    "Plasmablasts": "plasmablast",
+    "Cancer Epithelial": "neoplastic epithelial cell",
+}
+
 xenium_aligned_1_sdata.tables["table"].obs["celltype_major"] = (
     xenium_aligned_1_sdata.tables["table"]
     .obs["celltype_major"]
-    .replace(
-        {
-            "CAFs": "cancer associated fibroblast",
-            "Endothelial": "endothelial cell",
-            "Myeloid": "myeloid cell",
-            "PVL": "perivascular cell",
-            "T-cells": "T cell",
-            "B-cells": "B cell",
-            "Normal Epithelial": "epithelial cell",
-            "Plasmablasts": "plasmablast",
-            "Cancer Epithelial": "neoplastic epithelial cell",
-        }
-    )
+    .cat.rename_categories(celltype_mapping)
 )
 ```
 
@@ -163,19 +163,7 @@ xenium_aligned_2_sdata = db.Artifact.get(key="xenium_aligned_2_guide_min.zarr").
 xenium_aligned_2_sdata.tables["table"].obs["celltype_major"] = (
     xenium_aligned_2_sdata.tables["table"]
     .obs["celltype_major"]
-    .replace(
-        {
-            "CAFs": "cancer associated fibroblast",
-            "Endothelial": "endothelial cell",
-            "Myeloid": "myeloid cell",
-            "PVL": "perivascular cell",
-            "T-cells": "T cell",
-            "B-cells": "B cell",
-            "Normal Epithelial": "epithelial cell",
-            "Plasmablasts": "plasmablast",
-            "Cancer Epithelial": "neoplastic epithelial cell",
-        }
-    )
+    .cat.rename_categories(celltype_mapping)
 )
 ```
 

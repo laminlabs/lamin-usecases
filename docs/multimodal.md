@@ -151,10 +151,3 @@ artifact.describe()
 ```python
 ln.finish()
 ```
-
-```bash
-# clean up test instance
-bt.settings.organism = None
-rm -r test-multimodal
-lamin delete --force test-multimodal
-```
