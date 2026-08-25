@@ -243,3 +243,7 @@ Access parents of a record:
 ```python
 db_lookup.memory_b_cell.parents.to_list()
 ```
+
+```bash
+lamin settings dev-dir unset
+```
