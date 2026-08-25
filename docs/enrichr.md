@@ -123,3 +123,9 @@ pathway.genes.to_list("symbol")
 ```python
 pathway.genes.to_list("ensembl_gene_id")
 ```
+
+Unset dev-dir of the initialized instance:
+
+```bash
+lamin settings dev-dir unset
+```
