@@ -1,17 +1,18 @@
-# Lamin use cases
+# Various use cases for LaminDB
 
-All notebooks in this repository are simple integration tests for LaminDB and run on CI.
+All workflows in this repository are simple integration tests for LaminDB and run on CI.
 
-- User [docs](https://lamin.ai/docs/guide)
-- Developer [docs](https://lamin-usecases-ddcd.netlify.app/)
+There are more use cases in other git repositories:
 
-git repositories with use cases:
-
+- [lamin-agents](https://github.com/laminlabs/lamin-agents)
 - [lamin-spatial](https://github.com/laminlabs/lamin-spatial)
 - [lamin-mlops](https://github.com/laminlabs/lamin-spatial)
 - [cellxgene-lamin](https://github.com/laminlabs/cellxgene-lamin)
+
+Integrations for workflow managers:
+
+- [nf-lamin](https://github.com/laminlabs/nf-lamin)
 - [redun-lamin](https://github.com/laminlabs/redun-lamin)
-- [nextflow-lamin](https://github.com/laminlabs/nextflow-lamin)
 - [snakemake-lamin](https://github.com/laminlabs/snakemake-lamin-usecases)
 
 LaminDB instances with use cases:
