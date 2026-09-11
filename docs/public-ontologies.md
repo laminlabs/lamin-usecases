@@ -2,13 +2,12 @@
 
 This docs section shows how to access public biological ontologies.
 
-For managing in-house ontologies, see {doc}`docs:bio-registries`.
+For managing in-house ontologies, see {doc}`docs:manage-ontologies`.
 
 You'll need a lamindb instance with the `bionty` schema module mounted.
 
 ```shell
-# pip install lamindb
-lamin init --storage ./test-ontologies --modules bionty
+lamin init --modules bionty
 ```
 
 The guides cover the following entities.
