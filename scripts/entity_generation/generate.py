@@ -52,7 +52,7 @@ organism = {
     "search_query": "oryctolagus_cuniculus",
     "identifiers": "spiny chromis,silver-eye,platyfish,california sea lion",
     "database": "ensembl",
-    "version": "release-114",
+    "version": "release-116",
     "organism": "vertebrates",
     "sources": "1. [Ensembl Species](https://useast.ensembl.org/info/about/species.html),2. [NCBI Taxonomy](https://www.ncbi.nlm.nih.gov/taxonomy)",
 }
