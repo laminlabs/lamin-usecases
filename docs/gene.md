@@ -198,7 +198,7 @@ bt.Source.filter(entity="bionty.Gene", currently_used=True).to_dataframe()
 When instantiating a Bionty object, we can choose a source or version:
 
 ```python
-source = bt.Source.get(name="ensembl", version="release-114", organism="human")
+source = bt.Source.get(name="ensembl", version="release-116", organism="human")
 public = bt.Gene.public(source=source)
 public
 ```
