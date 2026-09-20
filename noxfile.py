@@ -56,21 +56,6 @@ GROUPS["by_registry"] = [
     "analysis-registries.ipynb",
     "rdf-sparql.ipynb",
 ]
-GROUPS["by_ontology"] = [
-    "gene.ipynb",
-    "cell_line.ipynb",
-    "cell_marker.ipynb",
-    "cell_type.ipynb",
-    "developmental_stage.ipynb",
-    "disease.ipynb",
-    "ethnicity.ipynb",
-    "experimental_factor.ipynb",
-    "organism.ipynb",
-    "pathway.ipynb",
-    "phenotype.ipynb",
-    "protein.ipynb",
-    "tissue.ipynb",
-]
 
 
 IS_PR = os.getenv("GITHUB_EVENT_NAME") != "push"
@@ -96,7 +81,6 @@ def lint(session: nox.Session) -> None:
         "by_datatype_spatial",
         "by_datatype_sc_imaging",
         "by_registry",
-        "by_ontology",
         "atlases",
         "docs",
     ],
@@ -167,7 +151,6 @@ def install(session, group):
         "by_datatype_spatial",
         "by_datatype_sc_imaging",
         "by_registry",
-        "by_ontology",
         "atlases",
     ],
 )
@@ -177,8 +160,6 @@ def build(session, group):
     if group != "atlases":
         login_testuser2(session)
         login_testuser1(session)
-    if group == "by_ontology":
-        run(session, "python ./scripts/entity_generation/generate.py")
     run(session, f"pytest -s ./tests/test_notebooks.py::test_{group}")
 
     # move artifacts into right place
@@ -200,7 +181,6 @@ def docs(session):
         "by_datatype_spatial",
         "by_datatype_sc_imaging",
         "by_registry",
-        "by_ontology",
         "atlases",
     ]:
         for path in Path(f"./docs_{group}").glob("*"):

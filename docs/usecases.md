@@ -5,6 +5,5 @@
 
 by-datatype
 by-registry
-public-ontologies
 atlases
 ```

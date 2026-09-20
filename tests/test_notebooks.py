@@ -34,12 +34,6 @@ def test_by_registry():
         test.execute_notebooks(DOCS / filename, write=True, print_outputs=False)
 
 
-def test_by_ontology():
-    for filename in GROUPS["by_ontology"]:
-        print(filename)
-        test.execute_notebooks(DOCS / filename, write=True, print_outputs=False)
-
-
 def test_atlases():
     for filename in GROUPS["atlases"]:
         print(filename)

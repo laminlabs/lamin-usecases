@@ -19,7 +19,6 @@ dev = [
     "pytest>=6.0",
     "pytest-cov",
     "nbproject_test",
-    "cookiecutter",
     "jupytext",
     "pronto",  # will remove
 ]
