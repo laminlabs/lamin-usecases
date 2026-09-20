@@ -17,7 +17,7 @@ import pandas as pd
 
 ## PublicOntology objects
 
-Let us create a public ontology accessor with {meth}`~bionty.core.BioRecord.public`, which chooses a default public ontology source from {class}`~docs:bionty.Source`. It's a [PublicOntology](https://lamin.ai/docs/bionty.dev.publicontology) object, which you can think about as a public registry:
+Let us create a public ontology object with the `.public()` class method, which chooses a default public ontology source from {class}`~docs:bionty.Source`. It's a [PublicOntology](https://lamin.ai/docs/bionty.dev.publicontology) object, which you can think about as a public registry:
 
 ```python
 public = bt.CellMarker.public(organism="human")

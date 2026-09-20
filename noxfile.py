@@ -190,6 +190,9 @@ def build(session, group):
 
 @nox.session
 def docs(session):
+    # Fresh CI checkout still has the source .md files. Convert (and delete)
+    # them before recovering executed notebooks so Sphinx does not see both.
+    convert_executable_md_files()
     # move artifacts into right place
     for group in [
         "templates",
@@ -204,4 +207,4 @@ def docs(session):
             path.rename(f"./docs/{path.name}")
     run(session, "lamin init --storage ./docsbuild --modules bionty")
     build_docs(session, strict=False)
-    upload_docs_artifact(aws=True)
+    upload_docs_artifact()
