@@ -116,7 +116,7 @@ convention = "google"
 "docs/*" = ["I"]
 "tests/*" = ["D"]
 "*/__init__.py" = ["F401"]
-"docs/scrna-mappedcollection.ipynb" = ["B007"]
+"docs/scrna-dataloading.ipynb" = ["B007"]
 
 [tool.pytest.ini_options]
 filterwarnings = [

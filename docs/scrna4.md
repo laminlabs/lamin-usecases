@@ -6,7 +6,7 @@ execute_via: python
 
 Here, we'll analyze the growing collection by loading it into memory.
 This is only possible if it's not too large.
-If your data is large, you'll likely want to iterate over the collection to train a model, the topic of the next page ([![scrna5/6](https://img.shields.io/badge/scrna5/6-lightgrey)](/scrna-mappedcollection)).
+If your data is large, you'll likely want to iterate over the collection to train a model, the topic of the next page ([![scrna5/6](https://img.shields.io/badge/scrna5/6-lightgrey)](/scrna-dataloading)).
 
 ```python
 import lamindb as ln

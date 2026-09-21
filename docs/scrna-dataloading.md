@@ -2,9 +2,12 @@
 execute_via: python
 ---
 
-# Train a machine learning model on a collection
+# Use machine learning data loaders
 
 Here, we iterate over the artifacts within a collection to train a machine learning model at scale.
+
+{class}`~lamindb.core.MappedCollection` supports weighted random sampling from `.h5ad` files.
+[`annbatch`](https://blog.lamin.ai/annbatch) is a faster alternative for chunked loading from `.zarr` stores.
 
 ```python
 import lamindb as ln
@@ -19,10 +22,32 @@ collection = ln.Collection.get(key="scrna/collection1")
 collection.describe()
 ```
 
-## Create a map-style dataset
+## Create an annbatch loader: sample contiguous chunks
 
-Let us create a [map-style dataset](https://pytorch.org/docs/stable/data) using using {meth}`~lamindb.Collection.mapped`: a {class}`~lamindb.core.MappedCollection`.
+`annbatch` loads contiguous chunks from a collection of `.zarr` stores and much faster than per-cell sampling when you do not need weighted random access. See the [annbatch blog post](https://blog.lamin.ai/annbatch).
 
+In most cases, you should create a shuffled collection, similar to [here](https://lamin.ai/laminlabs/arrayloader-benchmarks/collection/LaJOdLd0xZ3v5ZBw).
+
+```{code-block} python
+import anndata as ad
+import zarr
+from annbatch import Loader
+
+paths = [artifact.cache() for artifact in collection.artifacts.all()]
+loader = Loader(shuffle=True, batch_size=4096, chunk_size=256, preload_nchunks=64)
+loader.add_datasets(
+    datasets=[ad.io.sparse_dataset(zarr.open(p)["X"]) for p in paths],
+    obs=[ad.io.read_elem(zarr.open(p)["obs"]) for p in paths],
+)
+for batch in loader:
+    pass
+```
+
+## Create a map-style dataset: weighted single-cell sampling
+
+While much slower than, for example, `annbatch`, the following approach enables weighted single-cell sampling.
+
+You create [map-style dataset](https://pytorch.org/docs/stable/data) using {meth}`~lamindb.Collection.mapped`: a {class}`~lamindb.core.MappedCollection`.
 Under-the-hood, it performs a virtual join of the features of the underlying `AnnData` objects without loading the datasets into memory. You can either perform an inner join:
 
 ```python
