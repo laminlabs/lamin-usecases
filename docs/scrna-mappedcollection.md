@@ -6,6 +6,9 @@ execute_via: python
 
 Here, we iterate over the artifacts within a collection to train a machine learning model at scale.
 
+{class}`~lamindb.core.MappedCollection` supports weighted random sampling from `.h5ad` files.
+[`annbatch`](https://blog.lamin.ai/annbatch) is a faster alternative for chunked loading from `.zarr` stores.
+
 ```python
 import lamindb as ln
 
@@ -21,7 +24,7 @@ collection.describe()
 
 ## Create a map-style dataset
 
-Let us create a [map-style dataset](https://pytorch.org/docs/stable/data) using using {meth}`~lamindb.Collection.mapped`: a {class}`~lamindb.core.MappedCollection`.
+Let us create a [map-style dataset](https://pytorch.org/docs/stable/data) using {meth}`~lamindb.Collection.mapped`: a {class}`~lamindb.core.MappedCollection`.
 
 Under-the-hood, it performs a virtual join of the features of the underlying `AnnData` objects without loading the datasets into memory. You can either perform an inner join:
 
@@ -103,3 +106,23 @@ with collection.mapped(obs_keys=["cell_type"]) as dataset:
 ```
 
 :::
+
+## Alternative: create an annbatch loader
+
+`annbatch` loads contiguous chunks from a collection of `.zarr` stores and is typically much faster than per-cell sampling when you do not need weighted random access.
+See the [annbatch blog post](https://blog.lamin.ai/annbatch).
+
+```{code-block} python
+import anndata as ad
+import zarr
+from annbatch import Loader
+
+paths = [artifact.cache() for artifact in collection.artifacts.all()]
+loader = Loader(shuffle=True, batch_size=4096, chunk_size=256, preload_nchunks=64)
+loader.add_datasets(
+    datasets=[ad.io.sparse_dataset(zarr.open(p)["X"]) for p in paths],
+    obs=[ad.io.read_elem(zarr.open(p)["obs"]) for p in paths],
+)
+for batch in loader:
+    pass
+```
