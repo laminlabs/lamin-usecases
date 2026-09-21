@@ -2,7 +2,7 @@
 execute_via: python
 ---
 
-# Train a machine learning model on a collection
+# Use machine learning data loaders
 
 Here, we iterate over the artifacts within a collection to train a machine learning model at scale.
 
