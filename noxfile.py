@@ -29,7 +29,7 @@ GROUPS["by_datatype"] = [
     "scrna2.ipynb",
     "scrna3.ipynb",
     "scrna4.ipynb",
-    "scrna-mappedcollection.ipynb",
+    "scrna-dataloading.ipynb",
     "scrna-tiledbsoma.ipynb",
     "bulkrna.ipynb",
     "facs.ipynb",

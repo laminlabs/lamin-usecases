@@ -10,7 +10,7 @@ Here, you'll learn how to manage a growing number of scRNA-seq datasets as a sin
 2. append a new dataset to the collection ([![scrna2/6](https://img.shields.io/badge/scrna2/6-lightgrey)](/scrna2))
 3. query & analyze individual datasets ([![scrna3/6](https://img.shields.io/badge/scrna3/6-lightgrey)](/scrna3))
 4. load the collection into memory ([![scrna4/6](https://img.shields.io/badge/scrna4/6-lightgrey)](/scrna4))
-5. iterate over the collection to train an ML model ([![scrna5/6](https://img.shields.io/badge/scrna5/6-lightgrey)](/scrna-mappedcollection))
+5. iterate over the collection to train an ML model ([![scrna5/6](https://img.shields.io/badge/scrna5/6-lightgrey)](/scrna-dataloading))
 6. concatenate the collection to a single `tiledbsoma` array store ([![scrna6/6](https://img.shields.io/badge/scrna6/6-lightgrey)](/scrna-tiledbsoma))
 
 If you're only interested in _using_ a large curated scRNA-seq collection, see the [CELLxGENE guide](inv:docs#cellxgene).
@@ -22,7 +22,7 @@ If you're only interested in _using_ a large curated scRNA-seq collection, see t
 scrna2
 scrna3
 scrna4
-scrna-mappedcollection
+scrna-dataloading
 scrna-tiledbsoma
 pbmc3k
 ```
