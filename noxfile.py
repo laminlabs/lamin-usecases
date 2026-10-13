@@ -100,9 +100,9 @@ def install(session, group):
             run(
                 session, "uv pip install --system tiledbsoma"
             )  # test TiledbsomaCatManager
-            run(
-                session, "uv pip install --system numpy<2"
-            )  # https://github.com/scverse/pytometry/issues/80
+            # Do not pin numpy<2. That pin was for fcsparser (pytometry#80);
+            # readfcs 2 uses flowio. Downgrading numpy leaves pyarrow>=25
+            # installed, which does not import and breaks parquet ontologies.
         case "by_registry":
             extras += "zarr_v2"
             run(
