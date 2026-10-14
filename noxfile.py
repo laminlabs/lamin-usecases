@@ -97,10 +97,10 @@ def install(session, group):
                 session,
                 "uv pip install --system dask[dataframe] mudata torch",
             )  # Dask is needed by datashader
-            # PyPI 0.1.6 calls np.in1d, removed in numpy 2.4. main uses np.isin.
+            # pytometry pypi version calls np.in1d, removed in numpy 2.4
             run(
                 session,
-                "uv pip install --system git+https://github.com/scverse/pytometry.git@main",
+                "uv pip install --system git+https://github.com/scverse/pytometry",
             )
             run(
                 session, "uv pip install --system tiledbsoma"
