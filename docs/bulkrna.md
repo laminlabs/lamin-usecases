@@ -135,8 +135,12 @@ features = ln.Feature.lookup()
 ```
 
 ```python
-curated_af.labels.add(efs.rna_seq, features.assay)
-curated_af.labels.add(organism.saccharomyces_cerevisiae, features.organism)
+curated_af.features.add_values(
+    {
+        features.assay: efs.rna_seq,
+        features.organism: organism.saccharomyces_cerevisiae,
+    }
+)
 ```
 
 ```python

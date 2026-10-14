@@ -215,7 +215,7 @@ annotation["imaged structure"] = [
 ]
 
 artifact.features.add_values(annotation)
-artifact.labels.add(ln.ULabel(name="scportrait single-cell images").save())
+artifact.ulabels.add(ln.ULabel(name="scportrait single-cell images").save())
 ```
 
 To process all files in our dataset efficiently, we'll create a custom image processing function.
@@ -300,7 +300,7 @@ def process_images(
     ]
 
     artifact.features.add_values(annotation)
-    artifact.labels.add(ln.ULabel.get(name="scportrait single-cell images"))
+    artifact.ulabels.add(ln.ULabel.get(name="scportrait single-cell images"))
 
     # Save SpatialData object
     ln.Artifact.from_spatialdata(

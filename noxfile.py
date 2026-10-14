@@ -95,14 +95,19 @@ def install(session, group):
             extras += "fcs,zarr_v2"
             run(
                 session,
-                "uv pip install --system pytometry dask[dataframe] mudata torch",
+                "uv pip install --system dask[dataframe] mudata torch",
             )  # Dask is needed by datashader
+            # pytometry pypi version calls np.in1d, removed in numpy 2.4
+            run(
+                session,
+                "uv pip install --system git+https://github.com/scverse/pytometry",
+            )
             run(
                 session, "uv pip install --system tiledbsoma"
             )  # test TiledbsomaCatManager
-            run(
-                session, "uv pip install --system numpy<2"
-            )  # https://github.com/scverse/pytometry/issues/80
+            # Do not pin numpy<2. That pin was for fcsparser (pytometry#80);
+            # readfcs 2 uses flowio. Downgrading numpy leaves pyarrow>=25
+            # installed, which does not import and breaks parquet ontologies.
         case "by_registry":
             extras += "zarr_v2"
             run(

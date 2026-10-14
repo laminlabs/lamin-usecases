@@ -128,8 +128,8 @@ Annotate with more labels:
 efs = bt.ExperimentalFactor.lookup()
 organism = bt.Organism.lookup()
 
-artifact.labels.add(efs.fluorescence_activated_cell_sorting)
-artifact.labels.add(organism.human)
+artifact.experimental_factors.add(efs.fluorescence_activated_cell_sorting)
+artifact.organisms.add(organism.human)
 ```
 
 ```python

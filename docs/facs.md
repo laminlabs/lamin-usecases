@@ -204,8 +204,8 @@ Add more labels:
 experimental_factors = bt.ExperimentalFactor.lookup()
 organisms = bt.Organism.lookup()
 
-artifact.labels.add(experimental_factors.cytof)
-artifact.labels.add(organisms.human)
+artifact.experimental_factors.add(experimental_factors.cytof)
+artifact.organisms.add(organisms.human)
 ```
 
 ## Inspect the saved artifact
