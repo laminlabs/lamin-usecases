@@ -95,8 +95,13 @@ def install(session, group):
             extras += "fcs,zarr_v2"
             run(
                 session,
-                "uv pip install --system pytometry dask[dataframe] mudata torch",
+                "uv pip install --system dask[dataframe] mudata torch",
             )  # Dask is needed by datashader
+            # PyPI 0.1.6 calls np.in1d, removed in numpy 2.4. main uses np.isin.
+            run(
+                session,
+                "uv pip install --system git+https://github.com/scverse/pytometry.git@main",
+            )
             run(
                 session, "uv pip install --system tiledbsoma"
             )  # test TiledbsomaCatManager
