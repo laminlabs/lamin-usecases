@@ -65,6 +65,10 @@ IS_PR = os.getenv("GITHUB_EVENT_NAME") != "push"
 SPATIALDATA_OME_ZARR_CONSTRAINT = "ome-zarr"
 # compatibility with anndata>=0.13.0
 SPATIALDATA_CONSTRAINT = "spatialdata==0.8.0"
+# pynndescent>=0.7 returns a csr_array. scanpy 1.12.4 calls .getnnz() on it.
+# https://github.com/scverse/scanpy/issues/4444
+PYNNDESCENT_CONSTRAINT = "pynndescent<0.7"
+SCANPY_GROUPS = {"templates", "by_datatype_spatial", "by_registry"}
 
 
 @nox.session
@@ -145,6 +149,8 @@ def install(session, group):
     branch = "main" if IS_PR else "release"
     extras = "full" if extras == "" else "full," + extras
     install_lamindb(session, branch=branch, extras=extras)
+    if group in SCANPY_GROUPS:
+        run(session, f"uv pip install --system {PYNNDESCENT_CONSTRAINT}")
 
 
 @nox.session
