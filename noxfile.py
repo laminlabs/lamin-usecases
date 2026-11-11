@@ -65,9 +65,13 @@ IS_PR = os.getenv("GITHUB_EVENT_NAME") != "push"
 SPATIALDATA_OME_ZARR_CONSTRAINT = "ome-zarr"
 # compatibility with anndata>=0.13.0
 SPATIALDATA_CONSTRAINT = "spatialdata==0.8.0"
-# pynndescent>=0.7 returns a csr_array. scanpy 1.12.4 calls .getnnz() on it.
-# https://github.com/scverse/scanpy/issues/4444
-PYNNDESCENT_CONSTRAINT = "pynndescent<0.7"
+# umap-learn 0.6 keeps non-contiguous float32 knn distances (astype copy=False).
+# Its numba kernel then rejects them, and scanpy 1.12.5 does not copy first:
+# No conversion from array(float32, 2d, A) to array(float32, 2d, C) for 'knn_dists'.
+# 0.5.12 copies into C order. scanpy 1.12.6 will allow 0.6 once it is on PyPI:
+# https://github.com/scverse/scanpy/pull/4480
+# scanpy 1.12.5 supports pynndescent 0.7, so that older pin is not required.
+UMAP_CONSTRAINT = "umap-learn>=0.5.12,<0.6"
 SCANPY_GROUPS = {"templates", "by_datatype_spatial", "by_registry"}
 
 
@@ -148,9 +152,17 @@ def install(session, group):
     run(session, "uv pip install --system .[dev]")
     branch = "main" if IS_PR else "release"
     extras = "full" if extras == "" else "full," + extras
+    # numcodecs<0.16 (required by zarr<3) has no Python 3.14 wheel. Its bundled
+    # c-blosc does `typedef _Bool bool`, which GCC 15 rejects because C23 makes
+    # `bool` a keyword. Ubuntu 24.04 still defaults to C17 and compiles it.
+    # install_lamindb does not take an env, so set it on the process.
+    if "zarr_v2" in extras:
+        cflags = os.environ.get("CFLAGS", "")
+        if "-std=" not in cflags:
+            os.environ["CFLAGS"] = f"{cflags} -std=gnu17".strip()
     install_lamindb(session, branch=branch, extras=extras)
     if group in SCANPY_GROUPS:
-        run(session, f"uv pip install --system {PYNNDESCENT_CONSTRAINT}")
+        run(session, f"uv pip install --system {UMAP_CONSTRAINT}")
 
 
 @nox.session
