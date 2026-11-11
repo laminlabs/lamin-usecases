@@ -148,6 +148,14 @@ def install(session, group):
     run(session, "uv pip install --system .[dev]")
     branch = "main" if IS_PR else "release"
     extras = "full" if extras == "" else "full," + extras
+    # numcodecs<0.16 (required by zarr<3) has no Python 3.14 wheel. Its bundled
+    # c-blosc does `typedef _Bool bool`, which GCC 15 rejects because C23 makes
+    # `bool` a keyword. Ubuntu 24.04 still defaults to C17 and compiles it.
+    # install_lamindb does not take an env, so set it on the process.
+    if "zarr_v2" in extras:
+        cflags = os.environ.get("CFLAGS", "")
+        if "-std=" not in cflags:
+            os.environ["CFLAGS"] = f"{cflags} -std=gnu17".strip()
     install_lamindb(session, branch=branch, extras=extras)
     if group in SCANPY_GROUPS:
         run(session, f"uv pip install --system {PYNNDESCENT_CONSTRAINT}")
