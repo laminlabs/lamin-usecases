@@ -100,7 +100,17 @@ jobs:
         if: steps.cache-postgres.outputs.cache-hit == 'true'
         run: docker image load --input ~/postgres.tar
       - run: pip install "laminci@git+https://@github.com/laminlabs/laminci"
-      - run: sudo apt-get -y install graphviz
+      - name: Install graphviz
+        run: |
+          # Some hosted runners cannot resolve the Ubuntu mirrors (azure.archive,
+          # archive, and security.ubuntu.com) while GitHub itself still resolves.
+          # apt then retries for several minutes and exits 100. Reruns land on
+          # the same kind of runner, so switch to public DNS before installing.
+          if ! timeout 10 getent hosts archive.ubuntu.com >/dev/null 2>&1; then
+            printf 'nameserver 1.1.1.1\nnameserver 8.8.8.8\n' | sudo tee /etc/resolv.conf >/dev/null
+          fi
+          sudo apt-get update
+          sudo apt-get install -y graphviz
       - uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
